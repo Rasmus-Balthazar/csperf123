@@ -13,3 +13,5 @@ aight, so the questions in question is that we are working with the algorithms:
 - [ ] Setup threading for algorithms
 - [ ] Implement Independant ouput
 - [ ] Implement count-then-move
+- [ ] setup measurements
+- [ ] take measurements
