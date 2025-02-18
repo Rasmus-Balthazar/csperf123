@@ -1,33 +1,22 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <time.h>
+#include "data_gen.h"
 
 #define MAX_N 1000
 // https://stackoverflow.com/questions/22727404/making-a-tuple-in-c
-typedef struct {
-    uint64_t partition_key;
-    uint64_t payload;
-} Tuple;
 
+int main1() {
+    Tuple **res = gen_data(10);    
 
-uint64_t rand_64bit();
-Tuple *new_tuple(uint64_t key);
-void shuffle(Tuple **array, int n);
-void gen_input(Tuple **result, uint64_t n);
+    for(int i = 0; i < 10; i++) {
+        printf("key: %ld payload: %ld\n", (long)res[i]->partitionKey, (long)res[i]->payload);
+    }
+    return 0;
+}
 
-
-int main() {
-    srand(4617929);
-    int n = 10;
+Tuple** gen_data(int n) {
     Tuple **res = (Tuple**)calloc(n, sizeof(Tuple*));
 
     gen_input(res, n);
-    for(int i = 0; i < n; i++) {
-        printf("key: %ld payload: %ld\n", (long)res[i]->partition_key, (long)res[i]->payload);
-    }
-    free(res);
-    return 0;
+    return res;
 }
 
 uint64_t rand_64bit() {
@@ -41,7 +30,7 @@ uint64_t rand_64bit() {
 
 Tuple *new_tuple(uint64_t key) {
     Tuple *new = (Tuple*)malloc(sizeof(Tuple));
-    new->partition_key = key;
+    new->partitionKey = key;
     new->payload = rand_64bit();
     return new;
 }
@@ -63,7 +52,7 @@ void gen_input(Tuple **result, uint64_t n) {
     for(int i = 0; i < n; i++) {
         *(result+i) = new_tuple(i);
         /* uint64_t payload = rand_64bit(); */
-        /* result[i].partition_key = i; */
+        /* result[i].partitionKey = i; */
         /* result[i].payload = payload; */
     }
     shuffle(result,n);
