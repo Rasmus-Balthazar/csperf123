@@ -38,9 +38,6 @@ void gen_input(Tuple *result, uint64_t n) {
         result[i].partition_key = i;
         result[i].payload = payload;
     }
-    for(int i = 0; i < n - 1; i++) {
-        printf("key: %ld payload: %ld\n", (long)result[i].partition_key, (long)result[i].payload);
-    }
     shuffle(result,n);
 }
 
