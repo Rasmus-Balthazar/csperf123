@@ -43,6 +43,7 @@ void gen_input(Tuple *result, uint64_t n) {
 
 
 int main() {
+    srand(4617929);
     int n = 10;
     Tuple *res = (Tuple*)calloc(n, sizeof(Tuple));
 
