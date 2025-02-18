@@ -1,5 +1,4 @@
-#include <pthread.h>
-#include "data_gen.h"
+#include "independent.h"
 
 #define NUM_THREADS 4
 #define KEY_BITS 10
@@ -7,16 +6,6 @@
 #define NUM_PARTITIONS (2 << KEY_BITS)
 #define DATA_PER_PARTITION (NUM_PARTITIONS * PARTITION_SIZE)
 #define SAMPLE_SIZE (DATA_PER_PARTITION * NUM_THREADS)
-
-typedef struct {
-    int startIndex;
-    int endIndex;
-    Tuple** data;
-    Tuple*** partitions;
-} Args;
-
-int hash_key(uint64_t key);
-void *run(void *args);
 
 int main(){
     Tuple **data = gen_data(SAMPLE_SIZE);

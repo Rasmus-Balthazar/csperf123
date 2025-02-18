@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Werror
 CFLAGS = -Wall
-HEADERS = data_gen.h
+HEADERS = data_gen.h independent.h
 OBJ = data_gen.o independent.o
 
 default: independent
