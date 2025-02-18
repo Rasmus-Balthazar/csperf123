@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <time.h>
+
+#define MAX_N 1000
+// https://stackoverflow.com/questions/22727404/making-a-tuple-in-c
+typedef struct {
+    uint64_t partition_key;
+    uint64_t payload;
+} Tuple;
+
+uint64_t rand_64bit() {
+    // call rand once, cast it to 64 bits,
+    // move the first 32 bits to the left
+    // bitwise OR  with another rand call
+    // to ensure that lower 32 bits are filled
+    // bam, random 64 bit unsigned int
+    return ((uint64_t)rand()) << 32 | rand();
+}
+
+// shuffle
+void shuffle(Tuple *array, int n) {
+    if(n > 1) {
+        for(int i = 0; i < n -1; i++) {
+            int j = i + rand() / (RAND_MAX / (n-1)  + 1);
+            Tuple temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
+}
+
+// gen_input
+void gen_input(Tuple *result, uint64_t n) {
+    for(int i = 0; i < n; i++) {
+        uint64_t payload = rand_64bit();
+        result[i].partition_key = i;
+        result[i].payload = payload;
+    }
+    shuffle(result,n);
+}
+
+
+int main() {
+    Tuple res[MAX_N];
+
+    int n = 10;
+    gen_input(res, 10);
+    for(int i = 0; i < n - 1; i++) {
+        printf("key: %ld payload: %ld\n", (long)res[i].partition_key, (long)res[i].payload);
+    }
+    return 0;
+    }
