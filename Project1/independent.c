@@ -3,9 +3,10 @@
 
 #define NUM_THREADS 4
 #define KEY_BITS 10
+#define PARTITION_SIZE 16
 #define NUM_PARTITIONS (2 << KEY_BITS)
-#define SAMPLE_SIZE (NUM_PARTITIONS << 4)
-#define PARTITION_SIZE (SAMPLE_SIZE / NUM_PARTITIONS)
+#define DATA_PER_PARTITION (NUM_PARTITIONS * PARTITION_SIZE)
+#define SAMPLE_SIZE (DATA_PER_PARTITION * NUM_THREADS)
 
 typedef struct {
     int startIndex;
@@ -44,9 +45,8 @@ int main(){
         pthread_join(threads[i], NULL);
     }
     for(int i = 0; i < PARTITION_SIZE; i++) {
-        printf("Printing partition key %ld\n", (long)(*(*(*(buffers+3)+4)+i))->partitionKey);
+        printf("Printing partition key %ld\n", (long)(*(*(*(buffers+0)+0)+i))->partitionKey);
     }
-    printf("huh? how did i get here?\n");
     return 0;
 }
 //method hash and find where it belongs
@@ -59,13 +59,13 @@ void *run(void *args) {
     Args *input = (Args *)args;
     for(int i =  0; i < NUM_PARTITIONS; i++) {
         //Allocate every partition from null to a partion of the correct size.
-        *(input->partitions+i) = (Tuple**)calloc(PARTITION_SIZE, sizeof(Tuple*));
+        *(input->partitions+i) = (Tuple**)calloc(PARTITION_SIZE << 1, sizeof(Tuple*));
     }
     int thread_number = 5;
+    int *offset = (int*)calloc(NUM_PARTITIONS, sizeof(int));
     for (int i = input->startIndex; i < input->endIndex; i++) {
         Tuple *data = *(input->data + i);
         int hashedKey = hash_key(data->partitionKey);
-        int *offset = (int*)calloc(NUM_PARTITIONS, sizeof(int));
         *(*(input->partitions + hashedKey) + *(offset + hashedKey)) = data;
         (*(offset + hashedKey))++;
     }
