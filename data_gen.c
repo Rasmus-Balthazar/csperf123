@@ -10,6 +10,26 @@ typedef struct {
     uint64_t payload;
 } Tuple;
 
+
+uint64_t rand_64bit();
+Tuple *new_tuple(uint64_t key);
+void shuffle(Tuple **array, int n);
+void gen_input(Tuple **result, uint64_t n);
+
+
+int main() {
+    srand(4617929);
+    int n = 10;
+    Tuple **res = (Tuple**)calloc(n, sizeof(Tuple*));
+
+    gen_input(res, n);
+    for(int i = 0; i < n; i++) {
+        printf("key: %ld payload: %ld\n", (long)res[i]->partition_key, (long)res[i]->payload);
+    }
+    free(res);
+    return 0;
+}
+
 uint64_t rand_64bit() {
     // call rand once, cast it to 64 bits,
     // move the first 32 bits to the left
@@ -48,17 +68,3 @@ void gen_input(Tuple **result, uint64_t n) {
     }
     shuffle(result,n);
 }
-
-
-int main() {
-    srand(4617929);
-    int n = 10;
-    Tuple **res = (Tuple**)calloc(n, sizeof(Tuple*));
-
-    gen_input(res, n);
-    for(int i = 0; i < n; i++) {
-        printf("key: %ld payload: %ld\n", (long)res[i]->partition_key, (long)res[i]->payload);
-    }
-    free(res);
-    return 0;
-    }
