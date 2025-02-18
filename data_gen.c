@@ -19,12 +19,19 @@ uint64_t rand_64bit() {
     return ((uint64_t)rand()) << 32 | rand();
 }
 
+Tuple *new_tuple(uint64_t key) {
+    Tuple *new = (Tuple*)malloc(sizeof(Tuple));
+    new->partition_key = key;
+    new->payload = rand_64bit();
+    return new;
+}
+
 // shuffle
-void shuffle(Tuple *array, int n) {
+void shuffle(Tuple **array, int n) {
     if(n > 1) {
         for(int i = 0; i < n -1; i++) {
             int j = rand() % n;
-            Tuple temp = array[i];
+            Tuple *temp = array[i];
             array[i] = array[j];
             array[j] = temp;
         }
@@ -32,11 +39,12 @@ void shuffle(Tuple *array, int n) {
 }
 
 // gen_input
-void gen_input(Tuple *result, uint64_t n) {
+void gen_input(Tuple **result, uint64_t n) {
     for(int i = 0; i < n; i++) {
-        uint64_t payload = rand_64bit();
-        result[i].partition_key = i;
-        result[i].payload = payload;
+        *(result+i) = new_tuple(i);
+        /* uint64_t payload = rand_64bit(); */
+        /* result[i].partition_key = i; */
+        /* result[i].payload = payload; */
     }
     shuffle(result,n);
 }
@@ -45,11 +53,12 @@ void gen_input(Tuple *result, uint64_t n) {
 int main() {
     srand(4617929);
     int n = 10;
-    Tuple *res = (Tuple*)calloc(n, sizeof(Tuple));
+    Tuple **res = (Tuple**)calloc(n, sizeof(Tuple*));
 
     gen_input(res, n);
     for(int i = 0; i < n; i++) {
-        printf("key: %ld payload: %ld\n", (long)res[i].partition_key, (long)res[i].payload);
+        printf("key: %ld payload: %ld\n", (long)res[i]->partition_key, (long)res[i]->payload);
     }
+    free(res);
     return 0;
     }
