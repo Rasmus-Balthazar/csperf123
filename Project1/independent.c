@@ -61,7 +61,6 @@ void *run(void *args) {
         //Allocate every partition from null to a partion of the correct size.
         *(input->partitions+i) = (Tuple**)calloc(PARTITION_SIZE << 1, sizeof(Tuple*));
     }
-    int thread_number = 5;
     int *offset = (int*)calloc(NUM_PARTITIONS, sizeof(int));
     for (int i = input->startIndex; i < input->endIndex; i++) {
         Tuple *data = *(input->data + i);
@@ -69,4 +68,5 @@ void *run(void *args) {
         *(*(input->partitions + hashedKey) + *(offset + hashedKey)) = data;
         (*(offset + hashedKey))++;
     }
+    return 0;
 }
