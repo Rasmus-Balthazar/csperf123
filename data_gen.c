@@ -23,7 +23,7 @@ uint64_t rand_64bit() {
 void shuffle(Tuple *array, int n) {
     if(n > 1) {
         for(int i = 0; i < n -1; i++) {
-            int j = i + rand() / (RAND_MAX / (n-1)  + 1);
+            int j = rand() % n;
             Tuple temp = array[i];
             array[i] = array[j];
             array[j] = temp;
@@ -38,16 +38,19 @@ void gen_input(Tuple *result, uint64_t n) {
         result[i].partition_key = i;
         result[i].payload = payload;
     }
+    for(int i = 0; i < n - 1; i++) {
+        printf("key: %ld payload: %ld\n", (long)result[i].partition_key, (long)result[i].payload);
+    }
     shuffle(result,n);
 }
 
 
 int main() {
-    Tuple res[MAX_N];
-
     int n = 10;
-    gen_input(res, 10);
-    for(int i = 0; i < n - 1; i++) {
+    Tuple *res = (Tuple*)calloc(n, sizeof(Tuple));
+
+    gen_input(res, n);
+    for(int i = 0; i < n; i++) {
         printf("key: %ld payload: %ld\n", (long)res[i].partition_key, (long)res[i].payload);
     }
     return 0;
