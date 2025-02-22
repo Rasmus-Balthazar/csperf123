@@ -50,3 +50,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Zone identifier files from windows wsl
+*Zone.Identifier
