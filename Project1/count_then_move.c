@@ -21,8 +21,8 @@ typedef struct {
 } MoveArgs;
 
 int hash(uint64_t key, int num_partitions);
-void count(void *_args);
-void move(void *_args);
+void *count(void *_args);
+void *move(void *_args);
 
 Tuple ***count_then_move_partition(int sample_size, Tuple **data, int num_threads, int num_partitions) {
     int **offsets = (int**)calloc(num_partitions, sizeof(int*));
@@ -86,7 +86,7 @@ int hash(uint64_t key, int num_partitions) {
 }
 
 
-void count(void *_args) {
+void *count(void *_args) {
     CountArgs *args = (CountArgs*)_args;
     for (int i = args->startIndex; i < args->endIndex; i++)
     {
@@ -96,7 +96,7 @@ void count(void *_args) {
 }
 
 
-void move(void *_args) {
+void *move(void *_args) {
     MoveArgs *args = (MoveArgs*)_args;
 
 }
