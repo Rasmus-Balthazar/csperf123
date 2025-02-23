@@ -98,5 +98,14 @@ void *count(void *_args) {
 
 void *move(void *_args) {
     MoveArgs *args = (MoveArgs*)_args;
-
+    int *offsets = calloc(args->partitionCount, sizeof(int));
+    for (int i = 0; i < args->partitionCount; i++)
+        for (int j = 0; j < args->threadNum; j++)
+            offsets[i] += args->offsets[i][j];
+    for(int i = args->startIndex; i < args->endIndex; i++) 
+    {   
+        int hashed_key = hash(args->data[i]->partitionKey, args->partitionCount);
+        args->output[hashed_key][offsets[hashed_key]] = args->data[i];
+        offsets[hashed_key]++;
+    }
 }
