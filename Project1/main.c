@@ -10,10 +10,10 @@
 
 int main(int argc, char **argv) {
     Tuple **data = gen_data(SAMPLE_SIZE);
-    Tuple ****independently_partitioned = partition_independent(SAMPLE_SIZE, data, NUM_THREADS, NUM_PARTITIONS, PARTITION_SIZE)
+    Tuple ****independently_partitioned = partition_independent(SAMPLE_SIZE, data, NUM_THREADS, NUM_PARTITIONS, PARTITION_SIZE);
     for (int i = 0; i < 32; i++)
     {
         printf("%llu\n", (*(*(*(independently_partitioned))+i))->partitionKey);
     }
-    
+    return 0;
 }

@@ -12,7 +12,7 @@ int main1() {
     return 0;
 }
 
-Tuple** gen_data(int n) {
+Tuple** gen_data(uint64_t n) {
     Tuple **res = (Tuple**)calloc(n, sizeof(Tuple*));
 
     gen_input(res, n);
@@ -36,7 +36,7 @@ Tuple *new_tuple(uint64_t key) {
 }
 
 // shuffle
-void shuffle(Tuple **array, int n) {
+void shuffle(Tuple **array, uint64_t n) {
     if(n > 1) {
         for(int i = 0; i < n; i++) {
             int j = rand() % n;

@@ -10,6 +10,6 @@ typedef struct {
 
 uint64_t rand_64bit();
 Tuple *new_tuple(uint64_t key);
-void shuffle(Tuple **array, int n);
+void shuffle(Tuple **array, uint64_t n);
 void gen_input(Tuple **result, uint64_t n);
-Tuple** gen_data(int n);
+Tuple** gen_data(uint64_t n);
