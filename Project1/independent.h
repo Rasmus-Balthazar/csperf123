@@ -11,6 +11,6 @@ typedef struct {
     int partitionSize;
 } Args;
 
-int hash_key(uint64_t key);
+int hash_key(uint64_t key, int num_partitions);
 void *run(void *args);
 Tuple ****patition_independent(int data_size, Tuple **data, int num_threads, int num_partitions, int partition_size);
