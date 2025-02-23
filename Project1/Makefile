@@ -31,5 +31,8 @@ data_gen.o: data_gen.h data_gen.c
 independent.o: data_gen.h independent.h independent.c
 	gcc -pthread -c independent.c
 
-main.exe: data_gen.o independent.o main.c
-	gcc main.c -pthread data_gen.o independent.o -o main.exe
+count_then_move.o: data_gen.h count_then_move.c
+	gcc -pthread -c count_then_move.c
+
+main.exe: data_gen.o independent.o count_then_move.o main.c
+	gcc main.c -pthread data_gen.o independent.o count_then_move.o -o main.exe

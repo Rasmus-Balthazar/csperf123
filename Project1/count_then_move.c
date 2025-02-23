@@ -7,9 +7,19 @@ typedef struct {
     int startIndex;
     int endIndex;
     int threadNum;
-    
     int partitionCount;
 } CountArgs;
+
+typedef struct {
+    Tuple **data;
+    int **offsets;
+    int startIndex;
+    int endIndex;
+    int threadNum;
+    int partitionCount;
+    Tuple ***output;
+} MoveArgs;
+
 int hash(uint64_t key, int num_partitions);
 void count(void *_args);
 void move(void *_args);
@@ -45,7 +55,7 @@ Tuple ***count_then_move_partition(int sample_size, Tuple **data, int num_thread
         int partition_size = 0;
         for (int j = 0; j < num_threads; j++)
         {
-            partition_size += offsets[i][j]
+            partition_size += offsets[i][j];
         }
         
         *(output+i) = (Tuple**)calloc(partition_size, sizeof(Tuple*));
@@ -85,17 +95,6 @@ void count(void *_args) {
     }
 }
 
-typedef struct {
-    Tuple **data;
-    int **offsets;
-    int startIndex;
-    int endIndex;
-    int threadNum;
-    
-    int partitionCount;
-
-    Tuple ***output;
-} MoveArgs;
 
 void move(void *_args) {
     MoveArgs *args = (MoveArgs*)_args;
