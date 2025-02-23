@@ -1,59 +1,52 @@
 #include "independent.h"
 
-#define NUM_THREADS 4
-#define KEY_BITS 10
-#define PARTITION_SIZE 16
-#define NUM_PARTITIONS (2 << KEY_BITS)
-#define DATA_PER_PARTITION (NUM_PARTITIONS * PARTITION_SIZE)
-#define SAMPLE_SIZE (DATA_PER_PARTITION * NUM_THREADS)
 
-int main(){
-    Tuple **data = gen_data(SAMPLE_SIZE);
-    Tuple ****buffers = (Tuple****)calloc(NUM_THREADS, sizeof(Tuple***));
-    for (int i = 0; i < NUM_THREADS; i++) {
-        *(buffers + i) = (Tuple***)calloc(NUM_PARTITIONS, sizeof(Tuple**));
+Tuple ****patition_independent(int data_size, Tuple **data, int num_threads, int num_partitions, int partition_size){
+    // Tuple **data = gen_data(SAMPLE_SIZE);
+    Tuple ****buffers = (Tuple****)calloc(num_threads, sizeof(Tuple***));
+    for (int i = 0; i < num_threads; i++) {
+        *(buffers + i) = (Tuple***)calloc(num_partitions, sizeof(Tuple**));
     }
 
-    pthread_t threads[NUM_THREADS];
+    pthread_t threads[num_threads];
     // int args[] = {41,42,43,44};
 
-    for (int i = 0; i < NUM_THREADS; i++)
+    for (int i = 0; i < num_threads; i++)
     {
         Args *args = (Args*)malloc(sizeof(Args));
-        args->startIndex = (SAMPLE_SIZE / NUM_THREADS) * i; 
-        args->endIndex = (SAMPLE_SIZE / NUM_THREADS) * (i+1);
+        args->startIndex = (data_size / num_threads) * i; 
+        args->endIndex = (data_size / num_threads) * (i+1);
         args->data = data;
         args->partitions = *(buffers + i);
+        args->numPartitions = num_partitions;
+        args->partitionSize = partition_size;
 
         pthread_create(&threads[i], NULL, run, args); // If no args, set last argument to NULL
         // Note that NULL is the pthread policy, it can be used e.g. to set core affinity
     }
 
-    for (int i = 0; i < NUM_THREADS; i++)
+    for (int i = 0; i < num_threads; i++)
     {
         pthread_join(threads[i], NULL);
     }
-    for(int i = 0; i < PARTITION_SIZE; i++) {
-        printf("Printing partition key %ld\n", (long)(*(*(*(buffers+0)+0)+i))->partitionKey);
-    }
-    return 0;
+    return buffers;
 }
 //method hash and find where it belongs
-int hash_key(uint64_t key) {
+int hash_key(uint64_t key, int num_partitions) {
     //we know amount of partitions, so get hashing
-    return (int)(key % NUM_PARTITIONS);
+    return (int)(key % num_partitions);
 }
 
 void *run(void *args) {
     Args *input = (Args *)args;
-    for(int i =  0; i < NUM_PARTITIONS; i++) {
+    for(int i =  0; i < input->numPartitions; i++) {
         //Allocate every partition from null to a partion of the correct size.
-        *(input->partitions+i) = (Tuple**)calloc(PARTITION_SIZE << 1, sizeof(Tuple*));
+        *(input->partitions+i) = (Tuple**)calloc(input->partitionSize << 1, sizeof(Tuple*));
     }
-    int *offset = (int*)calloc(NUM_PARTITIONS, sizeof(int));
+    int *offset = (int*)calloc(input->numPartitions, sizeof(int));
     for (int i = input->startIndex; i < input->endIndex; i++) {
         Tuple *data = *(input->data + i);
-        int hashedKey = hash_key(data->partitionKey);
+        int hashedKey = hash_key(data->partitionKey, input->numPartitions);
         *(*(input->partitions + hashedKey) + *(offset + hashedKey)) = data;
         (*(offset + hashedKey))++;
     }
