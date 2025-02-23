@@ -1,7 +1,7 @@
 #include "independent.h"
 
 
-Tuple ****patition_independent(int data_size, Tuple **data, int num_threads, int num_partitions, int partition_size){
+Tuple ****partition_independent(int data_size, Tuple **data, int num_threads, int num_partitions, int partition_size){
     // Tuple **data = gen_data(SAMPLE_SIZE);
     Tuple ****buffers = (Tuple****)calloc(num_threads, sizeof(Tuple***));
     for (int i = 0; i < num_threads; i++) {

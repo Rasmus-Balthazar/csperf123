@@ -1,5 +1,4 @@
 #include "independent.h"
-#include "data_gen.h"
 
 #define NUM_THREADS 4
 #define KEY_BITS 10
@@ -13,7 +12,7 @@ int main(int argc, char **argv) {
     Tuple ****independently_partitioned = partition_independent(SAMPLE_SIZE, data, NUM_THREADS, NUM_PARTITIONS, PARTITION_SIZE);
     for (int i = 0; i < 32; i++)
     {
-        printf("%llu\n", (*(*(*(independently_partitioned))+i))->partitionKey);
+        printf("%lu\n", (*(*(*(independently_partitioned))+i))->partitionKey);
     }
     return 0;
 }

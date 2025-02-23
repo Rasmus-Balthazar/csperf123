@@ -32,4 +32,4 @@ independent.o: data_gen.h independent.h independent.c
 	gcc -pthread -c independent.c
 
 main.exe: data_gen.o independent.o main.c
-	gcc -pthread data_gen.o independent.o -c main.c -o main.exe
+	gcc main.c -pthread data_gen.o independent.o -o main.exe
