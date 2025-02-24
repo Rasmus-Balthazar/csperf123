@@ -1,36 +1,13 @@
-#include <pthread.h>
-#include "data_gen.h"
+#include "count_then_move.h"
 
-typedef struct {
-    Tuple **data;
-    int **offsets;
-    int startIndex;
-    int endIndex;
-    int threadNum;
-    int partitionCount;
-} CountArgs;
-
-typedef struct {
-    Tuple **data;
-    int **offsets;
-    int startIndex;
-    int endIndex;
-    int threadNum;
-    int partitionCount;
-    Tuple ***output;
-} MoveArgs;
-
-int hash(uint64_t key, int num_partitions);
-void *count(void *_args);
-void *move(void *_args);
-
-Tuple ***count_then_move_partition(int sample_size, Tuple **data, int num_threads, int num_partitions) {
+Tuple ***count_then_move_partition(uint64_t sample_size, Tuple **data, int num_threads, int num_partitions) {
+    printf("I won?");
     int **offsets = (int**)calloc(num_partitions, sizeof(int*));
     for (int i = 0; i < num_threads; i++)
     {
         *(offsets+i) = (int*)calloc(num_threads, sizeof(int));
     }
-
+    
 
     pthread_t threads[num_threads];
     for (int i = 0; i < num_threads; i++)
@@ -93,6 +70,7 @@ void *count(void *_args) {
         int partition = hash((*(args->data+i))->partitionKey, args->partitionCount);
         (*(*(args->offsets+partition)+args->threadNum))++;
     }
+    return 0;
 }
 
 
@@ -108,4 +86,5 @@ void *move(void *_args) {
         args->output[hashed_key][offsets[hashed_key]] = args->data[i];
         offsets[hashed_key]++;
     }
+    return 0;
 }
