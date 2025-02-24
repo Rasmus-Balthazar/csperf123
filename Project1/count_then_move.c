@@ -1,11 +1,10 @@
 #include "count_then_move.h"
 
 Tuple ***count_then_move_partition(uint64_t sample_size, Tuple **data, int num_threads, int num_partitions) {
-    printf("I won?");
     int **offsets = (int**)calloc(num_partitions, sizeof(int*));
-    for (int i = 0; i < num_threads; i++)
+    for (int i = 0; i < num_partitions; i++)
     {
-        *(offsets+i) = (int*)calloc(num_threads, sizeof(int));
+        offsets[i] = (int*)calloc(num_threads, sizeof(int));
     }
     
 
@@ -67,8 +66,8 @@ void *count(void *_args) {
     CountArgs *args = (CountArgs*)_args;
     for (int i = args->startIndex; i < args->endIndex; i++)
     {
-        int partition = hash((*(args->data+i))->partitionKey, args->partitionCount);
-        (*(*(args->offsets+partition)+args->threadNum))++;
+        int partition = hash(args->data[i]->partitionKey, args->partitionCount);
+        args->offsets[partition][args->threadNum]++;
     }
     return 0;
 }
