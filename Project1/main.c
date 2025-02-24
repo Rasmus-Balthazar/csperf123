@@ -1,4 +1,4 @@
-// #include "independent.h"
+#include "independent.h"
 #include "count_then_move.h"
 
 #define NUM_THREADS 4
@@ -10,9 +10,9 @@
 
 int main() {
 // int main(int argc, char **argv) {
-    printf("hi");
+    printf("hi\n");
     Tuple **data = gen_data(SAMPLE_SIZE);
-    /* Tuple ****independently_partitioned = partition_independent(SAMPLE_SIZE, data, NUM_THREADS, NUM_PARTITIONS, PARTITION_SIZE); */
+    // Tuple ****independently_partitioned = partition_independent(SAMPLE_SIZE, data, NUM_THREADS, NUM_PARTITIONS, PARTITION_SIZE);
     Tuple ***count_then_move = count_then_move_partition(SAMPLE_SIZE, data, NUM_THREADS, NUM_PARTITIONS);
     for (int i = 0; i < 32; i++)
     {
