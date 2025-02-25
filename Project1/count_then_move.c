@@ -18,7 +18,7 @@ Tuple ***count_then_move_partition(uint64_t sample_size, Tuple **data, int num_t
         args->endIndex = (sample_size / num_threads) * (i+1);
         args->threadNum = i;
         args->partitionCount = num_partitions;
-        pthread_create(&threads[i], NULL, count, args); // If no args, set last argument to NULL
+        pthread_create(&threads[i], NULL, count, args);
     }
     for (int i = 0; i < num_threads; i++)
     {
