@@ -28,8 +28,8 @@ uint64_t rand_64bit() {
     return ((uint64_t)rand()) << 32 | rand();
 }
 
-Tuple *new_tuple(uint64_t key) {
-    Tuple *new = (Tuple*)malloc(sizeof(Tuple));
+Tuple *new_tuple(uint64_t key, Tuple *new) {
+    // Tuple *new = (Tuple*)malloc(sizeof(Tuple));
     new->partitionKey = key;
     new->payload = rand_64bit();
     return new;
@@ -49,8 +49,9 @@ void shuffle(Tuple **array, uint64_t n) {
 
 // gen_input
 void gen_input(Tuple **result, uint64_t n) {
+    Tuple *tuples = (Tuple*)calloc(n, sizeof(Tuple));
     for(int i = 0; i < n; i++) {
-        *(result+i) = new_tuple(i);
+        *(result+i) = new_tuple(i, &tuples[i]);
         /* uint64_t payload = rand_64bit(); */
         /* result[i].partitionKey = i; */
         /* result[i].payload = payload; */
