@@ -3,16 +3,8 @@
 #define MAX_N 1000
 // https://stackoverflow.com/questions/22727404/making-a-tuple-in-c
 
-int main1() {
-    Tuple **res = gen_data(10);    
-
-    for(int i = 0; i < 10; i++) {
-        printf("key: %ld payload: %ld\n", (long)res[i]->partitionKey, (long)res[i]->payload);
-    }
-    return 0;
-}
-
 Tuple** gen_data(uint64_t n) {
+    srand(1);
     Tuple **res = (Tuple**)calloc(n, sizeof(Tuple*));
 
     gen_input(res, n);
