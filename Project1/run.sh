@@ -13,7 +13,7 @@
 
 # perf stat -e cycles,instructions,L1-icache-load-misses,L1-dcache-load-misses, \
 # LLC-load-misses,cache-misses,uops_retired.stall_cycles, \
-# branch-misses,iTLB-load-misses,dTLB-load-misses ./main.exe 1 1 1 -i
+# branch-misses,iTLB-load-misses,dTLB-load-misses -o ./out/perf_dry.txt ./main.exe 1 1 1 -i
 
 
 
@@ -22,14 +22,29 @@
 # LLC-load-misses,cache-misses,uops_retired.stall_cycles, \
 # branch-misses,iTLB-load-misses,dTLB-load-misses ./main.exe 4 8 16 -i
 
-tuplespower=8
+tuplespower=24
 
-for keybits in {2}; do
+for keybits in {1..18}; do
     # echo $keybits
-    # for threads in {1,2,4,8,16,32}; do
-    for threads in {2}; do
-        ./main.exe $threads $keybits $tuplespower >> data_dry.txt
-        ./main.exe $threads $keybits $tuplespower -a ctm >> data_ctm.txt
-        ./main.exe $threads $keybits $tuplespower -a i >> data_independent.txt
+    for threads in {1,2,4,8,16,32}; do
+    # for threads in 2; do
+        for i in {1..10}; do
+            perf stat -e cycles,instructions,L1-icache-load-misses,L1-dcache-load-misses, \
+            LLC-load-misses,cache-misses,uops_retired.stall_cycles, \
+            branch-misses,iTLB-load-misses,dTLB-load-misses -o ./out/perf_dry.txt ./main.exe $threads $keybits $tuplespower -i $i >> ./out/data_dry.txt
+            # ./main.exe $threads $keybits $tuplespower >> data_dry.txt
+        done
+        for i in {1..10}; do
+            perf stat -e cycles,instructions,L1-icache-load-misses,L1-dcache-load-misses, \
+            LLC-load-misses,cache-misses,uops_retired.stall_cycles, \
+            branch-misses,iTLB-load-misses,dTLB-load-misses -o ./out/perf_ctm.txt ./main.exe $threads $keybits $tuplespower -a ctm -i $i >> ./out/data_ctm.txt
+            # ./main.exe $threads $keybits $tuplespower -a ctm >> data_ctm.txt
+        done
+        for i in {1..10}; do
+            perf stat -e cycles,instructions,L1-icache-load-misses,L1-dcache-load-misses, \
+            LLC-load-misses,cache-misses,uops_retired.stall_cycles, \
+            branch-misses,iTLB-load-misses,dTLB-load-misses -o ./out/perf_independent.txt ./main.exe $threads $keybits $tuplespower -a i -i $i >> ./out/data_independent.txt
+            # ./main.exe $threads $keybits $tuplespower -a i >> data_independent.txt
+        done
     done
 done

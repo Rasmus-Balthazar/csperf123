@@ -8,6 +8,7 @@ int main(int argc, char **argv) {
     }
     int algorithm = 0;
     int debug = 0;
+    int iteration = 0;
     int num_threads = -1;           //atoi(argv[1]);
     int key_bits = -1;              //atoi(argv[2]);
     int data_bits = -1;        //atoi(argv[3]);
@@ -24,6 +25,10 @@ int main(int argc, char **argv) {
                 algorithm = 2;
             }
             i++; 
+        } else if (strcmp(argv[i], "-i") == 0)
+        {
+            iteration = atoi(argv[i+1]);
+            i++;
         } else if (strcmp(argv[i], "-d") == 0)
         {
             debug = 1;
@@ -44,28 +49,28 @@ int main(int argc, char **argv) {
         }
     }
 
-    printf("starting\n");
-
     int num_partitions = 1 << key_bits;
     uint64_t sample_size = (1llu << data_bits);
+    struct timespec pre_data, start, end;
+    
+    // THIS WILL BE ANGRY
+    // its ok :D
+    clock_gettime(CLOCK_MONOTONIC_RAW, &pre_data);
     Tuple **data = gen_data(sample_size);
-
     
     // Tuple ***count_then_move = run_ctm(data);
+    clock_gettime(CLOCK_MONOTONIC_RAW, &start);
     if(algorithm == 1)
     {
         Tuple ****independently_partitioned = run_independent(data, sample_size, num_threads, num_partitions, data_bits);
-        print_partition(independently_partitioned[0][0], data_bits-key_bits);
-        return 0;
+        // print_partition(independently_partitioned[0][0], data_bits-key_bits);
     } else if (algorithm == 2)
     {
-
-        printf("running algorithm\n");
         Tuple ***ctm_partitioned = run_ctm(data, sample_size, num_threads, num_partitions);
-        printf("algorithm run\n");
-        print_partition(*(ctm_partitioned), data_bits-key_bits);
-        return 0;
+        // print_partition(*(ctm_partitioned), data_bits-key_bits-1);
     }
+    clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+    print_status(algorithm, num_threads, key_bits, iteration, pre_data, start, end);
     return 0;
 }
 
@@ -84,4 +89,16 @@ void print_partition(Tuple **partition, int data_bits) {
     {
         printf("%llu\n", partition[i]->partitionKey);
     }
+}
+
+void print_status(int algorithm, int threads, int key_bits, int iteration, struct timespec pre_data, struct timespec start, struct timespec finish) {
+    long data_gen_time = (start.tv_sec - pre_data.tv_sec) * 1000 + (start.tv_nsec - pre_data.tv_nsec) / 1000000;
+    long elapsed_time_ms = (finish.tv_sec - start.tv_sec) * 1000 + (finish.tv_nsec - start.tv_nsec) / 1000000;
+    printf("-------------------\n");
+    printf("Iteration: %d\n", iteration);
+    printf("Algorithm: %d\n", algorithm);
+    printf("Num threads: %d\n", threads);
+    printf("Num key bits: %d\n", key_bits);
+    printf("Time to generate data: %ld\n", data_gen_time);
+    printf("Time to partition in ms: %ld\n\n", elapsed_time_ms);
 }
