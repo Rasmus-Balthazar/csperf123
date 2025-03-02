@@ -10,7 +10,7 @@ int main(int argc, char **argv) {
     int debug = 0;
     int num_threads = -1;           //atoi(argv[1]);
     int key_bits = -1;              //atoi(argv[2]);
-    int partition_size = -1;        //atoi(argv[3]);
+    int data_bits = -1;        //atoi(argv[3]);
     //FIXME in partitioning we need that the last thread takes the rest and not just the defined amount
     for (int i = 1; i < argc; i++)
     {
@@ -37,9 +37,9 @@ int main(int argc, char **argv) {
             {
                 key_bits = atoi(argv[i]);
             }
-            else if (partition_size == -1)
+            else if (data_bits == -1)
             {
-                partition_size = atoi(argv[i]);
+                data_bits = atoi(argv[i]);
             }
         }
     }
@@ -47,20 +47,23 @@ int main(int argc, char **argv) {
     printf("starting\n");
 
     int num_partitions = 1 << key_bits;
-    uint64_t sample_size = ((uint64_t)num_partitions * partition_size);
+    uint64_t sample_size = (((uint64_t)1) << data_bits);
     Tuple **data = gen_data(sample_size);
+
     
     // Tuple ***count_then_move = run_ctm(data);
     if(algorithm == 1)
     {
-        Tuple ****independently_partitioned = run_independent(data, sample_size, num_threads, num_partitions, partition_size);
-        print_partition(independently_partitioned[0][0], partition_size);
+        Tuple ****independently_partitioned = run_independent(data, sample_size, num_threads, num_partitions, data_bits);
+        print_partition(independently_partitioned[0][0], data_bits-key_bits);
         return 0;
     } else if (algorithm == 2)
     {
 
+        printf("running algorithm\n");
         Tuple ***ctm_partitioned = run_ctm(data, sample_size, num_threads, num_partitions);
-        print_partition(*(ctm_partitioned), partition_size);
+        printf("algorithm run\n");
+        print_partition(*(ctm_partitioned), data_bits-key_bits);
         return 0;
     }
     return 0;
@@ -76,8 +79,8 @@ Tuple ***run_ctm(Tuple **data, uint64_t sample_size, int num_threads, int num_pa
     return count_then_move;
 }
 
-void print_partition(Tuple **partition, int partition_size) {
-    for (int i = 0; i < partition_size; i++)
+void print_partition(Tuple **partition, int data_bits) {
+    for (int i = 0; i < (1 << data_bits); i++)
     {
         printf("%llu\n", partition[i]->partitionKey);
     }
