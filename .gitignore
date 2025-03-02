@@ -1,3 +1,8 @@
+# Add extensionless files to gitignore
+*
+!/**/
+!*.*
+
 # Prerequisites
 *.d
 
