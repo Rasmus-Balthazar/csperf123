@@ -3,7 +3,7 @@
 #define MAX_N 1000
 // https://stackoverflow.com/questions/22727404/making-a-tuple-in-c
 
-Tuple** gen_data(uint64_t n) {
+Tuple** gen_data(unsigned long n) {
     Tuple **res = (Tuple**)calloc(n, sizeof(Tuple*));
     
     gen_input(res, n);
@@ -20,10 +20,8 @@ uint64_t rand_64bit() {
 }
 
 Tuple *new_tuple(uint64_t key, Tuple *new) {
-    printf("creating tuple\n");
+    new->partitionKey = key;
     new->payload = rand_64bit();
-    printf("key set\n");
-    (*new).partitionKey = key;
     return new;
 }
 
@@ -41,12 +39,9 @@ void shuffle(Tuple **array, uint64_t n) {
 
 // gen_input
 void gen_input(Tuple **result, uint64_t n) {
-    printf("1\n");
     Tuple *tuples = (Tuple*)calloc(n, sizeof(Tuple));
-    printf("key: %llu, data: %llu\n", tuples[0].partitionKey, tuples[0].payload);
     for(int i = 0; i < n; i++) {
         result[i] = new_tuple((uint64_t)i, tuples+i);
-        printf("3\n");
     }
     shuffle(result,n);
 }

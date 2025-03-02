@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
                 algorithm = 2;
             }
             i++; 
-        } else if (strcmp(argv[i], "-d"))
+        } else if (strcmp(argv[i], "-d") == 0)
         {
             debug = 1;
         } else
@@ -47,7 +47,7 @@ int main(int argc, char **argv) {
     printf("starting\n");
 
     int num_partitions = 1 << key_bits;
-    uint64_t sample_size = (((uint64_t)1) << data_bits);
+    uint64_t sample_size = (1llu << data_bits);
     Tuple **data = gen_data(sample_size);
 
     
