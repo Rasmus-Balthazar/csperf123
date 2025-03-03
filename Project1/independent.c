@@ -16,6 +16,8 @@ Tuple ****partition_independent(int data_size, Tuple **data, int num_threads, in
         Args *args = (Args*)malloc(sizeof(Args));
         args->startIndex = (data_size / num_threads) * i; 
         args->endIndex = (data_size / num_threads) * (i+1);
+        if (args->endIndex >= data_size)
+            args->endIndex = data_size - 1;
         args->data = data;
         args->partitions = *(buffers + i);
         args->numPartitions = num_partitions;

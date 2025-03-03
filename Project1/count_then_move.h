@@ -6,8 +6,8 @@
 typedef struct {
     Tuple **data;
     int **offsets;
-    int startIndex;
-    int endIndex;
+    uint64_t startIndex;
+    uint64_t endIndex;
     int threadNum;
     int partitionCount;
 } CountArgs;
@@ -15,8 +15,8 @@ typedef struct {
 typedef struct {
     Tuple **data;
     int **offsets;
-    int startIndex;
-    int endIndex;
+    uint64_t startIndex;
+    uint64_t endIndex;
     int threadNum;
     int partitionCount;
     Tuple ***output;

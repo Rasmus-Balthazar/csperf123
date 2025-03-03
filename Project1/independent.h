@@ -5,8 +5,8 @@
 #define INDE_H
 
 typedef struct {
-    int startIndex;
-    int endIndex;
+    uint64_t startIndex;
+    uint64_t endIndex;
     Tuple** data;
     Tuple*** partitions;
 

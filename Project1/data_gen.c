@@ -1,9 +1,8 @@
 #include "data_gen.h"
 
-#define MAX_N 1000
 // https://stackoverflow.com/questions/22727404/making-a-tuple-in-c
 
-Tuple** gen_data(unsigned long n) {
+Tuple** gen_data(uint64_t n) {
     Tuple **res = (Tuple**)calloc(n, sizeof(Tuple*));
     
     gen_input(res, n);
@@ -16,7 +15,7 @@ uint64_t rand_64bit() {
     // bitwise OR  with another rand call
     // to ensure that lower 32 bits are filled
     // bam, random 64 bit unsigned int
-    return ((uint64_t)rand()) << 32 | rand();
+    return (((uint64_t)rand()) << 32) | rand();
 }
 
 Tuple *new_tuple(uint64_t key, Tuple *new) {
@@ -27,21 +26,19 @@ Tuple *new_tuple(uint64_t key, Tuple *new) {
 
 // shuffle
 void shuffle(Tuple **array, uint64_t n) {
-    if(n > 1) {
-        for(int i = 0; i < n; i++) {
-            int j = rand() % n;
-            Tuple *temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
-        }
+    for(uint64_t i = 0; i < n; i++) {
+        int j = rand() % n;
+        Tuple *temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
 }
 
 // gen_input
 void gen_input(Tuple **result, uint64_t n) {
     Tuple *tuples = (Tuple*)calloc(n, sizeof(Tuple));
-    for(int i = 0; i < n; i++) {
-        result[i] = new_tuple((uint64_t)i, tuples+i);
+    for(uint64_t i = 0; i < n; i++) {
+        result[i] = new_tuple(i, &tuples[i]);
     }
     shuffle(result,n);
 }

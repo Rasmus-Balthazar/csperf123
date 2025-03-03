@@ -50,7 +50,7 @@ int main(int argc, char **argv) {
     }
 
     int num_partitions = 1 << key_bits;
-    uint64_t sample_size = (1llu << data_bits);
+    uint64_t sample_size = (uint64_t)(1llu << data_bits);
     struct timespec pre_data, start, end;
     
     // THIS WILL BE ANGRY
@@ -87,7 +87,7 @@ Tuple ***run_ctm(Tuple **data, uint64_t sample_size, int num_threads, int num_pa
 void print_partition(Tuple **partition, int data_bits) {
     for (int i = 0; i < (1 << data_bits); i++)
     {
-        printf("%llu\n", partition[i]->partitionKey);
+        printf("%lu\n", partition[i]->partitionKey);
     }
 }
 
