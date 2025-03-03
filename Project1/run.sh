@@ -31,19 +31,19 @@ for keybits in {1..18}; do
         for i in {1..10}; do
             perf stat -e cycles,instructions,L1-icache-load-misses,L1-dcache-load-misses, \
             LLC-load-misses,cache-misses,uops_retired.stall_cycles, \
-            branch-misses,iTLB-load-misses,dTLB-load-misses -o ./out/perf_dry.txt ./main.exe $threads $keybits $tuplespower -i $i >> ./out/data_dry.txt
+            branch-misses,iTLB-load-misses,dTLB-load-misses -o "./out/dry/perf_dry-${keybits}-${threads}-${i}.txt" ./main.exe $threads $keybits $tuplespower -i $i >> ./out/data_dry.txt
             # ./main.exe $threads $keybits $tuplespower >> data_dry.txt
         done
         for i in {1..10}; do
             perf stat -e cycles,instructions,L1-icache-load-misses,L1-dcache-load-misses, \
             LLC-load-misses,cache-misses,uops_retired.stall_cycles, \
-            branch-misses,iTLB-load-misses,dTLB-load-misses -o ./out/perf_ctm.txt ./main.exe $threads $keybits $tuplespower -a ctm -i $i >> ./out/data_ctm.txt
+            branch-misses,iTLB-load-misses,dTLB-load-misses -o "./out/ctm/perf_ctm-${keybits}-${threads}-${i}.txt" ./main.exe $threads $keybits $tuplespower -a ctm -i $i >> ./out/data_ctm.txt
             # ./main.exe $threads $keybits $tuplespower -a ctm >> data_ctm.txt
         done
         for i in {1..10}; do
             perf stat -e cycles,instructions,L1-icache-load-misses,L1-dcache-load-misses, \
             LLC-load-misses,cache-misses,uops_retired.stall_cycles, \
-            branch-misses,iTLB-load-misses,dTLB-load-misses -o ./out/perf_independent.txt ./main.exe $threads $keybits $tuplespower -a i -i $i >> ./out/data_independent.txt
+            branch-misses,iTLB-load-misses,dTLB-load-misses -o "./out/independent/perf_independent-${keybits}-${threads}-${i}.txt" ./main.exe $threads $keybits $tuplespower -a i -i $i >> ./out/data_independent.txt
             # ./main.exe $threads $keybits $tuplespower -a i >> data_independent.txt
         done
     done
