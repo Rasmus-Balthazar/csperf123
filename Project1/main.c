@@ -75,7 +75,7 @@ int main(int argc, char **argv) {
 }
 
 Tuple ****run_independent(Tuple **data, uint64_t sample_size, int num_threads, int num_partitions) {
-    Tuple ****independently_partitioned = partition_independent(sample_size, data, num_threads, num_partitions, sample_size >> num_partitions);
+    Tuple ****independently_partitioned = partition_independent(sample_size, data, num_threads, num_partitions, (sample_size / num_partitions) << 1);
     return independently_partitioned;
 }
 

@@ -11,7 +11,7 @@ typedef struct {
     Tuple*** partitions;
 
     int numPartitions;
-    int partitionSize;
+    uint64_t partitionSize;
 } Args;
 
 int hash_key(uint64_t key, int num_partitions);
