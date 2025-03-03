@@ -62,7 +62,7 @@ int main(int argc, char **argv) {
     clock_gettime(CLOCK_MONOTONIC_RAW, &start);
     if(algorithm == 1)
     {
-        Tuple ****independently_partitioned = run_independent(data, sample_size, num_threads, num_partitions, data_bits);
+        Tuple ****independently_partitioned = run_independent(data, sample_size, num_threads, num_partitions);
         // print_partition(independently_partitioned[0][0], data_bits-key_bits);
     } else if (algorithm == 2)
     {
@@ -74,8 +74,8 @@ int main(int argc, char **argv) {
     return 0;
 }
 
-Tuple ****run_independent(Tuple **data, uint64_t sample_size, int num_threads, int num_partitions, int partition_size) {
-    Tuple ****independently_partitioned = partition_independent(sample_size, data, num_threads, num_partitions, partition_size);
+Tuple ****run_independent(Tuple **data, uint64_t sample_size, int num_threads, int num_partitions) {
+    Tuple ****independently_partitioned = partition_independent(sample_size, data, num_threads, num_partitions, (sample_size / num_partitions) << 1);
     return independently_partitioned;
 }
 
