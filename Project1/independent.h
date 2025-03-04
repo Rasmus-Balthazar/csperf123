@@ -5,13 +5,13 @@
 #define INDE_H
 
 typedef struct {
-    int startIndex;
-    int endIndex;
+    uint64_t startIndex;
+    uint64_t endIndex;
     Tuple** data;
     Tuple*** partitions;
 
     int numPartitions;
-    int partitionSize;
+    uint64_t partitionSize;
 } Args;
 
 int hash_key(uint64_t key, int num_partitions);
