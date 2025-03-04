@@ -1,0 +1,15 @@
+# started on Tue Mar  4 10:45:52 2025
+
+
+ Performance counter stats for './main.exe 2 5 24 -a ctm -i 1':
+
+        53,378,260      branch-misses                                                         
+           633,645      iTLB-load-misses                                                      
+        49,832,168      dTLB-load-misses                                                      
+
+       7.754244740 seconds time elapsed
+
+      10.997691000 seconds user
+       0.864739000 seconds sys
+
+

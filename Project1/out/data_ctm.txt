@@ -1,0 +1,864 @@
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 1
+Num key bits: 1
+Time to generate data: 3327
+Time to partition in ms: 5303
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 2
+Num key bits: 1
+Time to generate data: 3327
+Time to partition in ms: 4544
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 4
+Num key bits: 1
+Time to generate data: 3403
+Time to partition in ms: 2850
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 8
+Num key bits: 1
+Time to generate data: 3345
+Time to partition in ms: 2063
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 16
+Num key bits: 1
+Time to generate data: 3397
+Time to partition in ms: 1388
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 32
+Num key bits: 1
+Time to generate data: 3352
+Time to partition in ms: 756
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 1
+Num key bits: 2
+Time to generate data: 3373
+Time to partition in ms: 5309
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 2
+Num key bits: 2
+Time to generate data: 3321
+Time to partition in ms: 4290
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 4
+Num key bits: 2
+Time to generate data: 3338
+Time to partition in ms: 2658
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 8
+Num key bits: 2
+Time to generate data: 3332
+Time to partition in ms: 1724
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 16
+Num key bits: 2
+Time to generate data: 3341
+Time to partition in ms: 1102
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 32
+Num key bits: 2
+Time to generate data: 3336
+Time to partition in ms: 609
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 1
+Num key bits: 3
+Time to generate data: 3330
+Time to partition in ms: 5383
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 2
+Num key bits: 3
+Time to generate data: 3387
+Time to partition in ms: 4651
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 4
+Num key bits: 3
+Time to generate data: 3326
+Time to partition in ms: 2625
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 8
+Num key bits: 3
+Time to generate data: 3317
+Time to partition in ms: 1604
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 16
+Num key bits: 3
+Time to generate data: 3330
+Time to partition in ms: 978
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 32
+Num key bits: 3
+Time to generate data: 3348
+Time to partition in ms: 552
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 1
+Num key bits: 4
+Time to generate data: 3316
+Time to partition in ms: 6522
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 2
+Num key bits: 4
+Time to generate data: 3372
+Time to partition in ms: 4428
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 4
+Num key bits: 4
+Time to generate data: 3332
+Time to partition in ms: 2433
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 8
+Num key bits: 4
+Time to generate data: 3318
+Time to partition in ms: 1414
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 16
+Num key bits: 4
+Time to generate data: 3325
+Time to partition in ms: 855
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 32
+Num key bits: 4
+Time to generate data: 3327
+Time to partition in ms: 507
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 1
+Num key bits: 5
+Time to generate data: 3325
+Time to partition in ms: 6561
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 2
+Num key bits: 5
+Time to generate data: 3321
+Time to partition in ms: 4338
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 4
+Num key bits: 5
+Time to generate data: 3340
+Time to partition in ms: 2404
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 8
+Num key bits: 5
+Time to generate data: 3353
+Time to partition in ms: 1360
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 16
+Num key bits: 5
+Time to generate data: 3328
+Time to partition in ms: 795
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 32
+Num key bits: 5
+Time to generate data: 3395
+Time to partition in ms: 451
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 1
+Num key bits: 6
+Time to generate data: 3335
+Time to partition in ms: 6597
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 2
+Num key bits: 6
+Time to generate data: 3322
+Time to partition in ms: 4399
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 4
+Num key bits: 6
+Time to generate data: 3341
+Time to partition in ms: 2315
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 8
+Num key bits: 6
+Time to generate data: 3331
+Time to partition in ms: 1250
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 16
+Num key bits: 6
+Time to generate data: 3328
+Time to partition in ms: 687
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 32
+Num key bits: 6
+Time to generate data: 3410
+Time to partition in ms: 400
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 1
+Num key bits: 7
+Time to generate data: 3334
+Time to partition in ms: 5488
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 2
+Num key bits: 7
+Time to generate data: 3406
+Time to partition in ms: 4211
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 4
+Num key bits: 7
+Time to generate data: 3321
+Time to partition in ms: 2334
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 8
+Num key bits: 7
+Time to generate data: 3393
+Time to partition in ms: 1213
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 16
+Num key bits: 7
+Time to generate data: 3330
+Time to partition in ms: 640
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 32
+Num key bits: 7
+Time to generate data: 3395
+Time to partition in ms: 344
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 1
+Num key bits: 8
+Time to generate data: 3328
+Time to partition in ms: 5760
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 2
+Num key bits: 8
+Time to generate data: 3329
+Time to partition in ms: 4224
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 4
+Num key bits: 8
+Time to generate data: 3333
+Time to partition in ms: 2182
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 8
+Num key bits: 8
+Time to generate data: 3324
+Time to partition in ms: 1188
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 16
+Num key bits: 8
+Time to generate data: 3333
+Time to partition in ms: 615
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 32
+Num key bits: 8
+Time to generate data: 3325
+Time to partition in ms: 308
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 1
+Num key bits: 9
+Time to generate data: 3325
+Time to partition in ms: 5509
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 2
+Num key bits: 9
+Time to generate data: 3329
+Time to partition in ms: 4226
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 4
+Num key bits: 9
+Time to generate data: 3321
+Time to partition in ms: 2179
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 8
+Num key bits: 9
+Time to generate data: 3319
+Time to partition in ms: 1105
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 16
+Num key bits: 9
+Time to generate data: 3397
+Time to partition in ms: 576
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 32
+Num key bits: 9
+Time to generate data: 3331
+Time to partition in ms: 315
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 1
+Num key bits: 10
+Time to generate data: 3354
+Time to partition in ms: 5955
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 2
+Num key bits: 10
+Time to generate data: 3344
+Time to partition in ms: 4366
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 4
+Num key bits: 10
+Time to generate data: 3383
+Time to partition in ms: 2212
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 8
+Num key bits: 10
+Time to generate data: 3326
+Time to partition in ms: 1122
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 16
+Num key bits: 10
+Time to generate data: 3332
+Time to partition in ms: 581
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 32
+Num key bits: 10
+Time to generate data: 3339
+Time to partition in ms: 335
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 1
+Num key bits: 11
+Time to generate data: 3329
+Time to partition in ms: 5853
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 2
+Num key bits: 11
+Time to generate data: 3323
+Time to partition in ms: 4423
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 4
+Num key bits: 11
+Time to generate data: 3406
+Time to partition in ms: 2309
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 8
+Num key bits: 11
+Time to generate data: 3357
+Time to partition in ms: 1238
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 16
+Num key bits: 11
+Time to generate data: 3362
+Time to partition in ms: 704
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 32
+Num key bits: 11
+Time to generate data: 3357
+Time to partition in ms: 417
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 1
+Num key bits: 12
+Time to generate data: 3336
+Time to partition in ms: 6073
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 2
+Num key bits: 12
+Time to generate data: 3319
+Time to partition in ms: 4548
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 4
+Num key bits: 12
+Time to generate data: 3323
+Time to partition in ms: 2365
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 8
+Num key bits: 12
+Time to generate data: 3341
+Time to partition in ms: 1274
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 16
+Num key bits: 12
+Time to generate data: 3335
+Time to partition in ms: 729
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 32
+Num key bits: 12
+Time to generate data: 3322
+Time to partition in ms: 455
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 1
+Num key bits: 13
+Time to generate data: 3404
+Time to partition in ms: 6265
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 2
+Num key bits: 13
+Time to generate data: 3338
+Time to partition in ms: 4617
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 4
+Num key bits: 13
+Time to generate data: 3335
+Time to partition in ms: 2405
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 8
+Num key bits: 13
+Time to generate data: 3333
+Time to partition in ms: 1306
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 16
+Num key bits: 13
+Time to generate data: 3328
+Time to partition in ms: 732
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 32
+Num key bits: 13
+Time to generate data: 3328
+Time to partition in ms: 484
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 1
+Num key bits: 14
+Time to generate data: 3371
+Time to partition in ms: 7928
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 2
+Num key bits: 14
+Time to generate data: 3333
+Time to partition in ms: 4322
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 4
+Num key bits: 14
+Time to generate data: 3337
+Time to partition in ms: 2489
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 8
+Num key bits: 14
+Time to generate data: 3323
+Time to partition in ms: 1323
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 16
+Num key bits: 14
+Time to generate data: 3321
+Time to partition in ms: 758
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 32
+Num key bits: 14
+Time to generate data: 3339
+Time to partition in ms: 501
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 1
+Num key bits: 15
+Time to generate data: 3398
+Time to partition in ms: 6825
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 2
+Num key bits: 15
+Time to generate data: 3317
+Time to partition in ms: 4905
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 4
+Num key bits: 15
+Time to generate data: 3349
+Time to partition in ms: 2545
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 8
+Num key bits: 15
+Time to generate data: 3346
+Time to partition in ms: 1366
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 16
+Num key bits: 15
+Time to generate data: 3328
+Time to partition in ms: 781
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 32
+Num key bits: 15
+Time to generate data: 3325
+Time to partition in ms: 535
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 1
+Num key bits: 16
+Time to generate data: 3321
+Time to partition in ms: 7137
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 2
+Num key bits: 16
+Time to generate data: 3389
+Time to partition in ms: 5108
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 4
+Num key bits: 16
+Time to generate data: 3386
+Time to partition in ms: 2633
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 8
+Num key bits: 16
+Time to generate data: 3324
+Time to partition in ms: 1436
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 16
+Num key bits: 16
+Time to generate data: 3318
+Time to partition in ms: 815
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 32
+Num key bits: 16
+Time to generate data: 3323
+Time to partition in ms: 574
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 1
+Num key bits: 17
+Time to generate data: 3332
+Time to partition in ms: 7486
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 2
+Num key bits: 17
+Time to generate data: 3322
+Time to partition in ms: 5443
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 4
+Num key bits: 17
+Time to generate data: 3330
+Time to partition in ms: 2734
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 8
+Num key bits: 17
+Time to generate data: 3328
+Time to partition in ms: 1493
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 16
+Num key bits: 17
+Time to generate data: 3343
+Time to partition in ms: 873
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 32
+Num key bits: 17
+Time to generate data: 3351
+Time to partition in ms: 654
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 1
+Num key bits: 18
+Time to generate data: 3328
+Time to partition in ms: 10198
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 2
+Num key bits: 18
+Time to generate data: 3335
+Time to partition in ms: 5580
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 4
+Num key bits: 18
+Time to generate data: 3363
+Time to partition in ms: 2940
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 8
+Num key bits: 18
+Time to generate data: 3347
+Time to partition in ms: 1622
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 16
+Num key bits: 18
+Time to generate data: 3351
+Time to partition in ms: 986
+
+-------------------
+Iteration: 1
+Algorithm: 2
+Num threads: 32
+Num key bits: 18
+Time to generate data: 3333
+Time to partition in ms: 807
+
