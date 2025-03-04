@@ -1,4 +1,5 @@
 #include <pthread.h>
+#include <time.h>
 #include "data_gen.h"
 #ifndef CTM_H
 #define CTM_H
@@ -10,6 +11,8 @@ typedef struct {
     uint64_t endIndex;
     int threadNum;
     int partitionCount;
+    struct timespec *start;
+    struct timespec *end;
 } CountArgs;
 
 typedef struct {
@@ -20,6 +23,8 @@ typedef struct {
     int threadNum;
     int partitionCount;
     Tuple ***output;
+    struct timespec *start;
+    struct timespec *end;
 } MoveArgs;
 
 int hash(uint64_t key, int num_partitions);

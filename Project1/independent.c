@@ -47,11 +47,17 @@ void *run(void *args) {
         *(input->partitions+i) = (Tuple**)calloc(input->partitionSize << 1, sizeof(Tuple*));
     }
     int *offset = (int*)calloc(input->numPartitions, sizeof(int));
+    struct timespec start, end;
+    
+    // THIS WILL BE ANGRY
+    // its ok :D
+    clock_gettime(CLOCK_MONOTONIC_RAW, &start);
     for (uint64_t i = input->startIndex; i < input->endIndex; i++) {
         Tuple *data = input->data[i];
         int hashedKey = hash_key(data->partitionKey, input->numPartitions);
         input->partitions[hashedKey][offset[hashedKey]] = data;
         offset[hashedKey]++;
     }
+    clock_gettime(CLOCK_MONOTONIC_RAW, &end);
     return 0;
 }
