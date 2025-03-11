@@ -11,9 +11,10 @@ Tuple ****partition_independent(int data_size, Tuple **data, int num_threads, in
     pthread_t threads[num_threads];
     // int args[] = {41,42,43,44};
 
+    Args *argsArr = (Args*)calloc(num_threads, sizeof(Args));
     for (int i = 0; i < num_threads; i++)
     {
-        Args *args = (Args*)malloc(sizeof(Args));
+        Args *args = argsArr+i;
         args->startIndex = (data_size / num_threads) * i; 
         args->endIndex = (data_size / num_threads) * (i+1);
         if (args->endIndex >= data_size)
@@ -22,6 +23,8 @@ Tuple ****partition_independent(int data_size, Tuple **data, int num_threads, in
         args->partitions = buffers[i];
         args->numPartitions = num_partitions;
         args->partitionSize = partition_size;
+        args->start = (struct timespec*)malloc(sizeof(struct timespec));
+        args->end = (struct timespec*)malloc(sizeof(struct timespec));
 
         pthread_create(&threads[i], NULL, run, args); // If no args, set last argument to NULL
         // Note that NULL is the pthread policy, it can be used e.g. to set core affinity
@@ -31,6 +34,26 @@ Tuple ****partition_independent(int data_size, Tuple **data, int num_threads, in
     {
         pthread_join(threads[i], NULL);
     }
+
+    unsigned long min_time = -1;
+    unsigned long max_time = 0;
+    unsigned long avg_time = 0;
+
+    for (int i = 0; i < num_threads; i++)
+    {
+        long thread_time = (argsArr[i].end->tv_sec - argsArr[i].start->tv_sec) * 1000 + (argsArr[i].end->tv_nsec - argsArr[i].start->tv_nsec) / 1000000;
+        if (thread_time < min_time)
+            min_time = thread_time;
+        if (max_time < thread_time)
+            max_time = thread_time;
+        avg_time += thread_time;
+    }
+    avg_time /= num_threads;
+
+    printf("Max time: %lu\n", max_time);
+    printf("Min time: %lu\n", min_time);
+    printf("Avg time: %lu\n", avg_time);
+
     return buffers;
 }
 //method hash and find where it belongs
@@ -47,17 +70,16 @@ void *run(void *args) {
         *(input->partitions+i) = (Tuple**)calloc(input->partitionSize << 1, sizeof(Tuple*));
     }
     int *offset = (int*)calloc(input->numPartitions, sizeof(int));
-    struct timespec start, end;
     
     // THIS WILL BE ANGRY
     // its ok :D
-    clock_gettime(CLOCK_MONOTONIC_RAW, &start);
+    clock_gettime(CLOCK_MONOTONIC_RAW, input->start);
     for (uint64_t i = input->startIndex; i < input->endIndex; i++) {
         Tuple *data = input->data[i];
         int hashedKey = hash_key(data->partitionKey, input->numPartitions);
         input->partitions[hashedKey][offset[hashedKey]] = data;
         offset[hashedKey]++;
     }
-    clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+    clock_gettime(CLOCK_MONOTONIC_RAW, input->end);
     return 0;
 }

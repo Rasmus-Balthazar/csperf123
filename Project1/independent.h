@@ -12,6 +12,9 @@ typedef struct {
 
     int numPartitions;
     uint64_t partitionSize;
+
+    struct timespec *start;
+    struct timespec *end;
 } Args;
 
 int hash_key(uint64_t key, int num_partitions);
