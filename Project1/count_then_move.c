@@ -73,20 +73,27 @@ Tuple ***count_then_move_partition(uint64_t sample_size, Tuple **data, int num_t
     long move_min =  __LONG_MAX__;
     long move_avg =  0;
     long total_max = 0;
-    long total_min = 0;
+    long total_min = __LONG_MAX__;
     long total_avg = 0;
     for (int i = 0; i < num_threads; i++)
     {
         //get count max, min, avg of each thread
         CountArgs countArgs = countArgsArray[i];
         MoveArgs moveArgs = moveArgsArray[i];
-        long count_time = countArgs.end->tv_nsec - countArgs.start->tv_nsec;
-        long move_time = moveArgs.end->tv_nsec - moveArgs.start->tv_nsec;
+        // long count_time = countArgs.end->tv_nsec - countArgs.start->tv_nsec;
+        // long move_time = moveArgs.end->tv_nsec - moveArgs.start->tv_nsec;
+        long count_time = (countArgs.end->tv_sec - countArgs.start->tv_sec) * 1000 + (countArgs.end->tv_nsec - countArgs.start->tv_nsec) / 1000000;
+        long move_time = (moveArgs.end->tv_sec - moveArgs.start->tv_sec) * 1000 + (moveArgs.end->tv_nsec - moveArgs.start->tv_nsec) / 1000000;
+        printf("Count time: %ld\n", count_time);
+        printf("Move time: %ld\n", move_time);
+        // long data_gen_time = (start.tv_sec - pre_data.tv_sec) * 1000 + (start.tv_nsec - pre_data.tv_nsec) / 1000000;
+        // long elapsed_time_ms = (finish.tv_sec - start.tv_sec) * 1000 + (finish.tv_nsec - start.tv_nsec) / 1000000;
+
         if(count_time > count_max)
             count_max = count_time;
         if(count_time < count_min)
             count_min = count_time;
-        count_avg += countArgs.end->tv_nsec;
+        count_avg += count_time;
 
         if (move_time > move_max)
             move_max = move_time;
@@ -94,24 +101,28 @@ Tuple ***count_then_move_partition(uint64_t sample_size, Tuple **data, int num_t
             move_min = move_time;
         move_avg += move_time;
 
-        if (moveArgs.end->tv_nsec > move_max)
-            total_max = move_max + count_max;
-        if (moveArgs.end->tv_nsec < move_min)
-            total_min = move_min + count_min;
+        // if (moveArgs.end->tv_nsec > move_max)
+        //     total_max = move_max + count_max;
+        // if (moveArgs.end->tv_nsec < move_min)
+        //     total_min = move_min + count_min;
+        if(count_time + move_time > total_max)
+            total_max = count_time + move_time;
+        if(count_time + move_time < total_min)
+            total_min = count_time + move_time;
     }
     count_avg /= num_threads;
     move_avg /= num_threads;
     total_avg = count_avg + move_avg;
 
-    long count_max_time = (count_max) * 1000 + (count_max) / 1000000;
-    long move_max_time = (move_max) * 1000 + (move_max) / 1000000;
-    long count_min_time = (count_min) * 1000 + (count_min) / 1000000;
-    long move_min_time = (move_min) * 1000 + (move_min) / 1000000;
-    long count_avg_time = (count_avg) * 1000 + (count_avg) / 1000000;
-    long move_avg_time = (move_avg) * 1000 + (move_avg) / 1000000;
-    long total_max_time = (total_max) * 1000 + (total_max) / 1000000;
-    long total_min_time = (total_min) * 1000 + (total_min) / 1000000;
-    long total_avg_time = (total_avg) * 1000 + (total_avg) / 1000000;
+    long count_max_time = (count_max);
+    long move_max_time = (move_max);
+    long count_min_time = (count_min);
+    long move_min_time = (move_min);
+    long count_avg_time = (count_avg);
+    long move_avg_time = (move_avg);
+    long total_max_time = (total_max);
+    long total_min_time = (total_min);
+    long total_avg_time = (total_avg);
 
     printf("Count max: %ld\n", count_max_time);
     printf("Count min: %ld\n", count_min_time);

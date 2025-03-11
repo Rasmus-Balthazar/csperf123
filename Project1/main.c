@@ -95,6 +95,7 @@ void print_partition(Tuple **partition, int data_bits) {
 void print_status(int algorithm, int threads, int key_bits, int iteration, struct timespec pre_data, struct timespec start, struct timespec finish) {
     long data_gen_time = (start.tv_sec - pre_data.tv_sec) * 1000 + (start.tv_nsec - pre_data.tv_nsec) / 1000000;
     long elapsed_time_ms = (finish.tv_sec - start.tv_sec) * 1000 + (finish.tv_nsec - start.tv_nsec) / 1000000;
+    
     printf("Iteration: %d\n", iteration);
     printf("Algorithm: %d\n", algorithm);
     printf("Num threads: %d\n", threads);
