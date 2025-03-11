@@ -50,9 +50,9 @@ Tuple ****partition_independent(int data_size, Tuple **data, int num_threads, in
     }
     avg_time /= num_threads;
 
-    printf("Max time: %lu\n", max_time);
-    printf("Min time: %lu\n", min_time);
-    printf("Avg time: %lu\n", avg_time);
+    printf("Total max: %lu\n", max_time);
+    printf("Total min: %lu\n", min_time);
+    printf("Total avg: %lu\n", avg_time);
 
     return buffers;
 }
