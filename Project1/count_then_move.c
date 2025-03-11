@@ -23,7 +23,7 @@ Tuple ***count_then_move_partition(uint64_t sample_size, Tuple **data, int num_t
         args->partitionCount = num_partitions;
         args->start = (struct timespec*)malloc(sizeof(struct timespec));
         args->end = (struct timespec*)malloc(sizeof(struct timespec));
-        pthread_create(&threads[i], NULL, count, &args);
+        pthread_create(&threads[i], NULL, count, args);
         //Maybe print something here
     }
     for (int i = 0; i < num_threads; i++)
@@ -58,7 +58,7 @@ Tuple ***count_then_move_partition(uint64_t sample_size, Tuple **data, int num_t
         args->output = output;
         args->start = (struct timespec*)malloc(sizeof(struct timespec));
         args->end = (struct timespec*)malloc(sizeof(struct timespec));
-        pthread_create(&threads[i], NULL, move, &args);
+        pthread_create(&threads[i], NULL, move, args);
         //maybe print something here
     }
     for (int i = 0; i < num_threads; i++)
@@ -132,17 +132,13 @@ int hash(uint64_t key, int num_partitions) {
 
 void *count(void *_args) {
     CountArgs *args = (CountArgs*)_args;
-    printf("Before gettime 1\n");
     clock_gettime(CLOCK_MONOTONIC_RAW, args->start); //this breaks
-    printf("after gettime 1\n");
-    for (int i = args->startIndex; i < args->endIndex; i++)
+    for (uint64_t i = args->startIndex; i < args->endIndex; i++)
     {
         int partition = hash(args->data[i]->partitionKey, args->partitionCount);
         args->offsets[partition][args->threadNum]++;
     }
-    printf("Before gettime 2\n");
     clock_gettime(CLOCK_MONOTONIC_RAW, args->end);
-    printf("after gettime 2\n");
     return 0;
 }
 
