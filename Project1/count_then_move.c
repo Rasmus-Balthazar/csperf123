@@ -95,10 +95,6 @@ Tuple ***count_then_move_partition(uint64_t sample_size, Tuple **data, int num_t
             move_min = move_time;
         move_avg += move_time;
 
-        // if (moveArgs.end->tv_nsec > move_max)
-        //     total_max = move_max + count_max;
-        // if (moveArgs.end->tv_nsec < move_min)
-        //     total_min = move_min + count_min;
         if(count_time + move_time > total_max)
             total_max = count_time + move_time;
         if(count_time + move_time < total_min)
