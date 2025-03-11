@@ -80,14 +80,8 @@ Tuple ***count_then_move_partition(uint64_t sample_size, Tuple **data, int num_t
         //get count max, min, avg of each thread
         CountArgs countArgs = countArgsArray[i];
         MoveArgs moveArgs = moveArgsArray[i];
-        // long count_time = countArgs.end->tv_nsec - countArgs.start->tv_nsec;
-        // long move_time = moveArgs.end->tv_nsec - moveArgs.start->tv_nsec;
         long count_time = (countArgs.end->tv_sec - countArgs.start->tv_sec) * 1000 + (countArgs.end->tv_nsec - countArgs.start->tv_nsec) / 1000000;
         long move_time = (moveArgs.end->tv_sec - moveArgs.start->tv_sec) * 1000 + (moveArgs.end->tv_nsec - moveArgs.start->tv_nsec) / 1000000;
-        printf("Count time: %ld\n", count_time);
-        printf("Move time: %ld\n", move_time);
-        // long data_gen_time = (start.tv_sec - pre_data.tv_sec) * 1000 + (start.tv_nsec - pre_data.tv_nsec) / 1000000;
-        // long elapsed_time_ms = (finish.tv_sec - start.tv_sec) * 1000 + (finish.tv_nsec - start.tv_nsec) / 1000000;
 
         if(count_time > count_max)
             count_max = count_time;
