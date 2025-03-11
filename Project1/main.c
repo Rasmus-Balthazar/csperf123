@@ -17,10 +17,10 @@ int main(int argc, char **argv) {
     {
         if(strcmp(argv[i], "-a") == 0)
         {
-            if(strcmp(argv[i+1], "c") == 0 || strcmp(argv[i+1], "ctm"))
+            if(strcmp(argv[i+1], "c") == 0 || strcmp(argv[i+1], "ctm") == 0)
             {
                 algorithm = 1;
-            } else if (strcmp(argv[i+1], "i") == 0 || strcmp(argv[i+1], "independent"))
+            } else if (strcmp(argv[i+1], "i") == 0 || strcmp(argv[i+1], "independent") == 0)
             {
                 algorithm = 2;
             }
@@ -61,11 +61,11 @@ int main(int argc, char **argv) {
     
     // Tuple ***count_then_move = run_ctm(data);
     clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-    if(algorithm == 1)
+    if(algorithm == 2)
     {
         Tuple ****independently_partitioned = run_independent(data, sample_size, num_threads, num_partitions);
         // print_partition(independently_partitioned[0][0], data_bits-key_bits);
-    } else if (algorithm == 2)
+    } else if (algorithm == 1)
     {
         Tuple ***ctm_partitioned = run_ctm(data, sample_size, num_threads, num_partitions);
         // print_partition(*(ctm_partitioned), data_bits-key_bits-1);
