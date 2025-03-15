@@ -1,12 +1,4 @@
 -------------------
-Iteration: 8
-Algorithm: 2
-Num threads: 2
-Num key bits: 1
-Time to generate data: 2983
-Time to partition in ms: 4448
-
--------------------
 Count max: 2621
 Count min: 2621
 Count avg: 2621
