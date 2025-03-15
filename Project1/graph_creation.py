@@ -104,7 +104,6 @@ def getPerfResultsFromDirS(algos, perf_dirs):
                     else:
                         results_dict[algo][threads][hashbits].time.append(time)
     
-    print(results_dict["ctm"][1][1].time_average())
     return results_dict
 
 
@@ -162,7 +161,6 @@ def getDataFileResults(algos, files, tuplepower):
 def makePerfGraphForSpeceficThreadUsingBothAlgos(results, thread, name, data_gen_already_removed):
     total_tuples = 2 ** 24
     data_generation_time = results["dry"][1][1].time_average()
-    print(data_generation_time)
     hash_bits = range(1,19)
     
     ctm_perf = []
@@ -194,6 +192,7 @@ def makePerfGraphForSpeceficThreadUsingBothAlgos(results, thread, name, data_gen
     
     plt.title('Performance: Millions of Tuples per Second', fontsize=16)
     plt.xticks(range(19))
+    plt.yticks([0, 20, 40, 60, 80, 100, 120, 140, 160])
     plt.xlabel('Hash Bits', fontsize=12)
     plt.ylabel('Millions of Tuples per Second', fontsize=12)
     plt.legend()
