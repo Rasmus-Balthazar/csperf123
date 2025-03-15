@@ -2,7 +2,6 @@ from collections import defaultdict
 import os
 import re
 from dataclasses import dataclass
-import numpy as np
 import matplotlib.pyplot as plt
 
 # === Where to find data ===
@@ -205,23 +204,49 @@ def makePerfGraphForSpeceficThreadUsingBothAlgos(results, thread, name, data_gen
 
 
 
-def makePerfGraphForAllThreadsInGivenAlgo(results, algo_name, name):
+def makePerfGraphForAllThreadsInGivenAlgo(results, algo_name, name, data_gen_already_removed):
     total_tuples = 2 ** 24
     data_generation_time = results["dry"][1][1].time_average()
     hash_bits = range(1, 19)
     
-    # Get all thread counts available for this algorithm
-    thread_counts = sorted(results[algo_name].keys())
+    thread_counts = [1, 2, 4, 8, 16, 32]
     
-    plt.figure(figsize=(12, 8))
-    
-    # Line styles and markers for different threads
-    markers = ['o', 's', 'D', '^', 'v', '<', '>', 'p', '*', 'h', 'H', '+', 'x', 'd']
-    colors = plt.cm.viridis(np.linspace(0, 1, len(thread_counts)))
-    
-    # Plot a line for each thread count
-   
+    algo_results = {t: [] for t in thread_counts}
 
+    for thread in thread_counts:
+        for h in hash_bits:
+            #For Count then move
+            time_average = results[algo_name][thread][h].time_average()
+            if not data_gen_already_removed:
+                partition_time  = time_average - data_generation_time
+            else:
+                partition_time = time_average
+            million_tuples_per_sec = (total_tuples / partition_time) / 1_000_000
+            algo_results[thread].append(million_tuples_per_sec)
+
+    plt.figure(figsize=(10, 6))
+
+    plt.plot(hash_bits, algo_results[1], marker='o', label='1 Thread', linewidth=2)
+    plt.plot(hash_bits, algo_results[2], marker='s', label='2 Threads', linewidth=2)
+    plt.plot(hash_bits, algo_results[4], marker='x', label='4 Threads', linewidth=2)
+    plt.plot(hash_bits, algo_results[8], marker='D', label='8 Threads', linewidth=2)
+    plt.plot(hash_bits, algo_results[16], marker='d', label='16 Threads', linewidth=2)
+    plt.plot(hash_bits, algo_results[32], marker='^', label='32 Threads', linewidth=2)
+    
+    plt.title('Performance: Millions of Tuples per Second', fontsize=16)
+    plt.xticks(range(19))
+    plt.yticks([0, 20, 40, 60, 80, 100, 120, 140, 160])
+    plt.xlabel('Hash Bits', fontsize=12)
+    plt.ylabel('Millions of Tuples per Second', fontsize=12)
+    plt.legend()
+    plt.grid(True, linestyle='--', alpha=0.7)
+    
+    plt.tight_layout()
+    
+    plt.savefig(name + '.png')
+    plt.close()
+
+   
 
 #TODO:
 # - Also go through data_XXX.txt files 
@@ -238,6 +263,9 @@ def main():
 
     results_dict = getPerfResultsFromDirS(algos, perf_dirs)
     makePerfGraphForSpeceficThreadUsingBothAlgos(results_dict, 32, 'performance_graph_from_perf', False) #Should be the same as performance_graph_from_stdout
+    makePerfGraphForAllThreadsInGivenAlgo(results_dict, "ctm", "CTM_Threads_perf", False)
+    makePerfGraphForAllThreadsInGivenAlgo(results_dict, "i", "Independent_Threads_perf", False)
+
 
     # ==== STDOUT GRAPHS =====
     file_paths = [data_ctm, data_independent, data_dry]
@@ -245,7 +273,8 @@ def main():
     stdout_results_dict = getDataFileResults(algos, file_paths, tuplepower)
 
     makePerfGraphForSpeceficThreadUsingBothAlgos(stdout_results_dict, 32, 'performance_graph_from_stdout', True) #Should be the same as performance_graph_from_perf
-
+    makePerfGraphForAllThreadsInGivenAlgo(stdout_results_dict, "ctm", "CTM_Threads_stdout", True)
+    makePerfGraphForAllThreadsInGivenAlgo(stdout_results_dict, "i", "Independent_Threads_stdout", True)
 
     
 if __name__ == "__main__":
