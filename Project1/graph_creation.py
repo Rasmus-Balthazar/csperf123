@@ -2,6 +2,7 @@ from collections import defaultdict
 import os
 import re
 from dataclasses import dataclass
+import numpy as np
 import matplotlib.pyplot as plt
 
 # === Where to find data ===
@@ -124,7 +125,7 @@ def getDataFileResults(algos, files, tuplepower):
                 if int(observations[0][9]) == 10:
                     threads = int(observations[0][11])
                     hashbits = int(observations[0][12])
-                    time = int(observations[0][8])
+                    time = int(observations[0][8])/1000 # To get seconds
                     r = Results(algo, threads, hashbits, tuplepower, [time])
                     results_dict[algo][threads][hashbits] = r
             # ===== Independent =====
@@ -135,7 +136,7 @@ def getDataFileResults(algos, files, tuplepower):
                 if int(observations[0][3]) == 10:
                     threads = int(observations[0][5])
                     hashbits = int(observations[0][6])
-                    time = int(observations[0][2])
+                    time = int(observations[0][2])/1000 # To get seconds
                     r = Results(algo, threads, hashbits, tuplepower, [time])
                     results_dict[algo][threads][hashbits] = r
             # ===== Dry =====
@@ -146,7 +147,7 @@ def getDataFileResults(algos, files, tuplepower):
 
                 threads = int(observations[0][2])
                 hashbits = int(observations[0][3])
-                time = int(observations[0][4])
+                time = int(observations[0][4])/1000 # To get seconds
 
                 if hashbits not in results_dict[algo][threads]:
                     r = Results(algo, threads, hashbits, tuplepower, [time])
@@ -158,9 +159,10 @@ def getDataFileResults(algos, files, tuplepower):
 
                 
 
-def makePerfGraph(results, thread, name):
+def makePerfGraphForSpeceficThreadUsingBothAlgos(results, thread, name, data_gen_already_removed):
     total_tuples = 2 ** 24
     data_generation_time = results["dry"][1][1].time_average()
+    print(data_generation_time)
     hash_bits = range(1,19)
     
     ctm_perf = []
@@ -169,13 +171,19 @@ def makePerfGraph(results, thread, name):
     for h in hash_bits:
         #For Count then move
         ctm_time_average = results["ctm"][thread][h].time_average()
-        ctm_partition_time  =ctm_time_average - data_generation_time
+        if not data_gen_already_removed:
+            ctm_partition_time  = ctm_time_average - data_generation_time
+        else:
+            ctm_partition_time = ctm_time_average
         ctm_million_tuples_per_sec = (total_tuples / ctm_partition_time) / 1_000_000
         ctm_perf.append(ctm_million_tuples_per_sec)
 
-        #FOr Independant
+        #For Independant
         i_time_average = results["i"][thread][h].time_average()
-        i_partition_time  =i_time_average - data_generation_time
+        if not data_gen_already_removed:
+            i_partition_time = i_time_average - data_generation_time
+        else:
+            i_partition_time = i_time_average
         i_million_tuples_per_sec = (total_tuples / i_partition_time) / 1_000_000
         independent_perf.append(i_million_tuples_per_sec)
     
@@ -193,9 +201,27 @@ def makePerfGraph(results, thread, name):
     
     plt.tight_layout()
     
-
     plt.savefig(name + '.png')
     plt.close()
+
+
+
+def makePerfGraphForAllThreadsInGivenAlgo(results, algo_name, name):
+    total_tuples = 2 ** 24
+    data_generation_time = results["dry"][1][1].time_average()
+    hash_bits = range(1, 19)
+    
+    # Get all thread counts available for this algorithm
+    thread_counts = sorted(results[algo_name].keys())
+    
+    plt.figure(figsize=(12, 8))
+    
+    # Line styles and markers for different threads
+    markers = ['o', 's', 'D', '^', 'v', '<', '>', 'p', '*', 'h', 'H', '+', 'x', 'd']
+    colors = plt.cm.viridis(np.linspace(0, 1, len(thread_counts)))
+    
+    # Plot a line for each thread count
+   
 
 
 #TODO:
@@ -212,12 +238,15 @@ def main():
     perf_dirs = [ctm_perf_dir, independent_perf_dir, dry_perf_dir]
 
     results_dict = getPerfResultsFromDirS(algos, perf_dirs)
-    makePerfGraph(results_dict, 32, 'performance_graph_from_perf') #Should be the same as performance_graph_from_stdout
+    makePerfGraphForSpeceficThreadUsingBothAlgos(results_dict, 32, 'performance_graph_from_perf', False) #Should be the same as performance_graph_from_stdout
 
     # ==== STDOUT GRAPHS =====
     file_paths = [data_ctm, data_independent, data_dry]
     tuplepower = 24
-    makePerfGraph(results_dict, 32, 'performance_graph_from_stdout') #Should be the same as performance_graph_from_perf
+    stdout_results_dict = getDataFileResults(algos, file_paths, tuplepower)
+
+    makePerfGraphForSpeceficThreadUsingBothAlgos(stdout_results_dict, 32, 'performance_graph_from_stdout', True) #Should be the same as performance_graph_from_perf
+
 
     
 if __name__ == "__main__":
