@@ -1,15 +1,23 @@
-# started on Tue Mar  4 11:03:01 2025
+# started on Wed Mar 12 03:40:35 2025
 
 
- Performance counter stats for './main.exe 1 1 24 -i 6':
+ Performance counter stats for '/home/group123/Project1/main.exe 1 1 24 -i 6':
 
-        52,470,297      branch-misses                                                         
-           335,109      iTLB-load-misses                                                      
-        16,150,741      dTLB-load-misses                                                      
+                 7      context-switches                                                      
+     6,723,696,008      cycles                                                                  (10.00%)
+     4,831,825,648      instructions                     #    0.72  insn per cycle              (11.52%)
+     <not counted>      L1-icache-load-misses                                                   (0.00%)
+     <not counted>      L1-dcache-load-misses                                                   (0.00%)
+     <not counted>      LLC-load-misses                                                         (0.00%)
+     <not counted>      cache-misses                                                            (0.00%)
+     <not counted>      uops_retired.stall_cycles                                               (0.00%)
+     <not counted>      branch-misses                                                           (0.00%)
+     <not counted>      iTLB-load-misses                                                        (0.00%)
+     <not counted>      dTLB-load-misses                                                        (0.00%)
 
-       3.358943261 seconds time elapsed
+       3.416559224 seconds time elapsed
 
-       3.024855000 seconds user
-       0.333984000 seconds sys
+       3.089670000 seconds user
+       0.326965000 seconds sys
 
 

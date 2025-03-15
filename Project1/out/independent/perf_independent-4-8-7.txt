@@ -1,0 +1,23 @@
+# started on Wed Mar 12 00:45:20 2025
+
+
+ Performance counter stats for '/home/group123/Project1/main.exe 8 4 24 -a i -i 7':
+
+               193      context-switches                                                      
+    13,946,130,774      cycles                                                                  (2.74%)
+     2,213,869,034      instructions                     #    0.16  insn per cycle              (4.78%)
+     <not counted>      L1-icache-load-misses                                                   (0.00%)
+     <not counted>      L1-dcache-load-misses                                                   (0.00%)
+     <not counted>      LLC-load-misses                                                         (0.00%)
+     <not counted>      cache-misses                                                            (0.00%)
+     <not counted>      uops_retired.stall_cycles                                               (0.00%)
+     <not counted>      branch-misses                                                           (0.00%)
+     <not counted>      iTLB-load-misses                                                        (0.00%)
+     <not counted>      dTLB-load-misses                                                        (0.00%)
+
+       3.942112223 seconds time elapsed
+
+       6.703483000 seconds user
+       0.412721000 seconds sys
+
+
