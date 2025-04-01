@@ -2,9 +2,10 @@
 
 Tuple ***count_then_move_partition(uint64_t sample_size, Tuple **data, int num_threads, int num_partitions) {
     int **offsets = (int**)calloc(num_partitions, sizeof(int*));
+    int *_thread_offsets = (int*)calloc(num_threads*num_partitions, sizeof(int));
     for (int i = 0; i < num_partitions; i++)
     {
-        offsets[i] = (int*)calloc(num_threads, sizeof(int));
+        offsets[i] = &_thread_offsets[num_threads*i];
     }
     
 
@@ -17,8 +18,8 @@ Tuple ***count_then_move_partition(uint64_t sample_size, Tuple **data, int num_t
         args->offsets = offsets;
         args->startIndex = (sample_size / num_threads) * i; 
         args->endIndex = (sample_size / num_threads) * (i+1);
-        if (args->endIndex >= sample_size)
-        args->endIndex = sample_size - 1;
+        if (args->endIndex > sample_size)
+            args->endIndex = sample_size;
         args->threadNum = i;
         args->partitionCount = num_partitions;
         args->start = (struct timespec*)malloc(sizeof(struct timespec));
@@ -32,6 +33,8 @@ Tuple ***count_then_move_partition(uint64_t sample_size, Tuple **data, int num_t
     }
 
     Tuple ***output = (Tuple***)calloc(num_partitions, sizeof(Tuple**));
+    Tuple **all_partitions = (Tuple**)calloc(sample_size, sizeof(Tuple*));
+    uint64_t partition_offset = 0ul;
     for (int i = 0; i < num_partitions; i++)
     {
         int partition_size = 0;
@@ -40,7 +43,9 @@ Tuple ***count_then_move_partition(uint64_t sample_size, Tuple **data, int num_t
             partition_size += offsets[i][j];
         }
         
-        *(output+i) = (Tuple**)calloc(partition_size, sizeof(Tuple*));
+        *(output+i) = &all_partitions[partition_offset];
+        partition_offset += partition_size;
+        // *(output+i) = (Tuple**)calloc(partition_size, sizeof(Tuple*));
     }
     
     MoveArgs *moveArgsArray = (MoveArgs*)calloc(num_threads, sizeof(MoveArgs)); // Could reduce duplicate work by reusing args from Count
@@ -51,8 +56,8 @@ Tuple ***count_then_move_partition(uint64_t sample_size, Tuple **data, int num_t
         args->offsets = offsets;
         args->startIndex = (sample_size / num_threads) * i; 
         args->endIndex = (sample_size / num_threads) * (i+1);
-        if (args->endIndex >= sample_size)
-            args->endIndex = sample_size - 1;
+        if (args->endIndex > sample_size)
+            args->endIndex = sample_size;
         args->threadNum = i;
         args->partitionCount = num_partitions;
         args->output = output;
@@ -134,11 +139,14 @@ int hash(uint64_t key, int num_partitions) {
 void *count(void *_args) {
     CountArgs *args = (CountArgs*)_args;
     clock_gettime(CLOCK_MONOTONIC_RAW, args->start); //this breaks
+    int *local_offsets = (int *)calloc(args->partitionCount, sizeof(int));
     for (uint64_t i = args->startIndex; i < args->endIndex; i++)
     {
         int partition = hash(args->data[i]->partitionKey, args->partitionCount);
-        args->offsets[partition][args->threadNum]++;
+        local_offsets[partition]++;
     }
+    for (int i = 0; i < args->partitionCount; i++)
+        args->offsets[i][args->threadNum] = local_offsets[i];
     clock_gettime(CLOCK_MONOTONIC_RAW, args->end);
     return 0;
 }
