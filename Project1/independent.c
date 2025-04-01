@@ -64,10 +64,11 @@ int hash_key(uint64_t key, int num_partitions) {
 
 void *run(void *args) {
     Args *input = (Args *)args;
+    Tuple **local_array = (Tuple**)calloc((input->partitionSize * input->numPartitions) << 1, sizeof(Tuple*));
     for (int i = 0; i < input->numPartitions; i++)
     {
+        *(input->partitions+i) = &local_array[2*i*input->partitionSize];
         //Allocate every partition from null to a partion of the correct size.
-        *(input->partitions+i) = (Tuple**)calloc(input->partitionSize << 1, sizeof(Tuple*));
     }
     int *offset = (int*)calloc(input->numPartitions, sizeof(int));
     
@@ -77,7 +78,7 @@ void *run(void *args) {
     for (uint64_t i = input->startIndex; i < input->endIndex; i++) {
         Tuple *data = input->data[i];
         int hashedKey = hash_key(data->partitionKey, input->numPartitions);
-        input->partitions[hashedKey][offset[hashedKey]] = data;
+        local_array[(2*hashedKey*input->partitionSize)+offset[hashedKey]] = data;
         offset[hashedKey]++;
     }
     clock_gettime(CLOCK_MONOTONIC_RAW, input->end);
