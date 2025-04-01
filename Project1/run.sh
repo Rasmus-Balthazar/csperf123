@@ -28,17 +28,17 @@ for keybits in {1..18}; do
     # echo $keybits
     for threads in {1,2,4,8,16,32}; do
     # for threads in 2; do
-        for i in {1..10}; do
-            perf stat -e context-switches,cycles,instructions,L1-icache-load-misses,L1-dcache-load-misses,LLC-load-misses,cache-misses,uops_retired.stall_cycles,branch-misses,iTLB-load-misses,dTLB-load-misses -o "/home/group123/Project1/out/ctm/perf_ctm-${keybits}-${threads}-${i}.txt" /home/group123/Project1/main.exe $threads $keybits $tuplespower -a ctm -i $i >> /home/group123/Project1/out/data_ctm.txt
+        # for i in {1..10}; do
+        #     perf stat -e context-switches,cycles,instructions,L1-icache-load-misses,L1-dcache-load-misses,LLC-load-misses,cache-misses,uops_retired.stall_cycles,branch-misses,iTLB-load-misses,dTLB-load-misses -o "/home/group123/Project1/out/ctm/perf_ctm-${keybits}-${threads}-${i}.txt" /home/group123/Project1/main.exe $threads $keybits $tuplespower -a ctm -i $i >> /home/group123/Project1/out/data_ctm.txt
             # ./main.exe $threads $keybits $tuplespower -a ctm >> data_ctm.txt
-        done
+        # done
         for i in {1..10}; do
             perf stat -e context-switches,cycles,instructions,L1-icache-load-misses,L1-dcache-load-misses,LLC-load-misses,cache-misses,uops_retired.stall_cycles,branch-misses,iTLB-load-misses,dTLB-load-misses -o "/home/group123/Project1/out/independent/perf_independent-${keybits}-${threads}-${i}.txt" /home/group123/Project1/main.exe $threads $keybits $tuplespower -a i -i $i >> /home/group123/Project1/out/data_independent.txt
             # ./main.exe $threads $keybits $tuplespower -a i >> data_independent.txt
         done
     done
 done
-for i in {1..100}; do
-    perf stat -e  context-switches,cycles,instructions,L1-icache-load-misses,L1-dcache-load-misses,LLC-load-misses,cache-misses,uops_retired.stall_cycles,branch-misses,iTLB-load-misses,dTLB-load-misses -o "/home/group123/Project1/out/dry/perf_dry-${i}.txt" /home/group123/Project1/main.exe 1 1 $tuplespower -i $i >> /home/group123/Project1/out/data_dry.txt
+# for i in {1..100}; do
+#     perf stat -e  context-switches,cycles,instructions,L1-icache-load-misses,L1-dcache-load-misses,LLC-load-misses,cache-misses,uops_retired.stall_cycles,branch-misses,iTLB-load-misses,dTLB-load-misses -o "/home/group123/Project1/out/dry/perf_dry-${i}.txt" /home/group123/Project1/main.exe 1 1 $tuplespower -i $i >> /home/group123/Project1/out/data_dry.txt
     # ./main.exe $threads $keybits $tuplespower >> data_dry.txt
-done
+# done
