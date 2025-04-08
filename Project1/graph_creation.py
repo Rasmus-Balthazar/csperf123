@@ -52,9 +52,9 @@ ctm_stdout_matcher = re.compile(
 )
 
 independent_stdout_matcher = re.compile(
-    r"Max time: (\d+)\s*"                 # Max time [0]
-    r"Min time: (\d+)\s*"                 # Min time [1]
-    r"Avg time: (\d+)\s*"                 # Avg time [2]
+    r"Total max: (\d+)\s*"                # Max time [0]
+    r"Total min: (\d+)\s*"                # Min time [1]
+    r"Total avg: (\d+)\s*"                # Avg time [2]
     r"Iteration: (\d+)\s*"                # Iteration number [3]
     r"Algorithm: (\d+)\s*"                # Algorithm number [4]
     r"Num threads: (\d+)\s*"              # Number of threads [5]
