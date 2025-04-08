@@ -1,23 +1,23 @@
-# started on Wed Mar 12 02:47:59 2025
+# started on Tue Apr  1 17:15:24 2025
 
 
  Performance counter stats for '/home/group123/Project1/main.exe 16 15 24 -a i -i 5':
 
-            12,282      context-switches                                                      
-    66,048,998,860      cycles                                                                  (4.62%)
-    15,568,068,695      instructions                     #    0.24  insn per cycle              (7.36%)
-     <not counted>      L1-icache-load-misses                                                   (0.00%)
-     <not counted>      L1-dcache-load-misses                                                   (0.00%)
-     <not counted>      LLC-load-misses                                                         (0.00%)
-     <not counted>      cache-misses                                                            (0.00%)
-     <not counted>      uops_retired.stall_cycles                                               (0.00%)
-     <not counted>      branch-misses                                                           (0.00%)
-     <not counted>      iTLB-load-misses                                                        (0.00%)
-     <not counted>      dTLB-load-misses                                                        (0.00%)
+                79      context-switches                                                      
+    30,110,548,000      cycles                                                                  (49.94%)
+     9,128,229,221      instructions                     #    0.30  insn per cycle              (59.96%)
+        24,114,049      L1-icache-load-misses                                                   (59.97%)
+       188,456,022      L1-dcache-load-misses                                                   (60.00%)
+        39,389,398      LLC-load-misses                                                         (60.06%)
+        64,987,441      cache-misses                                                            (60.15%)
+    25,745,365,086      uops_retired.stall_cycles                                               (40.11%)
+        53,989,128      branch-misses                                                           (40.06%)
+           745,584      iTLB-load-misses                                                        (40.00%)
+        34,235,915      dTLB-load-misses                                                        (39.93%)
 
-       5.827258915 seconds time elapsed
+       4.451294739 seconds time elapsed
 
-      10.971668000 seconds user
-      22.695423000 seconds sys
+      12.877586000 seconds user
+       2.490372000 seconds sys
 
 
