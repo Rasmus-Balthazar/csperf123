@@ -59,7 +59,7 @@ Tuple ****partition_independent(int data_size, Tuple **data, int num_threads, in
 //method hash and find where it belongs
 int hash_key(uint64_t key, int num_partitions) {
     //we know amount of partitions, so get hashing
-    return (int)(key % num_partitions);
+    return key % num_partitions;
 }
 
 void *run(void *args) {
@@ -70,16 +70,16 @@ void *run(void *args) {
         *(input->partitions+i) = &local_array[2*i*input->partitionSize];
         //Allocate every partition from null to a partion of the correct size.
     }
-    int *offset = (int*)calloc(input->numPartitions, sizeof(int));
+    int *offsets = (int*)calloc(input->numPartitions, sizeof(int));
     
     // THIS WILL BE ANGRY
     // its ok :D
     clock_gettime(CLOCK_MONOTONIC_RAW, input->start);
-    for (uint64_t i = input->startIndex; i < input->endIndex; i++) {
+    for (int i = input->startIndex; i < input->endIndex; i++) {
         Tuple *data = input->data[i];
         int hashedKey = hash_key(data->partitionKey, input->numPartitions);
-        local_array[(2*hashedKey*input->partitionSize)+offset[hashedKey]] = data;
-        offset[hashedKey]++;
+        local_array[(2*hashedKey*input->partitionSize)+offsets[hashedKey]] = data;
+        offsets[hashedKey]++;
     }
     clock_gettime(CLOCK_MONOTONIC_RAW, input->end);
     return 0;

@@ -12,7 +12,7 @@ aight, so the questions in question is that we are working with the algorithms:
 - [x] Setup threading for algorithms
 - [x] Implement Independant ouput
 - [x] Implement count-then-move
-- [x] setup measurements
+- [x] setup measurementsd
 - [x] take measurements
 - [x] visualize data
 
