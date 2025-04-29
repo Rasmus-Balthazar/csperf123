@@ -6,28 +6,65 @@
  * Begin adding rules - only extract relevant RE patterns as Literal Search
  * Wildcards
  * Repetitions
- * Ranges/Sets 
+ * Ranges/Sets
  * Ors/Options
  */
 
- /**
-  * How you doing? 
-  */
+/**
+ * How you doing?
+ */
 
-  __global__ void simple_gpu_re(char *text, int text_len, char **patterns, int[] patterns_len) {
-    char *pattern = patterns+blockIdx.x;
+typdef struct
+{
+    int start_index, length;
+    int pattern_idx;
+} match;
+
+bool matches(char pattern, char text);
+
+__global__ void simple_gpu_re(char *text, int text_len, int pattern_count, char **patterns, int[] patterns_len, unsigned int[] matches_found, match[] match_arr)
+{
+    char *pattern = patterns + pattern_index;
     int pattern_len = patterns_len[blockIdx.x];
     int stride = blockDim.x;
-    for (int i = threadIdx.x; i < text_len; i += stride)
+    for (int pattern_index = blockIdx.x; pattern_index < gridDim.x; pattern_index += gridDim.x)
     {
-        int pattern_off = 0;
-        int text_off = 0;
-        while (matches(pattern[pattern_off], text[i+text_off])) {
-            pattern_off++;
-            text_off++;
-            if (pattern_off > pattern_len)
+        for (int i = threadIdx.x; i < text_len; i += stride)
+        {
+            int pattern_off = 0;
+            int text_off = 0;
+            while (matches(pattern[pattern_off], text[i + text_off]))
+            {
+                pattern_off++;
+                text_off++;
+                // If the offset is longer than the pattern length we have found it
+                if (pattern_off > pattern_len)
+                {
+                    uint val = matches_found[pattern_index]
+                        // We are relying on the checks not being exhaustive by doing val > i before atomicCAS
+                        while (val > i && atomicCAS(matches_found + pattern_index, val, i) > i)
+                    {
+                        val = matches_found[pattern_index];
+                        // Compares b to a, and if true then writes c into a.
+                    }
+                    break;
+                }
+            }
+            if ((i + stride) > matches_found[pattern_index])
                 break;
+                // If match here, collection process can start,
+            
         }
+        __syncthreads(); // Synchronize threads in the block
     }
-  }
-  
+    
+    // collect within block to find first position of pattern matched
+
+    // Collect accross blocks, whith the match for each pattern
+}
+
+// Update this to work with tokens, and return how much of text was consumed
+bool matches(char pattern, char text)
+{
+    return pattern == text;
+}
