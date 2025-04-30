@@ -23,7 +23,7 @@ typedef struct {
     int pattern_idx;
 } Match;
 
-__device__ bool matches(char pattern, char text);
+__device__ int matches(char pattern, char text);
 
 __global__ void simple_gpu_re(char *text, int text_len, int pattern_count, char *patterns[], int patterns_len[], unsigned int matches_found[], Match match_arr[]) {
     int pattern_len = patterns_len[blockIdx.x];
@@ -33,9 +33,12 @@ __global__ void simple_gpu_re(char *text, int text_len, int pattern_count, char 
         for (int i = threadIdx.x; i < text_len; i += stride) {
             int pattern_off = 0;
             int text_off = 0;
-            while (matches(pattern[pattern_off], text[i + text_off])) {
-                pattern_off++;
-                text_off++;
+            int does_match;
+            do
+            {
+                does_match = matches(pattern[pattern_off], text[i + text_off]);
+                pattern_off+= does_match;
+                text_off+= does_match;
                 // If the offset is longer than the pattern length we have found it
                 if (pattern_off >= pattern_len) {
                     printf("Matched pattern \"%s\" on thread %i\n", pattern, threadIdx.x);
@@ -47,7 +50,8 @@ __global__ void simple_gpu_re(char *text, int text_len, int pattern_count, char 
                     }
                     break;
                 }
-            }
+            } while (does_match);
+            
             if ((i + stride) > matches_found[pattern_index] || (i+stride) > text_len) 
             {
                 // If match here, collection process can start,
@@ -66,9 +70,9 @@ __global__ void simple_gpu_re(char *text, int text_len, int pattern_count, char 
 }
 
 // Update this to work with tokens, and return how much of text was consumed
-__device__ bool matches(char pattern, char text)
+__device__ int matches(char pattern, char text)
 {
-    printf("Trying to match %c and %c", pattern, text);
+    printf("Trying to match %c and %c\n", pattern, text);
     return pattern == text;
 }
 
