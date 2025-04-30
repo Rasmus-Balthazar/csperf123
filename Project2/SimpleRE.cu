@@ -26,6 +26,13 @@ typedef struct {
 __device__ int matches(char pattern, char text);
 
 __global__ void simple_gpu_re(char *text, int text_len, int pattern_count, char *patterns[], int patterns_len[], unsigned int matches_found[], Match match_arr[]) {
+    if (threadIdx.x == 0) {
+        for (int i = 0; i < 3; i++)
+        {
+            printf("pattern %i: %s", i, patterns[i]);
+        }
+    }
+
     int pattern_len = patterns_len[blockIdx.x];
     int stride = blockDim.x;
     for (int pattern_index = blockIdx.x; pattern_index < gridDim.x; pattern_index += gridDim.x) {
@@ -70,8 +77,7 @@ __global__ void simple_gpu_re(char *text, int text_len, int pattern_count, char 
 }
 
 // Update this to work with tokens, and return how much of text was consumed
-__device__ int matches(char pattern, char text)
-{
+__device__ int matches(char pattern, char text) {
     printf("Trying to match %c and %c\n", pattern, text);
     return pattern == text;
 }
