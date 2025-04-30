@@ -82,6 +82,12 @@ __device__ int matches(char pattern, char text) {
     return pattern == text;
 }
 
+__global__ void print_char_array(char* array, int array_size) {
+    for(int i = 0; i < array_size; i++) {
+        printf("Char at index: %i was %c", i, array[i]);
+    }
+}
+
 #define BLOCK_SIZE 256  // Number of threads per block
 #define ARRAY_SIZE 1024  // Size of the input arrays
 
@@ -94,6 +100,7 @@ int main() {
     unsigned int h_matches_found[] = {-1u, -1u, -1u};
     Match* h_match_arr = (Match*)calloc(3, sizeof(Match)); 
 
+    for(int i = 0; i )
 
     // Device data allocation
     // d_ for device 
@@ -109,6 +116,8 @@ int main() {
     cudaMalloc((void **)&d_matches_found, 3*sizeof(unsigned int));
     cudaMalloc((void **)&d_match_arr, 3*sizeof(Match));
 
+    print_char_array<<<1,1>>>(d_patterns, 3);
+    cudaDeviceSynchronize();
     // Copy input arrays to device
     cudaMemcpy(d_text, h_text, text_len * sizeof(char), cudaMemcpyHostToDevice);
     cudaMemcpy(d_patterns, h_patterns, (5+3+5)*sizeof(char), cudaMemcpyHostToDevice);
