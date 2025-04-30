@@ -23,7 +23,7 @@ typedef struct {
     int pattern_idx;
 } Match;
 
-bool matches(char pattern, char text);
+__device__ bool matches(char pattern, char text);
 
 __global__ void simple_gpu_re(char *text, int text_len, int pattern_count, char *patterns[], int patterns_len[], unsigned int matches_found[], Match match_arr[]) {
     int pattern_len = patterns_len[blockIdx.x];
@@ -68,6 +68,7 @@ __global__ void simple_gpu_re(char *text, int text_len, int pattern_count, char 
 // Update this to work with tokens, and return how much of text was consumed
 __device__ bool matches(char pattern, char text)
 {
+    printf("Trying to match %c and %c", pattern, text);
     return pattern == text;
 }
 
