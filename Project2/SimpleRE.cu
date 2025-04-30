@@ -28,6 +28,7 @@ bool matches(char pattern, char text);
 __global__ void simple_gpu_re(char *text, int text_len, int pattern_count, char *patterns[], int patterns_len[], unsigned int matches_found[], Match match_arr[]) {
     int pattern_len = patterns_len[blockIdx.x];
     int stride = blockDim.x;
+    printf("Printing from block %i thread %i", blockIdx.x, threadIdx.x);
     for (int pattern_index = blockIdx.x; pattern_index < gridDim.x; pattern_index += gridDim.x) {
         char *pattern = patterns[pattern_index];
         for (int i = threadIdx.x; i < text_len; i += stride) {
@@ -52,11 +53,9 @@ __global__ void simple_gpu_re(char *text, int text_len, int pattern_count, char 
                 // If match here, collection process can start,
                 __syncthreads(); // Synchronize threads in the block
                 if (threadIdx.x == matches_found[pattern_index]%stride) {
-                    Match* match = (Match*)calloc(1, sizeof(Match));
-                    match->start_index = i;
-                    match->length = text_off;
-                    match->pattern_idx = pattern_index;
-                    match_arr[pattern_index] = *match;
+                    match_arr[pattern_index].start_index = i;
+                    match_arr[pattern_index].length = text_off;
+                    match_arr[pattern_index].pattern_idx = pattern_index;
 
                     printf("Match for pattern \"%s\" found at %i\n", patterns[pattern_index], i);
                 }
