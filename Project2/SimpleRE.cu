@@ -94,13 +94,11 @@ __global__ void print_char_array(char* array, int array_size) {
 int main() {
     //h_ for host 
     char* h_text = "dette er en lang test tekst xD";
-    int text_len = strlen(h_text);
+    int text_len = strlen(h_text) + 1;
     char* h_patterns[] = { "test", "er", "nope" };
     int h_pattern_lens[] = {4, 2, 4}; //because of terminating char
     unsigned int h_matches_found[] = {-1u, -1u, -1u};
     Match* h_match_arr = (Match*)calloc(3, sizeof(Match)); 
-
-    for(int i = 0; i )
 
     // Device data allocation
     // d_ for device 
@@ -111,7 +109,13 @@ int main() {
     Match* d_match_arr;
 
     cudaMalloc((void **)&d_text, text_len * sizeof(char));
-    cudaMalloc((void **)&d_patterns, (5+3+5)*sizeof(char));
+
+    cudaMalloc((void **)&d_patterns, 3*sizeof(char*));
+    cudaMalloc((void **)d_patterns+0, 5*sizeof(char));
+    cudaMalloc((void **)d_patterns+1, 3*sizeof(char));
+    cudaMalloc((void **)d_patterns+2, 5*sizeof(char));
+
+
     cudaMalloc((void **)&d_pattern_lengths, 3*sizeof(int));
     cudaMalloc((void **)&d_matches_found, 3*sizeof(unsigned int));
     cudaMalloc((void **)&d_match_arr, 3*sizeof(Match));
