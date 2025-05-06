@@ -34,9 +34,6 @@ __global__ void simple_gpu_re(char *text, int text_len, int pattern_index_arr_le
     for (int pattern_index = blockIdx.x; pattern_index < num_patterns; pattern_index += gridDim.x) {
         int pattern_len = pattern_start_index_arr[pattern_index+1]-pattern_start_index_arr[pattern_index]-1;
         char *pattern = patterns + (pattern_start_index_arr[pattern_index]);
-        if (threadIdx.x == 0) {
-            printf("Working on pattern: %s\n", pattern);
-        }
         for (int i = threadIdx.x; i < text_len; i += stride) {
             int pattern_off = 0;
             int text_off = 0;
