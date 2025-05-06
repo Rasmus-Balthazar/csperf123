@@ -38,6 +38,8 @@ __global__ void simple_gpu_re(char *text, int text_len, int pattern_index_arr_le
         }
     }
 
+    __syncthreads();
+
     int stride = blockDim.x;
     for (int pattern_index = blockIdx.x; pattern_index < num_patterns; pattern_index += gridDim.x) {
         int pattern_len = patterns_len[pattern_index+1]-patterns_len[pattern_index]-1;
@@ -82,6 +84,7 @@ __global__ void simple_gpu_re(char *text, int text_len, int pattern_index_arr_le
             }
         }
     }
+    __syncthreads();
 }
 
 // Update this to work with tokens, and return how much of text was consumed
