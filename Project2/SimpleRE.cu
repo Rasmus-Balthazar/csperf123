@@ -28,6 +28,7 @@ __device__ int matches(char pattern, char text);
 __global__ void simple_gpu_re(char *text, int text_len, int pattern_index_arr_len, char *patterns, int patterns_len[], unsigned int matches_found[], Match match_arr[]) {
     int num_patterns = pattern_index_arr_len-1;
     if (threadIdx.x == 0) {
+        printf("Block id: %i\n", blockIdx.x);
         printf("text: %s\n", text);
         for (int i = 0; i < num_patterns; i++)
         {
