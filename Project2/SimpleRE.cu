@@ -39,7 +39,7 @@ __global__ void simple_gpu_re(char *text, int text_len, int pattern_index_arr_le
     }
 
     int stride = blockDim.x;
-    for (int pattern_index = blockIdx.x; pattern_index < gridDim.x; pattern_index += gridDim.x) {
+    for (int pattern_index = blockIdx.x; pattern_index < num_patterns; pattern_index += gridDim.x) {
         int pattern_len = patterns_len[pattern_index+1]-patterns_len[pattern_index]-1;
         char *pattern = patterns + (patterns_len[pattern_index]);
         for (int i = threadIdx.x; i < text_len; i += stride) {
@@ -125,7 +125,7 @@ int main() {
     dim3 threadsPerBlock(BLOCK_SIZE);
     dim3 blocksPerGrid((ARRAY_SIZE + BLOCK_SIZE - 1) / BLOCK_SIZE);
 
-    simple_gpu_re<<<blocksPerGrid, threadsPerBlock>>>(d_text, text_len, 3, d_patterns, d_pattern_lengths, d_matches_found, d_match_arr);
+    simple_gpu_re<<<blocksPerGrid, threadsPerBlock>>>(d_text, text_len, 4, d_patterns, d_pattern_lengths, d_matches_found, d_match_arr);
 
     cudaMemcpy(h_match_arr, d_match_arr, 3*sizeof(Match), cudaMemcpyDeviceToHost);
 }
