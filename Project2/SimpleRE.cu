@@ -1,5 +1,7 @@
 #include <stdbool.h>
 #include <string.h>
+#include <iostream>
+#include <fstream>
 #include <cuda_runtime.h>
 #include <stdio.h>
 
@@ -25,20 +27,8 @@ typedef struct {
 
 __device__ int matches(char pattern, char text);
 
-__global__ void simple_gpu_re(char *text, int text_len, int pattern_index_arr_len, char *patterns, int pattern_start_index_arr[], unsigned int matches_found[], Match match_arr[]) {
-    int num_patterns = 3;
-    if (threadIdx.x == 0 && blockIdx.x == 0) {
-        printf("Grid dim: %i\n", gridDim.x);
-        printf("Block id: %i\n", blockIdx.x);
-        printf("text: %s\n", text);
-        for (int i = 0; i < num_patterns; i++)
-        {
-            char *pattern = patterns + (pattern_start_index_arr[i]);
-            printf("pattern %i: %s\n", i, pattern);
-        }
-    }
-
-    __syncthreads();
+__global__ void simple_gpu_re(char *text, int text_len, int pattern_index_arr_len, char *patterns, int patterns_len[], unsigned int matches_found[], Match match_arr[]) {
+    int num_patterns = pattern_index_arr_len-1;
 
     int stride = blockDim.x;
     for (int pattern_index = blockIdx.x; pattern_index < num_patterns; pattern_index += gridDim.x) {
@@ -58,7 +48,6 @@ __global__ void simple_gpu_re(char *text, int text_len, int pattern_index_arr_le
                 text_off+= does_match;
                 // If the offset is longer than the pattern length we have found it
                 if (pattern_off >= pattern_len) {
-                    printf("Matched pattern \"%s\" on thread %i at position %i\n", pattern, threadIdx.x, i);
                     unsigned int val = matches_found[pattern_index];
                     // We are relying on the checks not being exhaustive by doing val > i before atomicCAS
                     while (val > i && atomicCAS(matches_found + pattern_index, val, i) > i) {
@@ -77,8 +66,7 @@ __global__ void simple_gpu_re(char *text, int text_len, int pattern_index_arr_le
                     match_arr[pattern_index].start_index = i;
                     match_arr[pattern_index].length = text_off;
                     match_arr[pattern_index].pattern_idx = pattern_index;
-
-                    printf("Match for pattern \"%s\" found at %i\n", patterns[pattern_index], i);
+                    // printf("Match for pattern \"%s\" found at %i\n", patterns[pattern_index], i);
                 }
                 break;
             }
@@ -89,7 +77,7 @@ __global__ void simple_gpu_re(char *text, int text_len, int pattern_index_arr_le
 
 // Update this to work with tokens, and return how much of text was consumed
 __device__ int matches(char pattern, char text) {
-    printf("Trying to match %c and %c\n", pattern, text);
+    // printf("Trying to match %c and %c\n", pattern, text);
     return pattern == text;
 }
 
@@ -135,4 +123,7 @@ int main() {
     simple_gpu_re<<<blocksPerGrid, threadsPerBlock>>>(d_text, text_len, num_pattern_lens, d_patterns, d_pattern_lengths, d_matches_found, d_match_arr);
 
     cudaMemcpy(h_match_arr, d_match_arr, 3*sizeof(Match), cudaMemcpyDeviceToHost);
+    for(int i = 0; i < len(h_match_arr) ; i++) {
+        
+    }
 }
