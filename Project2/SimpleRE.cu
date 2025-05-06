@@ -27,7 +27,7 @@ typedef struct {
 
 __device__ int matches(char pattern, char text);
 
-__global__ void simple_gpu_re(char *text, int text_len, int pattern_index_arr_len, char *patterns, int patterns_len[], unsigned int matches_found[], Match match_arr[]) {
+__global__ void simple_gpu_re(char *text, int text_len, int pattern_index_arr_len, char *patterns, int pattern_start_index_arr[], unsigned int matches_found[], Match match_arr[]) {
     int num_patterns = pattern_index_arr_len-1;
 
     int stride = blockDim.x;
@@ -123,7 +123,7 @@ int main() {
     simple_gpu_re<<<blocksPerGrid, threadsPerBlock>>>(d_text, text_len, num_pattern_lens, d_patterns, d_pattern_lengths, d_matches_found, d_match_arr);
 
     cudaMemcpy(h_match_arr, d_match_arr, 3*sizeof(Match), cudaMemcpyDeviceToHost);
-    for(int i = 0; i < num_patterns_len - 1; i++) {
+    for(int i = 0; i < num_patterns_lens - 1; i++) {
         char* pattern_at_index_i = h_patterns + h_pattern_lens[i];
         if (!h_match_arr[i].length) {
             printf("no match found for pattern: \"%s\"\n", pattern_at_index_i);
