@@ -26,7 +26,7 @@ typedef struct {
 __device__ int matches(char pattern, char text);
 
 __global__ void simple_gpu_re(char *text, int text_len, int pattern_index_arr_len, char *patterns, int pattern_start_index_arr[], unsigned int matches_found[], Match match_arr[]) {
-    int num_patterns = pattern_index_arr_len-1;
+    int num_patterns = 3;
     if (threadIdx.x == 0 && blockIdx.x == 0) {
         printf("Grid dim: %i\n", gridDim.x);
         printf("Block id: %i\n", blockIdx.x);
@@ -94,7 +94,7 @@ __device__ int matches(char pattern, char text) {
 }
 
 #define BLOCK_SIZE 8  // Number of threads per block
-#define ARRAY_SIZE 1024  // Size of the input arrays
+#define ARRAY_SIZE 64  // Size of the input arrays
 
 int main() {
     //h_ for host 
