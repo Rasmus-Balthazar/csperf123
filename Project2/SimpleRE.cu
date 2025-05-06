@@ -102,6 +102,7 @@ int main() {
     int text_len = strlen(h_text);
     char* h_patterns = "test\0er\0nope\0";
     int h_pattern_lens[] = {0, 5, 8, 13}; //because of terminating char
+    int num_pattern_lens = 4; // the length of the above array
     unsigned int h_matches_found[] = {-1u, -1u, -1u};
     Match* h_match_arr = (Match*)calloc(3, sizeof(Match)); 
 
@@ -131,7 +132,7 @@ int main() {
     dim3 threadsPerBlock(BLOCK_SIZE);
     dim3 blocksPerGrid((ARRAY_SIZE + BLOCK_SIZE - 1) / BLOCK_SIZE);
 
-    simple_gpu_re<<<blocksPerGrid, threadsPerBlock>>>(d_text, text_len, 4, d_patterns, d_pattern_lengths, d_matches_found, d_match_arr);
+    simple_gpu_re<<<blocksPerGrid, threadsPerBlock>>>(d_text, text_len, num_pattern_lens, d_patterns, d_pattern_lengths, d_matches_found, d_match_arr);
 
     cudaMemcpy(h_match_arr, d_match_arr, 3*sizeof(Match), cudaMemcpyDeviceToHost);
 }
