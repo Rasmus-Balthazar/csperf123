@@ -27,8 +27,8 @@ __device__ int matches(char pattern, char text);
 
 __global__ void simple_gpu_re(char *text, int text_len, int pattern_index_arr_len, char *patterns, int patterns_len[], unsigned int matches_found[], Match match_arr[]) {
     int num_patterns = pattern_index_arr_len-1;
-    printf("text: %s\n", text);
     if (threadIdx.x == 0) {
+        printf("text: %s\n", text);
         for (int i = 0; i < num_patterns; i++)
         {
             int pattern_len = patterns_len[i+1]-patterns_len[i]-1;
@@ -52,7 +52,7 @@ __global__ void simple_gpu_re(char *text, int text_len, int pattern_index_arr_le
                 text_off+= does_match;
                 // If the offset is longer than the pattern length we have found it
                 if (pattern_off >= pattern_len) {
-                    printf("Matched pattern \"%s\" on thread %i\n", pattern, threadIdx.x);
+                    printf("Matched pattern \"%s\" on thread %i at position %i\n", pattern, threadIdx.x, i);
                     unsigned int val = matches_found[pattern_index];
                     // We are relying on the checks not being exhaustive by doing val > i before atomicCAS
                     while (val > i && atomicCAS(matches_found + pattern_index, val, i) > i) {
@@ -93,7 +93,7 @@ int main() {
     //h_ for host 
     char* h_text = "dette er en lang test tekst xD";
     int text_len = strlen(h_text);
-    char* h_patterns = "test\0er\0nope";
+    char* h_patterns = "test\0er\0nope\0";
     int h_pattern_lens[] = {0, 5, 8, 13}; //because of terminating char
     unsigned int h_matches_found[] = {-1u, -1u, -1u};
     Match* h_match_arr = (Match*)calloc(3, sizeof(Match)); 
