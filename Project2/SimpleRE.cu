@@ -123,7 +123,12 @@ int main() {
     simple_gpu_re<<<blocksPerGrid, threadsPerBlock>>>(d_text, text_len, num_pattern_lens, d_patterns, d_pattern_lengths, d_matches_found, d_match_arr);
 
     cudaMemcpy(h_match_arr, d_match_arr, 3*sizeof(Match), cudaMemcpyDeviceToHost);
-    for(int i = 0; i < len(h_match_arr) ; i++) {
-        
+    for(int i = 0; i < num_patterns_len - 1; i++) {
+        char* pattern_at_index_i = h_patterns + h_pattern_lens[i];
+        if (!h_match_arr[i].length) {
+            printf("no match found for pattern: \"%s\"\n", pattern_at_index_i);
+        } else {
+            printf("match found for pattern: \"%s\" at position %i\n", pattern_at_index_i, h_match_arr[i].start_index);
+        }
     }
 }
