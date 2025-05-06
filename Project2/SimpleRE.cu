@@ -25,18 +25,22 @@ typedef struct {
 
 __device__ int matches(char pattern, char text);
 
-__global__ void simple_gpu_re(char *text, int text_len, int pattern_count, char *patterns[], int patterns_len[], unsigned int matches_found[], Match match_arr[]) {
+__global__ void simple_gpu_re(char *text, int text_len, int pattern_index_arr_len, char *patterns, int patterns_len[], unsigned int matches_found[], Match match_arr[]) {
+    int num_patterns = pattern_index_arr_len-1;
+    printf("text: %s\n", text);
     if (threadIdx.x == 0) {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < num_patterns; i++)
         {
-            printf("pattern %i: %s", i, patterns[i]);
+            int pattern_len = patterns_len[i+1]-patterns_len[i]-1;
+            char *pattern = patterns + (patterns_len[i]);
+            printf("pattern %i: %s\n", i, pattern);
         }
     }
 
-    int pattern_len = patterns_len[blockIdx.x];
     int stride = blockDim.x;
     for (int pattern_index = blockIdx.x; pattern_index < gridDim.x; pattern_index += gridDim.x) {
-        char *pattern = patterns[pattern_index];
+        int pattern_len = patterns_len[pattern_index+1]-patterns_len[pattern_index]-1;
+        char *pattern = patterns + (patterns_len[pattern_index]);
         for (int i = threadIdx.x; i < text_len; i += stride) {
             int pattern_off = 0;
             int text_off = 0;
@@ -89,8 +93,8 @@ int main() {
     //h_ for host 
     char* h_text = "dette er en lang test tekst xD";
     int text_len = strlen(h_text);
-    char* h_patterns[] = { "test", "er", "nope" };
-    int h_pattern_lens[] = {4, 2, 4}; //because of terminating char
+    char* h_patterns = "test\0er\0nope";
+    int h_pattern_lens[] = {0, 5, 8, 13}; //because of terminating char
     unsigned int h_matches_found[] = {-1u, -1u, -1u};
     Match* h_match_arr = (Match*)calloc(3, sizeof(Match)); 
 
@@ -98,21 +102,21 @@ int main() {
     // Device data allocation
     // d_ for device 
     char* d_text;
-    char** d_patterns;
+    char* d_patterns;
     int* d_pattern_lengths;
     unsigned int* d_matches_found;
     Match* d_match_arr;
 
     cudaMalloc((void **)&d_text, text_len * sizeof(char));
     cudaMalloc((void **)&d_patterns, (5+3+5)*sizeof(char));
-    cudaMalloc((void **)&d_pattern_lengths, 3*sizeof(int));
+    cudaMalloc((void **)&d_pattern_lengths, 4*sizeof(int));
     cudaMalloc((void **)&d_matches_found, 3*sizeof(unsigned int));
     cudaMalloc((void **)&d_match_arr, 3*sizeof(Match));
 
     // Copy input arrays to device
     cudaMemcpy(d_text, h_text, text_len * sizeof(char), cudaMemcpyHostToDevice);
     cudaMemcpy(d_patterns, h_patterns, (5+3+5)*sizeof(char), cudaMemcpyHostToDevice);
-    cudaMemcpy(d_pattern_lengths, h_pattern_lens, 3*sizeof(int), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_pattern_lengths, h_pattern_lens, 4*sizeof(int), cudaMemcpyHostToDevice);
     cudaMemcpy(d_matches_found, h_matches_found, 3*sizeof(unsigned int), cudaMemcpyHostToDevice);
     cudaMemcpy(d_match_arr, h_match_arr, 3*sizeof(Match), cudaMemcpyHostToDevice);
 
