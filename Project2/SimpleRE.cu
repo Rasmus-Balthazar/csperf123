@@ -43,10 +43,11 @@ __device__ int matches(char pattern, char text);
 __host__ PatternsInformation process_patterns(char* file_path);
 
 __device__ int matches(char pattern, char text);
+__host__ int count_lines_in_file(const char *file_path);
 
 __global__ void simple_gpu_re(char *text, int text_len, char *formatted_patterns, Pattern *patterns, int* num_patterns, unsigned int matches_found[], Match match_arr[]) {
     if(blockIdx.x == 0 && threadIdx.x == 0) {
-        printf("text: %s\ntext len: %d\nform patterns:%s %s %s\nnum patterns: %d\n",text, text_len, formatted_patterns, formatted_patterns + 5, formatted_patterns + 8, 4);
+        printf("text: %s\ntext len: %d\nform patterns:%s %s %s\nnum patterns: %d\n",text, text_len, formatted_patterns, formatted_patterns + 5, formatted_patterns + 8, *num_patterns);
     }
     int stride = blockDim.x;
     //loop over patterns
@@ -101,28 +102,52 @@ __device__ int matches(char pattern, char text) {
 
 /* New */
 __host__ PatternsInformation process_patterns(const char *file_path) {
-        std::string pattern;
+        std::string working_pattern;
+
+        int num_lines = count_lines_in_file(file_path)-1;
+        Pattern *patterns = (Pattern*)calloc(num_lines, sizeof(Pattern));
+
+        int file_chars = 0;
+        std::ifstream FileLenCounting(file_path);
+        while (std::getline(FileLenCounting, working_pattern)) {
+            file_chars += working_pattern.length()+1;
+        }
+        FileLenCounting.close(); 
+
+        char* pattern_collection = (char*)calloc(file_chars, sizeof(char));
+        int working_pattern_id = 0;
+        int working_offset = 0;
 
         std::ifstream RegexFile(file_path);
-
-        std::string pattern_collection;
-        while (std::getline(RegexFile, pattern)) {
+        while (std::getline(RegexFile, working_pattern)) {
                 /* TODO: process file to get the information the way we want */
-                pattern_collection = pattern_collection + pattern + "\0";
+                patterns[working_pattern_id].pattern_len = working_pattern.length();
+                patterns[working_pattern_id].pattern_text_offset = working_offset;
+                memcpy(pattern_collection+working_offset, working_pattern.c_str(), (working_pattern.length()+1)*sizeof(char));
+                working_offset += patterns[working_pattern_id].pattern_len+1;
+                working_pattern_id++;
         }
+        printf("Formatted text: %s\n", pattern_collection);
+        int format_len = patterns[num_lines-1].pattern_text_offset+patterns[num_lines-1].pattern_len;
         RegexFile.close(); 
+        PatternsInformation info = {
+            pattern_collection,
+            patterns[num_lines-1].pattern_text_offset+patterns[num_lines-1].pattern_len,
+            patterns,
+            num_lines
+        };
 
         /* TODO: return the correct thing */
         
-        Pattern* arr = (Pattern*)calloc(3,sizeof(Pattern)); 
-        arr[0].pattern_text_offset = 0;
-        arr[0].pattern_len = 4;
-        arr[1].pattern_text_offset = 5;
-        arr[1].pattern_len = 2;
-        arr[2].pattern_text_offset = 8;
-        arr[2].pattern_len = 4;
-        PatternsInformation p = {"test\0er\0nope\0", 13, arr, 3};
-        return p;
+        // Pattern* arr = (Pattern*)calloc(3,sizeof(Pattern)); 
+        // arr[0].pattern_text_offset = 0;
+        // arr[0].pattern_len = 4;
+        // arr[1].pattern_text_offset = 5;
+        // arr[1].pattern_len = 2;
+        // arr[2].pattern_text_offset = 8;
+        // arr[2].pattern_len = 4;
+        // PatternsInformation p = {"test\0er\0nope\0", 13, arr, 3};
+        return info;
 }
 
 __host__ int count_lines_in_file(const char *file_path) {
@@ -141,8 +166,13 @@ int main(int argc, const char * argv[]) {
     /* TODO: use the info from this p to inisialise things */ 
     char* h_text = "dette er en lang test tekst xD!!";
     int text_len = strlen(h_text);
-    unsigned int h_matches_found[] = {-1u, -1u, -1u};
-    Match* h_match_arr = (Match*)calloc(3, sizeof(Match)); 
+    unsigned int *h_matches_found = (unsigned int *)calloc(p.num_patterns, sizeof(unsigned int));
+    for (int i = 0; i < p.num_patterns; i++)
+    {
+        h_matches_found[i]=-1u;
+    }
+    
+    Match* h_match_arr = (Match*)calloc(p.num_patterns, sizeof(Match)); 
 
 
     // Device data allocation
