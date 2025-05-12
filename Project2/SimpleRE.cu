@@ -44,10 +44,13 @@ __host__ PatternsInformation process_patterns(char* file_path);
 
 __device__ int matches(char pattern, char text);
 
-__global__ void simple_gpu_re(char *text, int text_len, char *formatted_patterns, Pattern *patterns, int num_patterns, unsigned int matches_found[], Match match_arr[]) {
+__global__ void simple_gpu_re(char *text, int text_len, char *formatted_patterns, Pattern *patterns, int* num_patterns, unsigned int matches_found[], Match match_arr[]) {
+    if(blockIdx.x == 0 && threadIdx.x == 0) {
+        printf("text: %s\ntext len: %d\nform patterns:%s %s %s\nnum patterns: %d\n",text, text_len, formatted_patterns, formatted_patterns + 5, formatted_patterns + 8, 4);
+    }
     int stride = blockDim.x;
     //loop over patterns
-    for (int pattern_index = blockIdx.x; pattern_index < num_patterns; pattern_index += gridDim.x) {
+    for (int pattern_index = blockIdx.x; pattern_index < *num_patterns; pattern_index += gridDim.x) {
         Pattern pattern = patterns[pattern_index];
         int pattern_len = pattern.pattern_len;
         char *pattern_text = formatted_patterns + pattern.pattern_text_offset;
@@ -110,7 +113,14 @@ __host__ PatternsInformation process_patterns(const char *file_path) {
         RegexFile.close(); 
 
         /* TODO: return the correct thing */
-        Pattern arr[3] = {{0,4},{5,2},{8,4}};
+        
+        Pattern* arr = (Pattern*)calloc(3,sizeof(Pattern)); 
+        arr[0].pattern_text_offset = 0;
+        arr[0].pattern_len = 4;
+        arr[1].pattern_text_offset = 5;
+        arr[1].pattern_len = 2;
+        arr[2].pattern_text_offset = 8;
+        arr[2].pattern_len = 4;
         PatternsInformation p = {"test\0er\0nope\0", 13, arr, 3};
         return p;
 }
@@ -142,7 +152,9 @@ int main(int argc, const char * argv[]) {
     char* d_patterns_text;
     unsigned int* d_matches_found;
     Match* d_match_arr;
-
+    int* d_num_patterns;
+    
+    cudaMalloc((void **)&d_num_patterns, sizeof(int));
     cudaMalloc((void **)&d_text, text_len * sizeof(char));
     cudaMalloc((void **)&d_patterns, p.num_patterns*sizeof(Pattern));
     cudaMalloc((void **)&d_patterns_text, p.formatted_length*sizeof(char));
@@ -150,6 +162,7 @@ int main(int argc, const char * argv[]) {
     cudaMalloc((void **)&d_match_arr, p.num_patterns*sizeof(Match));
 
     // Copy input arrays to device
+    cudaMemcpy(d_num_patterns, &( p.num_patterns ), sizeof(int), cudaMemcpyHostToDevice);
     cudaMemcpy(d_text, h_text, text_len * sizeof(char), cudaMemcpyHostToDevice);
     cudaMemcpy(d_patterns, p.patterns, p.num_patterns*sizeof(Pattern), cudaMemcpyHostToDevice);
     cudaMemcpy(d_matches_found, h_matches_found, p.num_patterns*sizeof(unsigned int), cudaMemcpyHostToDevice);
@@ -160,9 +173,9 @@ int main(int argc, const char * argv[]) {
     dim3 threadsPerBlock(BLOCK_SIZE);
     dim3 blocksPerGrid((ARRAY_SIZE + BLOCK_SIZE - 1) / BLOCK_SIZE);
 
-    simple_gpu_re<<<blocksPerGrid, threadsPerBlock>>>(d_text, text_len, d_patterns_text, d_patterns, p.num_patterns, d_matches_found, d_match_arr);
+    simple_gpu_re<<<blocksPerGrid, threadsPerBlock>>>(d_text, text_len, d_patterns_text, d_patterns, d_num_patterns, d_matches_found, d_match_arr);
 
-    cudaMemcpy(h_match_arr, d_match_arr, 3*sizeof(Match), cudaMemcpyDeviceToHost);
+    cudaMemcpy(h_match_arr, d_match_arr, p.num_patterns*sizeof(Match), cudaMemcpyDeviceToHost);
     for(int i = 0; i < p.num_patterns; i++) {
         char* pattern_at_index_i = p.formatted_patterns + p.patterns[i].pattern_text_offset;
         if (!h_match_arr[i].length) {
