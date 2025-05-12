@@ -4,6 +4,7 @@
 #include <fstream>
 #include <cuda_runtime.h>
 #include <stdio.h>
+#include <algorithm>
 
 // Input, how much is left of input, Pattern, Pattern length
 /** Progression
@@ -25,19 +26,20 @@ typedef struct {
     int pattern_idx;
 } Match;
 
-/* New */
-// template <int N>
 typedef struct {
-        char* formatted_patterns;
-        int* pattern_lens_add;
-        int* patterns_len_individual;
-        int num_patterns;
-}PatternsInformation;
+    int pattern_text_offset;
+    int pattern_len;
+} Pattern;
+
+typedef struct {
+    char* formatted_patterns;
+    Pattern* patterns;
+    int num_patterns;
+} PatternsInformation;
 
 __device__ int matches(char pattern, char text);
-/* New */
-// template <int N>
-__device__ PatternsInformation process_patterns(char* file_path);
+
+__host__ PatternsInformation process_patterns(char* file_path);
 
 __device__ int matches(char pattern, char text);
 
@@ -101,18 +103,27 @@ __host__ PatternsInformation process_patterns(const char *file_path) {
 
         std::ifstream RegexFile(file_path);
 
+        std::string pattern_collection;
         while (std::getline(RegexFile, pattern)) {
                 /* TODO: process file to get the information the way we want */
-                printf("%s\n", pattern.c_str());
+                pattern_collection = pattern_collection + pattern + "\0";
+                // printf("%s\n", pattern.c_str());
         }
+        printf("%s\n", pattern_collection);
 
+        // pattern_collection.c_str();
         RegexFile.close(); 
 
         /* TODO: return the correct thing */
-        int arr1[4] = {0, 5, 8, 13};
-        int arr2[3] = {5 ,3 ,5};
-        PatternsInformation p = {"test\0er\0nope\0", arr1, arr2, 3};
+        Pattern arr[3] = {{0,4},{5,2},{8,4}};
+        PatternsInformation p = {"test\0er\0nope\0", arr, 3};
         return p;
+}
+__host__ int count_lines_in_file(const char *file_path) {
+    std::ifstream inFile(file_path);  
+    int line_count = std::count(std::istreambuf_iterator<char>(inFile), 
+             std::istreambuf_iterator<char>(), '\n');
+    return line_count;
 }
 
 #define BLOCK_SIZE 8  // Number of threads per block
