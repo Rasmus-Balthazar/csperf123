@@ -33,6 +33,7 @@ typedef struct {
 
 typedef struct {
     char* formatted_patterns;
+    int formatted_length;
     Pattern* patterns;
     int num_patterns;
 } PatternsInformation;
@@ -43,14 +44,13 @@ __host__ PatternsInformation process_patterns(char* file_path);
 
 __device__ int matches(char pattern, char text);
 
-__global__ void simple_gpu_re(char *text, int text_len, int pattern_index_arr_len, char *patterns, int pattern_start_index_arr[], unsigned int matches_found[], Match match_arr[]) {
-    int num_patterns = pattern_index_arr_len-1;
-
+__global__ void simple_gpu_re(char *text, int text_len, char *formatted_patterns, Pattern *patterns, int num_patterns, unsigned int matches_found[], Match match_arr[]) {
     int stride = blockDim.x;
     //loop over patterns
     for (int pattern_index = blockIdx.x; pattern_index < num_patterns; pattern_index += gridDim.x) {
-        int pattern_len = pattern_start_index_arr[pattern_index+1]-pattern_start_index_arr[pattern_index]-1;
-        char *pattern = patterns + (pattern_start_index_arr[pattern_index]);
+        Pattern pattern = patterns[pattern_index];
+        int pattern_len = pattern.pattern_len;
+        char *pattern_text = formatted_patterns + pattern.pattern_text_offset;
         //find earliest pattern match
         for (int i = threadIdx.x; i < text_len; i += stride) {
             int pattern_off = 0;
@@ -58,7 +58,7 @@ __global__ void simple_gpu_re(char *text, int text_len, int pattern_index_arr_le
             int does_match;
             do
             {
-                does_match = matches(pattern[pattern_off], text[i + text_off]);
+                does_match = matches(pattern_text[pattern_off], text[i + text_off]);
                 pattern_off+= does_match;
                 text_off+= does_match;
                 // If the offset is longer than the pattern length we have found it
@@ -97,7 +97,6 @@ __device__ int matches(char pattern, char text) {
 }
 
 /* New */
-// template <int N>
 __host__ PatternsInformation process_patterns(const char *file_path) {
         std::string pattern;
 
@@ -107,18 +106,15 @@ __host__ PatternsInformation process_patterns(const char *file_path) {
         while (std::getline(RegexFile, pattern)) {
                 /* TODO: process file to get the information the way we want */
                 pattern_collection = pattern_collection + pattern + "\0";
-                // printf("%s\n", pattern.c_str());
         }
-        printf("%s\n", pattern_collection);
-
-        // pattern_collection.c_str();
         RegexFile.close(); 
 
         /* TODO: return the correct thing */
         Pattern arr[3] = {{0,4},{5,2},{8,4}};
-        PatternsInformation p = {"test\0er\0nope\0", arr, 3};
+        PatternsInformation p = {"test\0er\0nope\0", 13, arr, 3};
         return p;
 }
+
 __host__ int count_lines_in_file(const char *file_path) {
     std::ifstream inFile(file_path);  
     int line_count = std::count(std::istreambuf_iterator<char>(inFile), 
@@ -133,46 +129,42 @@ int main(int argc, const char * argv[]) {
     //h_ for host 
     PatternsInformation p = process_patterns(argv[1]);
     /* TODO: use the info from this p to inisialise things */ 
-
-    char* h_text = "dette er en lang test tekst xD";
+    char* h_text = "dette er en lang test tekst xD!!";
     int text_len = strlen(h_text);
-    char* h_patterns = "test\0er\0nope\0";
-    int h_pattern_lens[] = {0, 5, 8, 13}; //because of terminating char
-    int num_pattern_lens = 4; // the length of the above array
     unsigned int h_matches_found[] = {-1u, -1u, -1u};
     Match* h_match_arr = (Match*)calloc(3, sizeof(Match)); 
 
 
     // Device data allocation
     // d_ for device 
+    Pattern* d_patterns;
     char* d_text;
-    char* d_patterns;
-    int* d_pattern_lengths;
+    char* d_patterns_text;
     unsigned int* d_matches_found;
     Match* d_match_arr;
 
     cudaMalloc((void **)&d_text, text_len * sizeof(char));
-    cudaMalloc((void **)&d_patterns, (5+3+5)*sizeof(char));
-    cudaMalloc((void **)&d_pattern_lengths, 4*sizeof(int));
-    cudaMalloc((void **)&d_matches_found, 3*sizeof(unsigned int));
-    cudaMalloc((void **)&d_match_arr, 3*sizeof(Match));
+    cudaMalloc((void **)&d_patterns, p.num_patterns*sizeof(Pattern));
+    cudaMalloc((void **)&d_patterns_text, p.formatted_length*sizeof(char));
+    cudaMalloc((void **)&d_matches_found, p.num_patterns*sizeof(unsigned int));
+    cudaMalloc((void **)&d_match_arr, p.num_patterns*sizeof(Match));
 
     // Copy input arrays to device
     cudaMemcpy(d_text, h_text, text_len * sizeof(char), cudaMemcpyHostToDevice);
-    cudaMemcpy(d_patterns, h_patterns, (5+3+5)*sizeof(char), cudaMemcpyHostToDevice);
-    cudaMemcpy(d_pattern_lengths, h_pattern_lens, 4*sizeof(int), cudaMemcpyHostToDevice);
-    cudaMemcpy(d_matches_found, h_matches_found, 3*sizeof(unsigned int), cudaMemcpyHostToDevice);
-    cudaMemcpy(d_match_arr, h_match_arr, 3*sizeof(Match), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_patterns, p.patterns, p.num_patterns*sizeof(Pattern), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_matches_found, h_matches_found, p.num_patterns*sizeof(unsigned int), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_match_arr, h_match_arr, p.num_patterns*sizeof(Match), cudaMemcpyHostToDevice);
+    cudaMemcpy(d_patterns_text, p.formatted_patterns, p.formatted_length * sizeof(char), cudaMemcpyHostToDevice);
 
 
     dim3 threadsPerBlock(BLOCK_SIZE);
     dim3 blocksPerGrid((ARRAY_SIZE + BLOCK_SIZE - 1) / BLOCK_SIZE);
 
-    simple_gpu_re<<<blocksPerGrid, threadsPerBlock>>>(d_text, text_len, num_pattern_lens, d_patterns, d_pattern_lengths, d_matches_found, d_match_arr);
+    simple_gpu_re<<<blocksPerGrid, threadsPerBlock>>>(d_text, text_len, d_patterns_text, d_patterns, p.num_patterns, d_matches_found, d_match_arr);
 
     cudaMemcpy(h_match_arr, d_match_arr, 3*sizeof(Match), cudaMemcpyDeviceToHost);
-    for(int i = 0; i < num_pattern_lens - 1; i++) {
-        char* pattern_at_index_i = h_patterns + h_pattern_lens[i];
+    for(int i = 0; i < p.num_patterns; i++) {
+        char* pattern_at_index_i = p.formatted_patterns + p.patterns[i].pattern_text_offset;
         if (!h_match_arr[i].length) {
             printf("no match found for pattern: \"%s\"\n", pattern_at_index_i);
         } else {
