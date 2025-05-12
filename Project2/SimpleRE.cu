@@ -25,6 +25,20 @@ typedef struct {
     int pattern_idx;
 } Match;
 
+/* New */
+// template <int N>
+typedef struct {
+        char* formatted_patterns;
+        int* pattern_lens_add;
+        int* patterns_len_individual;
+        int num_patterns;
+}PatternsInformation;
+
+__device__ int matches(char pattern, char text);
+/* New */
+// template <int N>
+__device__ PatternsInformation process_patterns(char* file_path);
+
 __device__ int matches(char pattern, char text);
 
 __global__ void simple_gpu_re(char *text, int text_len, int pattern_index_arr_len, char *patterns, int pattern_start_index_arr[], unsigned int matches_found[], Match match_arr[]) {
@@ -78,11 +92,35 @@ __device__ int matches(char pattern, char text) {
     return pattern == text;
 }
 
+/* New */
+// template <int N>
+__host__ PatternsInformation process_patterns(const char *file_path) {
+        std::string pattern;
+
+        std::ifstream RegexFile(file_path);
+
+        while (std::getline(RegexFile, pattern)) {
+                /* TODO: process file to get the information the way we want */
+                printf("%s", pattern.c_str());
+        }
+
+        RegexFile.close(); 
+
+        /* TODO: return the correct thing */
+        int arr1[4] = {0, 5, 8, 13};
+        int arr2[3] = {5 ,3 ,5};
+        PatternsInformation p = {"test\0er\0nope\0", arr1, arr2, 3};
+        return p;
+}
+
 #define BLOCK_SIZE 8  // Number of threads per block
 #define ARRAY_SIZE 64  // Size of the input arrays
-
-int main() {
+/* get file path from input arg  */
+int main(int argc, const char * argv[]) {
     //h_ for host 
+    PatternsInformation p = process_patterns(argv[1]);
+    /* TODO: use the info from this p to inisialise things */ 
+
     char* h_text = "dette er en lang test tekst xD";
     int text_len = strlen(h_text);
     char* h_patterns = "test\0er\0nope\0";
