@@ -14,4 +14,4 @@ if [ -f ./out_data ]; then
 fi
 
 nvcc SimpleRE.cu -o simple_re
-./simple_re >> out_data
+./simple_re literals.regex >> out_data
