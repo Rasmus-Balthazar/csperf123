@@ -45,9 +45,11 @@ __global__ void simple_gpu_re(char *text, int text_len, int pattern_index_arr_le
     int num_patterns = pattern_index_arr_len-1;
 
     int stride = blockDim.x;
+    //loop over patterns
     for (int pattern_index = blockIdx.x; pattern_index < num_patterns; pattern_index += gridDim.x) {
         int pattern_len = pattern_start_index_arr[pattern_index+1]-pattern_start_index_arr[pattern_index]-1;
         char *pattern = patterns + (pattern_start_index_arr[pattern_index]);
+        //find earliest pattern match
         for (int i = threadIdx.x; i < text_len; i += stride) {
             int pattern_off = 0;
             int text_off = 0;
@@ -69,7 +71,7 @@ __global__ void simple_gpu_re(char *text, int text_len, int pattern_index_arr_le
                 }
             } while (does_match);
             
-            if ((i + stride) > matches_found[pattern_index] || (i+stride) > text_len) 
+            if ((i + stride) > matches_found[pattern_index] || (i+stride) >= text_len) 
             {
                 // If match here, collection process can start,
                 __syncthreads(); // Synchronize threads in the block
@@ -101,7 +103,7 @@ __host__ PatternsInformation process_patterns(const char *file_path) {
 
         while (std::getline(RegexFile, pattern)) {
                 /* TODO: process file to get the information the way we want */
-                printf("%s", pattern.c_str());
+                printf("%s\n", pattern.c_str());
         }
 
         RegexFile.close(); 
