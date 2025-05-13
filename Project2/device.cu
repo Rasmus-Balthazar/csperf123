@@ -2,7 +2,7 @@
 
 __global__ void simple_gpu_re(char *text, int text_len, RegEx *regexes, Token *tokens, int* num_patterns, unsigned int matches_found[], Match match_arr[]) {
     if (blockIdx.x == 0 && threadIdx.x == 0) {
-        for (int i = 0; i < num_patterns; i++)
+        for (int i = 0; i < *num_patterns; i++)
         {
             printf("Regex: %d, token count: %d, token off: %d\n", i, regexes[i].token_count, regexes[i].token_offset);
         }
@@ -10,7 +10,7 @@ __global__ void simple_gpu_re(char *text, int text_len, RegEx *regexes, Token *t
 
         for (int i = 0; i < regexes[*num_patterns-1].token_offset+regexes[*num_patterns-1].token_count; i++)
         {
-            printf("token: %d, mode: %d, char: %c\n", i, tokens[i].mode, tokens[i].to_match);
+            printf("token: %d, mode: %d, char: %c, min: %d, max: %d\n", i, tokens[i].mode, tokens[i].to_match, tokens[i].min_count, tokens[i].max_count);
         }
     }
     
@@ -47,6 +47,7 @@ __global__ void simple_gpu_re(char *text, int text_len, RegEx *regexes, Token *t
                 // If match here, collection process can start,
                 __syncthreads(); // Synchronize threads in the block
                 if (threadIdx.x == matches_found[pattern_index]%stride) {
+                    printf("Saving pattern %d, start pos: %d, length: %d", pattern_index, text_start, text_off);
                     match_arr[pattern_index].start_index = text_start;
                     match_arr[pattern_index].length = text_off;
                     match_arr[pattern_index].pattern_idx = pattern_index;
