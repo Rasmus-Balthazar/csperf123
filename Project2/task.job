@@ -13,5 +13,5 @@ if [ -f ./out_data ]; then
     rm ./out_data
 fi
 
-nvcc SimpleRE.cu -o simple_re
-./simple_re text.txt literals.regex >> out_data
+make
+./main.exe text.txt literals.regex >> out_data
