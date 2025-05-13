@@ -13,7 +13,7 @@ __global__ void simple_gpu_re(char *text, int text_len, RegEx *regexes, Token *t
             do {
                 does_match = matches(tokens+re.token_offset+token_off, text[text_start + text_off], &token_off, text_len, text_start, &text_off);
                 // If the token offset is longer than the amount of token we have then we have found it
-                if (text_start+text_off >= text_len)
+                if (text_start+text_off > text_len)
                     does_match = 0;
                 if (token_off < 0)
                     does_match = 0;
@@ -72,7 +72,7 @@ __device__ int matches(Token *token, char text, int *token_off, int text_len, in
     }
     
 
-    int text_remaining = text_len - (text_start+*text_off);
+    int text_remaining = text_len - (text_start+(*text_off));
     int to_eat = min(text_remaining, token->max_count);
 
     // printf("Trying to match %c and %c\n", pattern, text);
