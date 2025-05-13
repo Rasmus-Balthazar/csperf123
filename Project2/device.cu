@@ -47,7 +47,7 @@ __global__ void simple_gpu_re(char *text, int text_len, RegEx *regexes, Token *t
                 // If match here, collection process can start,
                 __syncthreads(); // Synchronize threads in the block
                 if ((threadIdx.x == matches_found[pattern_index]%stride) && does_match) {
-                    printf("Saving pattern %d, start pos: %d, length: %d\n", pattern_index, text_start, text_off);
+                    printf("Saving pattern %d, start pos: %d, length: %d from thread, %d\n", pattern_index, text_start, text_off, threadIdx.x);
                     match_arr[pattern_index].start_index = text_start;
                     match_arr[pattern_index].length = text_off;
                     match_arr[pattern_index].pattern_idx = pattern_index;
