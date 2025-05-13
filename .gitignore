@@ -1,5 +1,4 @@
 # Add extensionless files to gitignore
-*
 !/**/
 !*.*
 
