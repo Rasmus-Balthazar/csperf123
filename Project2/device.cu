@@ -20,10 +20,10 @@ __global__ void simple_gpu_re(char *text, int text_len, RegEx *regexes, Token *t
             int does_match;
             do {
                 does_match = matches(tokens+re.token_offset+token_off, text[text_start + text_off]);
-                token_off+= does_match;
-                text_off+= does_match;
+                token_off += does_match;
+                text_off += does_match;
                 // If the token offset is longer than the amount of token we have then we have found it
-                if (token_off >= re.token_count) {
+                if (token_off >= re.token_count && does_match) {
                     unsigned int last_val = matches_found[pattern_index];
                     // We are relying on the checks not being exhaustive by doing val > i before atomicCAS
                     while (last_val > text_start && atomicCAS(matches_found + pattern_index, last_val, text_start) > text_start) {
@@ -32,6 +32,8 @@ __global__ void simple_gpu_re(char *text, int text_len, RegEx *regexes, Token *t
                     }
                     break;
                 }
+                if (text_start+text_off >= text_len)
+                    does_match = 0;
             } while (does_match);
             
             if ((text_start + stride) > matches_found[pattern_index] || (text_start+stride) >= text_len) 
