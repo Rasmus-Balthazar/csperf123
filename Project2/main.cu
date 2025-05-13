@@ -32,9 +32,7 @@ int main(int argc, const char * argv[]) {
 
     // Device data allocation
     // d_ for device 
-    Pattern* d_patterns;
     char* d_text;
-    char* d_patterns_text;
     unsigned int* d_matches_found;
     Match* d_match_arr;
     int* d_num_patterns;
@@ -43,8 +41,6 @@ int main(int argc, const char * argv[]) {
     
     cudaMalloc((void **)&d_num_patterns, sizeof(int));
     cudaMalloc((void **)&d_text, text_len * sizeof(char));
-    cudaMalloc((void **)&d_patterns, p.num_patterns*sizeof(Pattern));
-    cudaMalloc((void **)&d_patterns_text, p.formatted_length*sizeof(char));
     cudaMalloc((void **)&d_matches_found, p.num_patterns*sizeof(unsigned int));
     cudaMalloc((void **)&d_match_arr, p.num_patterns*sizeof(Match));
     cudaMalloc((void **)&d_regexes, p.num_patterns*sizeof(RegEx));
@@ -54,10 +50,8 @@ int main(int argc, const char * argv[]) {
     // Copy input arrays to device
     cudaMemcpy(d_num_patterns, &( p.num_patterns ), sizeof(int), cudaMemcpyHostToDevice);
     cudaMemcpy(d_text, h_text, text_len * sizeof(char), cudaMemcpyHostToDevice);
-    cudaMemcpy(d_patterns, p.patterns, p.num_patterns*sizeof(Pattern), cudaMemcpyHostToDevice);
     cudaMemcpy(d_matches_found, h_matches_found, p.num_patterns*sizeof(unsigned int), cudaMemcpyHostToDevice);
     cudaMemcpy(d_match_arr, h_match_arr, p.num_patterns*sizeof(Match), cudaMemcpyHostToDevice);
-    cudaMemcpy(d_patterns_text, p.formatted_patterns, p.formatted_length * sizeof(char), cudaMemcpyHostToDevice);
     cudaMemcpy(d_regexes, h_regexes, p.num_patterns*sizeof(RegEx),cudaMemcpyHostToDevice);
     for (int i = 0; i < p.num_patterns; i++)
     {
@@ -69,7 +63,7 @@ int main(int argc, const char * argv[]) {
     dim3 threadsPerBlock(BLOCK_SIZE);
     dim3 blocksPerGrid((ARRAY_SIZE + BLOCK_SIZE - 1) / BLOCK_SIZE);
 
-    simple_gpu_re<<<blocksPerGrid, threadsPerBlock>>>(d_text, text_len, d_patterns_text, d_patterns, d_num_patterns, d_matches_found, d_match_arr, d_regexes, d_tokens);
+    simple_gpu_re<<<blocksPerGrid, threadsPerBlock>>>(d_text, text_len, d_regexes, d_tokens, d_num_patterns, d_matches_found, d_match_arr);
 
     cudaMemcpy(h_match_arr, d_match_arr, p.num_patterns*sizeof(Match), cudaMemcpyDeviceToHost);
     for(int i = 0; i < p.num_patterns; i++) {
