@@ -29,6 +29,9 @@ typedef struct {
     int mode; // 0 = literal, 1 = wildcard
     unsigned int min_count, max_count;
     char to_match;
+
+    int backtracing; // 0 = no, 1 = yes
+    int match_count;
 } Token;
 
 typedef struct {

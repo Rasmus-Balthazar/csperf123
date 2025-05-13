@@ -11,9 +11,7 @@ __global__ void simple_gpu_re(char *text, int text_len, RegEx *regexes, Token *t
             int text_off = 0;
             int does_match;
             do {
-                does_match = matches(tokens+re.token_offset+token_off, text[text_start + text_off]);
-                token_off += does_match;
-                text_off += does_match;
+                does_match = matches(tokens+re.token_offset+token_off, text[text_start + text_off], &token_off, &text_off);
                 // If the token offset is longer than the amount of token we have then we have found it
                 if (token_off >= re.token_count && does_match) {
                     unsigned int last_val = matches_found[pattern_index];
@@ -46,11 +44,18 @@ __global__ void simple_gpu_re(char *text, int text_len, RegEx *regexes, Token *t
 }
 
 // Update this to work with tokens, and return how much of text was consumed
-__device__ int matches(Token *token, char text) {
+__device__ int matches(Token *token, char text, int *token_off, int *text_off) {
     // printf("Trying to match %c and %c\n", pattern, text);
-    if (token->mode)
+    if (token->mode) {
+        (*token_off)+=1;
+        (*text_off)+=1;
         return 1;
-    return token->to_match == text;
+    } else if (token->to_match == text) {
+        (*token_off)+=1;
+        (*text_off)+=1;
+        return 1;
+    }
+    return 0;
 }
 
 
