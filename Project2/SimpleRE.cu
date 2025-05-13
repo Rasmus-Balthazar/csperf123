@@ -40,6 +40,7 @@ typedef struct {
 
 __device__ int matches(char pattern, char text);
 
+__host__ char* read_file(const char* file_path);
 __host__ PatternsInformation process_patterns(char* file_path);
 
 __device__ int matches(char pattern, char text);
@@ -137,16 +138,6 @@ __host__ PatternsInformation process_patterns(const char *file_path) {
             num_lines
         };
 
-        /* TODO: return the correct thing */
-        
-        // Pattern* arr = (Pattern*)calloc(3,sizeof(Pattern)); 
-        // arr[0].pattern_text_offset = 0;
-        // arr[0].pattern_len = 4;
-        // arr[1].pattern_text_offset = 5;
-        // arr[1].pattern_len = 2;
-        // arr[2].pattern_text_offset = 8;
-        // arr[2].pattern_len = 4;
-        // PatternsInformation p = {"test\0er\0nope\0", 13, arr, 3};
         return info;
 }
 
@@ -157,14 +148,33 @@ __host__ int count_lines_in_file(const char *file_path) {
     return line_count;
 }
 
+char* read_file(const char* file_path) {
+    std::ifstream t(file_path);
+    std::string str;
+    int file_len;
+
+    t.seekg(0, std::ios::end);   
+    file_len = t.tellg();
+    str.reserve(file_len);
+    t.seekg(0, std::ios::beg);
+
+    str.assign((std::istreambuf_iterator<char>(t)),
+                std::istreambuf_iterator<char>());
+
+    char *out_str = (char*)calloc(file_len, sizeof(char));
+    memcpy(out_str, str.c_str(), file_len*sizeof(char));
+
+    return out_str;
+}
+
 #define BLOCK_SIZE 8  // Number of threads per block
 #define ARRAY_SIZE 64  // Size of the input arrays
 /* get file path from input arg  */
 int main(int argc, const char * argv[]) {
     //h_ for host 
-    PatternsInformation p = process_patterns(argv[1]);
+    PatternsInformation p = process_patterns(argv[2]);
     /* TODO: use the info from this p to inisialise things */ 
-    char* h_text = "dette er en lang test tekst xD!!";
+    char* h_text = read_file(argv[1]);
     int text_len = strlen(h_text);
     unsigned int *h_matches_found = (unsigned int *)calloc(p.num_patterns, sizeof(unsigned int));
     for (int i = 0; i < p.num_patterns; i++)
