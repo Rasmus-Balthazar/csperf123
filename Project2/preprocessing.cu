@@ -90,10 +90,12 @@ __host__ int tokenize_helper(PatternsInformation p, int pos, Token* t) {
 
 __host__ RegEx* tokenize_regex(PatternsInformation p) {
     RegEx* regexes = (RegEx*)calloc(p.num_patterns, sizeof(RegEx));
+    int token_offset = 0;
 
     for (int i = 0; i < p.num_patterns; i++)
     {
         Pattern* pattern = p.patterns+i;
+        regexes[i].token_offset = token_offset;
         int token_count = 0;
 
         regexes[i].tokens = (Token*)calloc(pattern->pattern_len, sizeof(Token));
@@ -103,38 +105,21 @@ __host__ RegEx* tokenize_regex(PatternsInformation p) {
             {
             case '.': // wildcard token
                 regexes[i].tokens[token_count].mode=1;
-                switch (p.formatted_patterns[pattern_pos+1])
-                {
-                case '*':
-                    regexes[i].tokens[token_count].min_count=0u;
-                    regexes[i].tokens[token_count].max_count=-1u;
-                    pattern_pos++;
-                    break;
-                case '+':
-                    regexes[i].tokens[token_count].min_count=1u;
-                    regexes[i].tokens[token_count].max_count=-1u;
-                    pattern_pos++;
-                    break;
-                case '?':
-                    regexes[i].tokens[token_count].min_count=0u;
-                    regexes[i].tokens[token_count].max_count=1u;
-                    pattern_pos++;
-                    break;
-                default:
-                    regexes[i].tokens[token_count].min_count=1u;
-                    regexes[i].tokens[token_count].max_count=1u;
-                    break;
-                }
+                regexes[i].tokens[token_count].to_match = '.';
+                pattern_pos += tokenize_helper(p, pattern_pos, regexes[i].tokens+token_count);
                 break;
             
             default: // literal token
+                regexes[i].tokens[token_count].mode=0;
+                regexes[i].tokens[token_count].to_match = p.formatted_patterns[pattern_pos];
+                pattern_pos += tokenize_helper(p, pattern_pos, regexes[i].tokens+token_count);
                 break;
             }
             token_count++;
         }
         regexes[i].token_count = token_count;
+        token_offset += token_count;
         
     }
-    
-
+    return regexes;
 }

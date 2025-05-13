@@ -33,6 +33,7 @@ typedef struct {
 
 typedef struct {
     Token* tokens;
+    int token_offset;
     int token_count;
 } RegEx;
 
