@@ -9,8 +9,12 @@
 
 module load CUDA/12.1.1
 
-if [ -f ./out_data ]; then
-    rm ./out_data
+if [ -f ./out_literal_data ]; then
+    rm ./out_literal_data
+fi
+
+if [ -f ./out_non_literal_data ]; then
+    rm ./out_non_literal_data
 fi
 
 make
