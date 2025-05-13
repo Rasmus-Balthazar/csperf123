@@ -43,6 +43,14 @@ __global__ void simple_gpu_re(char *text, int text_len, RegEx *regexes, Token *t
         }
     }
     __syncthreads();
+    if (blockIdx.x == 0 && threadIdx.x == 0) {
+        RegEx re = regexes[3];
+        for (int i = 0; i < re.token_count; i++)
+        {
+            Token t = tokens[re.token_offset+i];
+            printf("Mode: %d, Min: %d, Max: %d, to match: '%c', backtracking: %d, matched: %d", t.mode, t.min_count, t.max_count, t.to_match, t.backtracing, t.match_count);
+        }
+    }
 }
 
 // Update this to work with tokens, and return how much of text was consumed
