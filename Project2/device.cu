@@ -1,12 +1,12 @@
 #include "device.cuh"
 
 __global__ void simple_gpu_re(char *text, int text_len, char *formatted_patterns, Pattern *patterns, int* num_patterns, unsigned int matches_found[], Match match_arr[], RegEx *regexes, Token *tokens) {
-    if (blockIdx.x == 0 && threadIdx.x == 0) {
-        for (int i = 0; i <= regexes[*num_patterns-1].token_offset+regexes[*num_patterns-1].token_count; i++)
-        {
-            printf("%c", tokens[i].to_match);
-        }
-    }
+    // if (blockIdx.x == 0 && threadIdx.x == 0) {
+    //     for (int i = 0; i < regexes[*num_patterns-1].token_offset+regexes[*num_patterns-1].token_count; i++)
+    //     {
+    //         printf("%c", tokens[i].to_match);
+    //     }
+    // }
     
 
     int stride = blockDim.x;

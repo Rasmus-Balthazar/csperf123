@@ -45,7 +45,6 @@ __host__ PatternsInformation process_patterns(const char *file_path) {
 
         std::ifstream RegexFile(file_path);
         while (std::getline(RegexFile, working_pattern)) {
-                /* TODO: process file to get the information the way we want */
                 patterns[working_pattern_id].pattern_len = working_pattern.length();
                 patterns[working_pattern_id].pattern_text_offset = working_offset;
                 memcpy(pattern_collection+working_offset, working_pattern.c_str(), (working_pattern.length()+1)*sizeof(char));
@@ -67,7 +66,7 @@ __host__ PatternsInformation process_patterns(const char *file_path) {
 
 
 __host__ int tokenize_helper(PatternsInformation p, int pos, Token* t) {
-    switch (p.formatted_patterns[pos])
+    switch (p.formatted_patterns[pos+1])
     {
     case '*':
         t->min_count=0u;
