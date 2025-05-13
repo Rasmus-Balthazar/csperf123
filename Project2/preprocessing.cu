@@ -52,7 +52,6 @@ __host__ PatternsInformation process_patterns(const char *file_path) {
                 working_pattern_id++;
         }
         
-        int format_len = patterns[num_lines-1].pattern_text_offset+patterns[num_lines-1].pattern_len;
         RegexFile.close(); 
         PatternsInformation info = {
             pattern_collection,
