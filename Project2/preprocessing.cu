@@ -99,20 +99,35 @@ __host__ RegEx* tokenize_regex(PatternsInformation p) {
         regexes[i].tokens = (Token*)calloc(pattern->pattern_len, sizeof(Token));
         for (int pattern_pos = pattern->pattern_text_offset; pattern_pos < pattern->pattern_len+pattern->pattern_text_offset; pattern_pos++)
         {
+            Token* token = regexes[i].tokens+token_count;
             switch (p.formatted_patterns[pattern_pos])
             {
             case '.': // wildcard token
-                regexes[i].tokens[token_count].mode=1;
-                regexes[i].tokens[token_count].to_match = '.';
-                pattern_pos += tokenize_helper(p, pattern_pos, regexes[i].tokens+token_count);
+                token->mode=1;
+                token->to_match = '.';
+                break;
+
+            case '\\': // Special, i.e. ignore next or special chars
+                pattern_pos++;
+                switch (p.formatted_patterns[pattern_pos])
+                {
+                case 'n':
+                    token->mode = 0;
+                    token->to_match = '\n';
+                    break;
+                default:
+                    token->mode = 0;
+                    token->to_match = p.formatted_patterns[pattern_pos];
+                    break;
+                }
                 break;
             
             default: // literal token
-                regexes[i].tokens[token_count].mode=0;
-                regexes[i].tokens[token_count].to_match = p.formatted_patterns[pattern_pos];
-                pattern_pos += tokenize_helper(p, pattern_pos, regexes[i].tokens+token_count);
+                token->mode=0;
+                token->to_match = p.formatted_patterns[pattern_pos];
                 break;
             }
+            pattern_pos += tokenize_helper(p, pattern_pos, token);
             token_count++;
         }
         regexes[i].token_count = token_count;
