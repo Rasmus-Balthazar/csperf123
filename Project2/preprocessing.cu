@@ -76,8 +76,8 @@ __host__ int tokenize_helper(PatternsInformation p, int pos, Token* t) {
         t->max_count=-1u;
         return 1;
     case '?':
-        t->min_count=1u;
-        t->max_count=-1u;
+        t->min_count=0u;
+        t->max_count=1u;
         return 1;
     default:
         t->min_count=1u;
