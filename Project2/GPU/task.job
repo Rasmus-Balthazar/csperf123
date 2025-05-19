@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#SBATCH --job-name=gpu_re                                       # Job name
+#SBATCH --output=out/err_out                                    # output file name
+#SBATCH --cpus-per-task=1                                       # Schedule 8 cores (includes hyperthreading)
+#SBATCH --gres=gpu                                              # Schedule a GPU, it can be on 2 gpus like gpu:2
+#SBATCH --time=00:10:00                                         # Run time (hh:mm:ss) - run for one hour max
+#SBATCH --partition=scavenge                                    # Run on either the Red or Brown queue
+
+module load CUDA/12.1.1
+
+mkdir out
+if [ -f out/out_gpu ]; then
+    rm out/out_gpu
+fi
+
+make
+./main.exe ../Homemade_datasets/dataset_10mb.txt ../Homemade_datasets/patterns.regex >> out/out_gpu
