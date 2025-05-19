@@ -4,7 +4,7 @@
 #SBATCH --output=out/err_out                                    # output file name
 #SBATCH --cpus-per-task=1                                       # Schedule 8 cores (includes hyperthreading)
 #SBATCH --gres=gpu                                              # Schedule a GPU, it can be on 2 gpus like gpu:2
-#SBATCH --time=00:10:00                                         # Run time (hh:mm:ss) - run for one hour max
+#SBATCH --time=04:00:00                                         # Run time (hh:mm:ss) - run for one hour max
 #SBATCH --partition=scavenge                                    # Run on either the Red or Brown queue
 
 module load CUDA/12.1.1
