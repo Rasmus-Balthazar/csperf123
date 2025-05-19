@@ -37,6 +37,9 @@ __global__ void simple_gpu_re(char *text, int text_len, RegEx *regexes, Token *t
                     match_arr[pattern_index].length = text_off;
                     match_arr[pattern_index].pattern_idx = pattern_index;
                     // printf("Match for pattern \"%s\" found at %i\n", patterns[pattern_index], i);
+                    printf("Match found on pattern %d\n", pattern_index);
+                } else if (threadIdx.x == 0 && matches_found[pattern_index] == -1u) {
+                    printf("No match found on pattern %d\n", pattern_index);
                 }
                 break;
             }
