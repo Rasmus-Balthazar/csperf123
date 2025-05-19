@@ -10,8 +10,7 @@
  * Ors/Options
  */
 
-#define BLOCK_SIZE 8  // Number of threads per block
-#define ARRAY_SIZE 64  // Size of the input arrays
+#define BLOCK_SIZE 256  // Number of threads per block
 
 int main(int argc, const char * argv[]) {
     //h_ for host 
@@ -63,7 +62,7 @@ int main(int argc, const char * argv[]) {
 
 
     dim3 threadsPerBlock(BLOCK_SIZE);
-    dim3 blocksPerGrid((ARRAY_SIZE + BLOCK_SIZE - 1) / BLOCK_SIZE);
+    dim3 blocksPerGrid((p.num_patterns + BLOCK_SIZE - 1) / BLOCK_SIZE);
 
     simple_gpu_re<<<blocksPerGrid, threadsPerBlock>>>(d_text, text_len, d_regexes, d_tokens, d_num_patterns, d_matches_found, d_match_arr);
 
