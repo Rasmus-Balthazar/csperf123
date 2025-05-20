@@ -66,6 +66,8 @@ int main(int argc, const char * argv[]) {
 
     simple_gpu_re<<<blocksPerGrid, threadsPerBlock>>>(d_text, text_len, d_regexes, d_tokens, d_num_patterns, d_matches_found, d_match_arr);
 
+    cudaDeviceSynchronize();
+
     cudaMemcpy(h_match_arr, d_match_arr, p.num_patterns*sizeof(Match), cudaMemcpyDeviceToHost);
     for(int i = 0; i < p.num_patterns; i++) {
         char* pattern_at_index_i = p.formatted_patterns + p.patterns[i].pattern_text_offset;
