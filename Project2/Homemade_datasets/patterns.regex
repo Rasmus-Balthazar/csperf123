@@ -21,7 +21,6 @@ event.+trigger
 action.*perform
 handler.?call
 listener.*bind
-.*choose carefully because you'll stay in the job you pick for the rest of your life.
 delegate.+method
 callback.*function
 promise.?resolve
@@ -324,7 +323,6 @@ strawberry.*
 raspberry.?
 grape.+
 .?watermelon
-.*cantaloupe
 melon.+
 .?pineapple
 papaya.+
@@ -464,7 +462,6 @@ sort.+by
 page.*number
 tambourine
 .?alert
-.*status
 .+progress
 response.*code
 status.+message
