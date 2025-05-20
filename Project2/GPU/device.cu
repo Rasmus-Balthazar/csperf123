@@ -26,6 +26,8 @@ __global__ void simple_gpu_re(char *text, int text_len, RegEx *regexes, Token *t
                     }
                     break;
                 }
+                if (text_start > matches_found[pattern_index])
+                    break;
             } while (does_match);
             
             if ((text_start + stride) > matches_found[pattern_index] || (text_start+stride) >= text_len) 
