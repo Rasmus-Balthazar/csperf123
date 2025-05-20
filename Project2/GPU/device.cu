@@ -1,6 +1,6 @@
 #include "device.cuh"
 
-__global__ void simple_gpu_re(char *text, int text_len, RegEx *regexes, Token *tokens, int* num_patterns, unsigned int matches_found[], volatile Match match_arr[]) {
+__global__ void simple_gpu_re(char *text, int text_len, RegEx *regexes, Token *tokens, int* num_patterns, unsigned int matches_found[],  Match match_arr[]) {
     int stride = blockDim.x;
     //loop over regexes
     for (int pattern_index = blockIdx.x; pattern_index < *num_patterns; pattern_index += gridDim.x) {
