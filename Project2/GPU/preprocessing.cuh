@@ -9,7 +9,7 @@
 
 typedef struct {
     int start_index;
-    int length;
+    unsigned int length;
     int pattern_idx;
 } Match;
 

@@ -13,11 +13,8 @@
 #define BLOCK_SIZE 256  // Number of threads per block
 
 int main(int argc, const char * argv[]) {
-    //h_ for host 
     PatternsInformation p = process_patterns(argv[2]);
-    printf("Preprocessed");
     RegEx* h_regexes = tokenize_regex(p);
-    printf("Tokenized");
     int num_tokens = h_regexes[p.num_patterns-1].token_offset+h_regexes[p.num_patterns-1].token_count;
     
     char* h_text = read_file(argv[1]);
