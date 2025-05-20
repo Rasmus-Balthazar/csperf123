@@ -39,9 +39,9 @@ int main(int argc, char* argv[]) {
     std::string line;
     while (getline(regexes_file, line)) {
         if (std::regex_search (text_content, std::regex(line))){
-            std::cout << "regex matched: " << line << std::endl;
+            std::cout << "match found for pattern: " << line << std::endl;
         } else {
-            std::cout << "regex not matched: " << line << std::endl;
+            std::cout << "no match found for pattern: " << line << std::endl;
         }
     }
 
