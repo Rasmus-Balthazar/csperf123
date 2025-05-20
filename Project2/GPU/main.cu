@@ -62,7 +62,7 @@ int main(int argc, const char * argv[]) {
 
 
     dim3 threadsPerBlock(BLOCK_SIZE);
-    dim3 blocksPerGrid((p.num_patterns + BLOCK_SIZE - 1) / BLOCK_SIZE);
+    dim3 blocksPerGrid(p.num_patterns);
 
     simple_gpu_re<<<blocksPerGrid, threadsPerBlock>>>(d_text, text_len, d_regexes, d_tokens, d_num_patterns, d_matches_found, d_match_arr);
 
