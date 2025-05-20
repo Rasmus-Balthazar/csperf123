@@ -47,7 +47,6 @@ __global__ void simple_gpu_re(char *text, int text_len, RegEx *regexes, Token *t
             }
         }
     }
-    __syncthreads();
 }
 
 // Update this to work with tokens, and return how much of text was consumed
