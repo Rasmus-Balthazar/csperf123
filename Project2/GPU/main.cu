@@ -78,6 +78,9 @@ int main(int argc, const char * argv[]) {
 
     auto start_post_gpu = Clock::now();
     cudaMemcpy(h_match_arr, d_match_arr, p.num_patterns * sizeof(Match), cudaMemcpyDeviceToHost);
+    //End timing before we print 
+    auto end_post_gpu = Clock::now();
+    auto end_total = Clock::now();
 
     for(int i = 0; i < p.num_patterns; i++) {
         char* pattern_at_index_i = p.formatted_patterns + p.patterns[i].pattern_text_offset;
@@ -87,9 +90,6 @@ int main(int argc, const char * argv[]) {
             printf("match found for pattern: \"%s\" at position %i\n", pattern_at_index_i, h_match_arr[i].start_index);
         }
     }
-    auto end_post_gpu = Clock::now();
-
-    auto end_total = Clock::now();
 
     // Print durations
     auto duration_ms = [](auto start, auto end) {
