@@ -15,5 +15,5 @@ if [ -f out/out_gpu ]; then
 fi
 
 make
-nvidia-smi --query-gpu=gpu_name,pstate,timestamp,utilization.gpu,utilization.memory,memory.total,memory.used,power.usage --format=csv -l 1 -f out/nvidia-smi.log &
+nvidia-smi --query-gpu=gpu_name,pstate,timestamp,utilization.gpu,utilization.memory,memory.total,memory.used --format=csv -l 1 -f out/nvidia-smi.log &
 ./main.exe ../Homemade_datasets/dataset_10mb.txt ../Homemade_datasets/patterns.regex >> out/out_gpu
