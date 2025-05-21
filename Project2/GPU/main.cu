@@ -66,9 +66,11 @@ int main(int argc, const char * argv[]) {
     cudaEventCreate(&stop_kernel);
     cudaEventRecord(start_kernel);
 
+    auto start_regex = Clock::now();
     dim3 threadsPerBlock(BLOCK_SIZE);
     dim3 blocksPerGrid(p.num_patterns);
     simple_gpu_re<<<blocksPerGrid, threadsPerBlock>>>(d_text, text_len, d_regexes, d_tokens, d_num_patterns, d_matches_found, d_match_arr);
+    auto end_regex = Clock::now();
     cudaEventRecord(stop_kernel);
     cudaEventSynchronize(stop_kernel);
     float kernel_ms = 0;
@@ -98,6 +100,7 @@ int main(int argc, const char * argv[]) {
     printf("Host preprocessing:    %lld ms\n", duration_ms(start_host_preprocess, end_host_preprocess));
     printf("Device memory alloc:   %lld ms\n", duration_ms(start_device_alloc, end_device_alloc));
     printf("Data transfer to GPU:  %lld ms\n", duration_ms(start_data_transfer, end_data_transfer));
+    printf("Regex pattern matching: %lld ms\n", duration_ms(start_regex, end_regex));
     printf("Kernel execution:      %.3f ms\n", kernel_ms);
     printf("Post GPU processing:   %lld ms\n", duration_ms(start_post_gpu, end_post_gpu));
     printf("Total runtime:         %lld ms\n", duration_ms(start_total, end_total));
