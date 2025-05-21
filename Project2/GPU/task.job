@@ -16,4 +16,13 @@ fi
 
 make
 nvidia-smi --query-gpu=gpu_name,pstate,timestamp,utilization.gpu,utilization.memory,memory.total,memory.used --format=csv -l 1 -f out/nvidia-smi.log &
-./main.exe ../Homemade_datasets/dataset_10mb.txt ../Homemade_datasets/patterns.regex >> out/out_gpu
+
+NVIDIA_SMI_PID=$!
+
+for i in {1..5}; do
+    echo ">> Run $i"
+    ./main.exe ../Homemade_datasets/dataset_million_lines.txt ../Homemade_datasets/patterns.regex >> out/out_gpu
+    ./main.exe ../Homemade_datasets/dataset_million_lines.txt ../Homemade_datasets/patterns_literal.regex >> out/out_gpu_literal
+done
+
+kill $NVIDIA_SMI_PID
