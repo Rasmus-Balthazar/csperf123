@@ -104,6 +104,7 @@ int main(int argc, const char * argv[]) {
     printf("Kernel execution:      %.3f ms\n", kernel_ms);
     printf("Post GPU processing:   %lld ms\n", duration_ms(start_post_gpu, end_post_gpu));
     printf("Total runtime:         %lld ms\n", duration_ms(start_total, end_total));
+    printf("--- End of Timing ---\n");
 
     return 0;
 }
