@@ -1,0 +1,449 @@
+Argument 1: ../Homemade_datasets/dataset_10mb.txt
+Argument 2: ../Homemade_datasets/patterns.regex
+no match found for pattern: stopwatch.?lap
+no match found for pattern: alarm.*set
+match found for pattern: notification.+show
+no match found for pattern: alert.?dismiss
+match found for pattern: toast.*message
+no match found for pattern: modal.?dialog
+no match found for pattern: popup.*window
+no match found for pattern: tooltip.+show
+no match found for pattern: hint.*display
+no match found for pattern: help.?text
+match found for pattern: error.*message
+no match found for pattern: warning.+icon
+no match found for pattern: success.*badge
+no match found for pattern: info.?bubble
+no match found for pattern: status.*indicator
+match found for pattern: progress.+bar
+no match found for pattern: loading.*spinner
+no match found for pattern: busy.?indicator
+match found for pattern: state.*change
+match found for pattern: event.+trigger
+match found for pattern: action.*perform
+no match found for pattern: handler.?call
+no match found for pattern: listener.*bind
+no match found for pattern: delegate.+method
+no match found for pattern: callback.*function
+no match found for pattern: promise.?resolve
+no match found for pattern: async.*await
+no match found for pattern: parallel.+execute
+match found for pattern: sequence.*run
+no match found for pattern: batch.?process
+no match found for pattern: throttle.*call
+match found for pattern: buzz
+no match found for pattern: debounce.+input
+no match found for pattern: lazy.*load
+no match found for pattern: eager.?fetch
+no match found for pattern: preload.*resource
+no match found for pattern: ondemand.+load
+match found for pattern: cache.*strategy
+no match found for pattern: expire.?after
+no match found for pattern: Listen to me!
+no match found for pattern: refresh.*interval
+no match found for pattern: poll.+frequency
+match found for pattern: push.*notification
+no match found for pattern: subscribe.?topic
+no match found for pattern: broadcast.*message
+no match found for pattern: multicast.+group
+no match found for pattern: stream.?processing
+no match found for pattern: buffer.*overflow
+no match found for pattern: queue.+capacity
+no match found for pattern: stack.*depth
+no match found for pattern: heap.?size
+match found for pattern: memory.*limit
+no match found for pattern: disk.+quota
+match found for pattern: rate.*limit
+no match found for pattern: throttle.?request
+no match found for pattern: concurrency.+control
+no match found for pattern: semaphore.*count
+no match found for pattern: mutex.?lock
+no match found for pattern: critical.*section
+no match found for pattern: deadlock.+detect
+no match found for pattern: race.*condition
+no match found for pattern: atomic.?operation
+no match found for pattern: transaction.*isolate
+no match found for pattern: acid.*property
+no match found for pattern: consistency.?level
+no match found for pattern: durability.+guarantee
+no match found for pattern: replication.*factor
+no match found for pattern: sharding.?key
+no match found for pattern: partition.*strategy
+match found for pattern: cluster.+config
+match found for pattern: node.*count
+no match found for pattern: master.?elect
+no match found for pattern: slave.+sync
+no match found for pattern: follower.*replica
+no match found for pattern: leader.*select
+no match found for pattern: consensus.?algorithm
+no match found for pattern: quorum.*size
+no match found for pattern: vote.+count
+no match found for pattern: blockchain.*hash
+no match found for pattern: merkle.?tree
+no match found for pattern: public.*key
+match found for pattern: private.+key
+no match found for pattern: certificate.*authority
+no match found for pattern: trust.?chain
+no match found for pattern: thumbprint.*verify
+match found for pattern: signature.+check
+no match found for pattern: hash.*algorithm
+no match found for pattern: encrypt.?method
+match found for pattern: decrypt.*key
+no match found for pattern: salt.+value
+no match found for pattern: pepper.*add
+no match found for pattern: nonce.?generate
+no match found for pattern: vector.*initial
+match found for pattern: mode.+operation
+no match found for pattern: padding.*scheme
+no match found for pattern: checksum.?validate
+no match found for pattern: digest.*compute
+match found for pattern: token.+issue
+no match found for pattern: bearer.*auth
+no match found for pattern: basic.?authentication
+match found for pattern: oauth.*flow
+no match found for pattern: openid.+connect
+no match found for pattern: saml.*assertion
+no match found for pattern: kerberos.?ticket
+no match found for pattern: ldap.*query
+no match found for pattern: active.+directory
+no match found for pattern: permission.*grant
+no match found for pattern: role.*assign
+no match found for pattern: group.?membership
+no match found for pattern: acl.*entry
+no match found for pattern: rbac.+policy
+no match found for pattern: abac.*rule
+no match found for pattern: claim.?check
+no match found for pattern: scope.*validate
+no match found for pattern: jwt.+decode
+no match found for pattern: session.*create
+no match found for pattern: cookie.?store
+match found for pattern: local.*storage
+match found for pattern: memory.+cache
+no match found for pattern: redis.?command
+no match found for pattern: mongo.*query
+match found for pattern: sql.+select
+no match found for pattern: nosql.*document
+no match found for pattern: graph.?traverse
+match found for pattern: index.*search
+no match found for pattern: field.+match
+match found for pattern: fuzzy.*search
+no match found for pattern: exact.?match
+match found for pattern: wildcard.+query
+no match found for pattern: regex.*pattern
+no match found for pattern: boolean.?operator
+match found for pattern: range.+filter
+no match found for pattern: facet.*aggregate
+match found for pattern: sort.*order
+no match found for pattern: group.?by
+no match found for pattern: having.+clause
+no match found for pattern: join.*type
+match found for pattern: union.?all
+no match found for pattern: intersect.*except
+no match found for pattern: subquery.+correlated
+no match found for pattern: view.*materialized
+no match found for pattern: procedure.?stored
+no match found for pattern: function.*scalar
+match found for pattern: trigger.+event
+no match found for pattern: constraint.*enforce
+no match found for pattern: cascade.*delete
+no match found for pattern: defer.?check
+no match found for pattern: transaction.*level
+no match found for pattern: savepoint.+create
+match found for pattern: rollback.*to
+no match found for pattern: vacuum.*analyze
+no match found for pattern: explain.?plan
+no match found for pattern: optimize.*query
+no match found for pattern: hint.+index
+no match found for pattern: cache.?result
+match found for pattern: pool.*connection
+no match found for pattern: datasource.?config
+no match found for pattern: jndi.*lookup
+no match found for pattern: batch.+update
+no match found for pattern: statement.*prepare
+no match found for pattern: resultset.?iterate
+no match found for pattern: cursor.*fetch
+no match found for pattern: blob.*stream
+no match found for pattern: clob.+reader
+no match found for pattern: xml.*parse
+no match found for pattern: json.?stringify
+no match found for pattern: yaml.*load
+no match found for pattern: csv.+format
+no match found for pattern: markdown.*render
+no match found for pattern: html.?escape
+no match found for pattern: url.*encode
+no match found for pattern: base.+encode
+no match found for pattern: utf.*decode
+no match found for pattern: ascii.?convert
+no match found for pattern: unicode.*codepoint
+no match found for pattern: emoji.+render
+no match found for pattern: i18n.*bundle
+no match found for pattern: l10n.?resource
+match found for pattern: message.*format
+no match found for pattern: plural.+rule
+no match found for pattern: currency.*format
+no match found for pattern: number.?group
+match found for pattern: date.*pattern
+match found for pattern: time.+zone
+no match found for pattern: duration.*format
+no match found for pattern: interval.?parse
+no match found for pattern: period.*calculate
+no match found for pattern: scheduler.+cron
+no match found for pattern: job.*execute
+no match found for pattern: task.?submit
+no match found for pattern: thread.*pool
+no match found for pattern: executor.+service
+match found for pattern: future.*get
+no match found for pattern: promise.?then
+no match found for pattern: reactive.*stream
+no match found for pattern: flux.+map
+no match found for pattern: mono.*filter
+no match found for pattern: observable.?subscribe
+no match found for pattern: event.*loop
+no match found for pattern: callback.+hell
+no match found for pattern: async.*pipe
+match found for pattern: await.+result
+no match found for pattern: suspend.?function
+no match found for pattern: resume.*coroutine
+no match found for pattern: yield.+next
+match found for pattern: generator.*function
+no match found for pattern: iterator.?next
+no match found for pattern: loop.+break
+no match found for pattern: continue.*next
+no match found for pattern: goto.?label
+no match found for pattern: return.*from
+no match found for pattern: throw.+exception
+match found for pattern: try.*catch
+no match found for pattern: finally.?block
+no match found for pattern: with.*resource
+match found for pattern: using.+statement
+no match found for pattern: dispose.*method
+no match found for pattern: close.?stream
+no match found for pattern: finalize.*object
+no match found for pattern: gc.*collect
+no match found for pattern: reference.+weak
+no match found for pattern: phantom.*reference
+no match found for pattern: soft.?handle
+no match found for pattern: cleaner.*register
+no match found for pattern: autoclose.+resource
+no match found for pattern: scope.*exit
+no match found for pattern: guard.*clause
+no match found for pattern: assert.?that
+no match found for pattern: require.*not
+no match found for pattern: precondition.+check
+no match found for pattern: postcondition.*verify
+no match found for pattern: invariant.?maintain
+no match found for pattern: test.*driven
+no match found for pattern: behavior.+development
+no match found for pattern: mock.*object
+no match found for pattern: stub.?method
+match found for pattern: fake.*service
+no match found for pattern: spy.+on
+match found for pattern: verify.*call
+no match found for pattern: assert.?equals
+match found for pattern: expect.+that
+match found for pattern: should.*be
+no match found for pattern: given.?when
+match found for pattern: then.+expect
+no match found for pattern: scenario.*outline
+no match found for pattern: feature.?description
+match found for pattern: story.+point
+no match found for pattern: epic.*theme
+no match found for pattern: user.?story
+no match found for pattern: task.*item
+match found for pattern: bug.*fix
+no match found for pattern: defect.+report
+no match found for pattern: issue.?track
+no match found for pattern: ticket.*assign
+no match found for pattern: priority.+set
+no match found for pattern: severity.*level
+no match found for pattern: impact.?assess
+match found for pattern: root.*cause
+match found for pattern: fix.+commit
+no match found for pattern: push.*origin
+no match found for pattern: pull.?request
+no match found for pattern: merge.*strategy
+no match found for pattern: rebase.+onto
+no match found for pattern: squash.*commits
+no match found for pattern: cherry.?pick
+no match found for pattern: branch.*create
+match found for pattern: tag.+release
+no match found for pattern: version.*bump
+no match found for pattern: semver.?comply
+no match found for pattern: release.*note
+no match found for pattern: changelog.+update
+no match found for pattern: license.*check
+no match found for pattern: copyright.*notice
+no match found for pattern: author.?credit
+no match found for pattern: contributor.+list
+no match found for pattern: dependency.*manage
+no match found for pattern: package.?lock
+no match found for pattern: According to all known laws of aviation, there is no way a bee should be able to fly.
+no match found for pattern: install.+local
+no match found for pattern: global.*module
+no match found for pattern: peer.*depend
+no match found for pattern: dev.?dependency
+no match found for pattern: runtime.+require
+match found for pattern: plugin.*load
+no match found for pattern: extension.?enable
+no match found for pattern: hook.+register
+match found for pattern: middleware.*add
+no match found for pattern: interceptor.?chain
+no match found for pattern: filter.*apply
+no match found for pattern: pipe.+transform
+no match found for pattern: decorator.*wrap
+no match found for pattern: annotation.?process
+no match found for pattern: 9 to .+
+no match found for pattern: reflect.*metadata
+no match found for pattern: proxy.*create
+no match found for pattern: Infecting the young minds faster than .+
+no match found for pattern: facade.+pattern
+no match found for pattern: adapter.*convert
+no match found for pattern: bridge.?connect
+no match found for pattern: composite.*build
+no match found for pattern: flyweight.+pool
+no match found for pattern: prototype.*clone
+no match found for pattern: Pour myself a cup of .+
+no match found for pattern: Justin Timberlake
+no match found for pattern: singleton.?instance
+no match found for pattern: factory.*method
+no match found for pattern: builder.+fluent
+match found for pattern: strategy.*select
+no match found for pattern: state.?machine
+no match found for pattern: visitor.*pattern
+no match found for pattern: observer.+notify
+no match found for pattern: mediator.*coordinate
+no match found for pattern: command.?invoke
+no match found for pattern: iterator.+traverse
+no match found for pattern: memento.*save
+no match found for pattern: mary had a .* little lamb
+no match found for pattern: template.*method
+no match found for pattern: apple.*
+match found for pattern: banana.+
+no match found for pattern: .?orange
+no match found for pattern: strawberry.*
+no match found for pattern: .+blueberry
+no match found for pattern: raspberry.?
+no match found for pattern: grape.+
+match found for pattern: .?watermelon
+match found for pattern: melon.+
+no match found for pattern: .?pineapple
+no match found for pattern: papaya.+
+no match found for pattern: .?kiwi
+no match found for pattern: plum.+
+match found for pattern: .?pear
+no match found for pattern: apricot.+
+match found for pattern: .?fig
+no match found for pattern: coconut.+
+no match found for pattern: .?almond
+no match found for pattern: cashew.+
+no match found for pattern: .?walnut
+no match found for pattern: pecan.+
+no match found for pattern: .?hazelnut
+no match found for pattern: macadamia.+
+match found for pattern: .?sunflower
+match found for pattern: seed
+no match found for pattern: sesame.+
+no match found for pattern: .?flax
+no match found for pattern: rice.+
+match found for pattern: .?wheat
+no match found for pattern: barley.+
+match found for pattern: .?oats
+no match found for pattern: farro.+
+no match found for pattern: .?millet
+no match found for pattern: potato.+
+no match found for pattern: .?sweet.?potato
+match found for pattern: onion.+
+no match found for pattern: .?garlic
+no match found for pattern: turmeric.+
+match found for pattern: .?celery
+no match found for pattern: cauliflower.+
+no match found for pattern: .?asparagus
+match found for pattern: kale.+
+no match found for pattern: .?lettuce
+no match found for pattern: tomato.+
+no match found for pattern: .?pepper
+no match found for pattern: zucchini.+
+no match found for pattern: .?cucumber
+no match found for pattern: olive.+
+match found for pattern: .?mushroom
+no match found for pattern: beef.+
+no match found for pattern: .?pork
+no match found for pattern: turkey.+
+no match found for pattern: .?duck
+no match found for pattern: venison.+
+no match found for pattern: .?salmon
+match found for pattern: cod.+
+no match found for pattern: .?shrimp
+no match found for pattern: lobster.+
+no match found for pattern: .?oyster
+no match found for pattern: clam.+
+no match found for pattern: .?scallop
+no match found for pattern: octopus.+
+match found for pattern: .?cheese
+match found for pattern: milk.+
+match found for pattern: .?cream
+no match found for pattern: chocolate.+
+no match found for pattern: .?vanilla
+no match found for pattern: nutmeg.+
+no match found for pattern: .?cumin
+match found for pattern: basil.+
+match found for pattern: .?thyme
+match found for pattern: sage.+
+no match found for pattern: flour.*
+match found for pattern: sugar.+
+match found for pattern: .?butter
+no match found for pattern: baking.?powder
+match found for pattern: .+cinnamon
+no match found for pattern: nutmeg.?
+match found for pattern: chip
+no match found for pattern: yeast.+
+no match found for pattern: .?dough
+match found for pattern: cake.+
+match found for pattern: .?cookie
+match found for pattern: muffin.+
+no match found for pattern: .?scone
+no match found for pattern: baguette.+
+no match found for pattern: .?croissant
+match found for pattern: pie.+
+match found for pattern: .?tart
+no match found for pattern: meringue.+
+match found for pattern: .?frosting
+match found for pattern: sprinkle.+
+no match found for pattern: .?knead
+match found for pattern: proof.+
+no match found for pattern: .?bake
+no match found for pattern: sift.+
+match found for pattern: .?fold
+match found for pattern: beat.+
+match found for pattern: .?mix
+match found for pattern: weigh.+
+no match found for pattern: .?rolling.?pin
+no match found for pattern: mixer.+
+no match found for pattern: .?whip
+no match found for pattern: silicone.+
+no match found for pattern: .?oven
+no match found for pattern: timer.+
+no match found for pattern: .?cooling.?rack
+match found for pattern: pan.+
+no match found for pattern: beach.*
+no match found for pattern: sunshine.+
+match found for pattern: .?swim
+no match found for pattern: wave.+
+match found for pattern: .?sand
+no match found for pattern: sunscreen.+
+match found for pattern: .?vacation
+no match found for pattern: barbecue.+
+no match found for pattern: .?picnic
+match found for pattern: ice.?cream.+
+no match found for pattern: .?lemonade
+no match found for pattern: hammock.+
+no match found for pattern: .?hiking
+no match found for pattern: bonfire.+
+match found for pattern: .?festival
+match found for pattern: tan.+
+match found for pattern: .?shorts
+match found for pattern: outdoor.+
+match found for pattern: filter.*results
+match found for pattern: page.*number
+match found for pattern: else.*
+match found for pattern: user.*profile

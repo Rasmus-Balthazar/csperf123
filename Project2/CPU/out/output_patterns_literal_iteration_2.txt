@@ -1,0 +1,502 @@
+Argument 1: ../Homemade_datasets/dataset_10mb.txt
+Argument 2: ../Homemade_datasets/patterns_literal.regex
+no match found for pattern: stopwatchlap
+no match found for pattern: alarmset
+no match found for pattern: notificationshow
+no match found for pattern: alertdismiss
+no match found for pattern: toastmessage
+no match found for pattern: modaldialog
+no match found for pattern: popupwindow
+no match found for pattern: tooltipshow
+no match found for pattern: hintdisplay
+no match found for pattern: helptext
+no match found for pattern: errormessage
+no match found for pattern: warningicon
+no match found for pattern: successbadge
+no match found for pattern: infobubble
+no match found for pattern: statusindicator
+no match found for pattern: progressbar
+no match found for pattern: loadingspinner
+no match found for pattern: busyindicator
+no match found for pattern: statechange
+no match found for pattern: eventtrigger
+no match found for pattern: actionperform
+no match found for pattern: handlercall
+no match found for pattern: listenerbind
+no match found for pattern: choose carefully because you'll stay in the job you pick for the rest of your life
+no match found for pattern: delegatemethod
+no match found for pattern: callbackfunction
+no match found for pattern: promiseresolve
+no match found for pattern: asyncawait
+no match found for pattern: parallelexecute
+no match found for pattern: sequencerun
+no match found for pattern: batchprocess
+no match found for pattern: throttlecall
+match found for pattern: buzz
+no match found for pattern: debounceinput
+no match found for pattern: lazyload
+no match found for pattern: eagerfetch
+no match found for pattern: preloadresource
+no match found for pattern: ondemandload
+no match found for pattern: cachestrategy
+no match found for pattern: expireafter
+no match found for pattern: Listen to me!
+no match found for pattern: refreshinterval
+no match found for pattern: pollfrequency
+match found for pattern: pushnotification
+no match found for pattern: subscribetopic
+no match found for pattern: broadcastmessage
+no match found for pattern: multicastgroup
+no match found for pattern: streamprocessing
+no match found for pattern: bufferoverflow
+no match found for pattern: queuecapacity
+no match found for pattern: stackdepth
+no match found for pattern: heapsize
+no match found for pattern: memorylimit
+match found for pattern: diskquota
+no match found for pattern: ratelimit
+no match found for pattern: throttlerequest
+no match found for pattern: concurrencycontrol
+no match found for pattern: semaphorecount
+no match found for pattern: mutexlock
+no match found for pattern: criticalsection
+no match found for pattern: deadlockdetect
+no match found for pattern: racecondition
+no match found for pattern: atomicoperation
+no match found for pattern: transactionisolate
+no match found for pattern: acidproperty
+no match found for pattern: consistencylevel
+no match found for pattern: durabilityguarantee
+no match found for pattern: replicationfactor
+no match found for pattern: shardingkey
+no match found for pattern: partitionstrategy
+no match found for pattern: clusterconfig
+no match found for pattern: nodecount
+no match found for pattern: masterelect
+no match found for pattern: slavesync
+no match found for pattern: followerreplica
+no match found for pattern: leaderselect
+no match found for pattern: consensusalgorithm
+no match found for pattern: quorumsize
+no match found for pattern: votecount
+no match found for pattern: blockchainhash
+no match found for pattern: merkletree
+no match found for pattern: publickey
+no match found for pattern: privatekey
+no match found for pattern: certificateauthority
+no match found for pattern: trustchain
+no match found for pattern: thumbprintverify
+no match found for pattern: signaturecheck
+no match found for pattern: hashalgorithm
+no match found for pattern: encryptmethod
+match found for pattern: decryptkey
+no match found for pattern: saltvalue
+no match found for pattern: pepperadd
+no match found for pattern: noncegenerate
+no match found for pattern: vectorinitial
+no match found for pattern: modeoperation
+no match found for pattern: paddingscheme
+no match found for pattern: checksumvalidate
+no match found for pattern: digestcompute
+no match found for pattern: tokenissue
+no match found for pattern: bearerauth
+no match found for pattern: basicauthentication
+no match found for pattern: oauthflow
+no match found for pattern: openidconnect
+no match found for pattern: samlassertion
+no match found for pattern: kerberosticket
+no match found for pattern: ldapquery
+no match found for pattern: activedirectory
+no match found for pattern: permissiongrant
+no match found for pattern: roleassign
+no match found for pattern: groupmembership
+no match found for pattern: aclentry
+no match found for pattern: rbacpolicy
+no match found for pattern: abacrule
+no match found for pattern: claimcheck
+no match found for pattern: scopevalidate
+no match found for pattern: jwtdecode
+no match found for pattern: sessioncreate
+no match found for pattern: cookiestore
+no match found for pattern: localstorage
+no match found for pattern: memorycache
+no match found for pattern: rediscommand
+no match found for pattern: mongoquery
+no match found for pattern: sqlselect
+no match found for pattern: nosqldocument
+no match found for pattern: graphtraverse
+match found for pattern: indexsearch
+no match found for pattern: fieldmatch
+no match found for pattern: fuzzysearch
+no match found for pattern: exactmatch
+no match found for pattern: wildcardquery
+no match found for pattern: regexpattern
+no match found for pattern: booleanoperator
+no match found for pattern: rangefilter
+no match found for pattern: facetaggregate
+no match found for pattern: sortorder
+no match found for pattern: groupby
+no match found for pattern: havingclause
+no match found for pattern: jointype
+no match found for pattern: unionall
+no match found for pattern: intersectexcept
+no match found for pattern: subquerycorrelated
+no match found for pattern: viewmaterialized
+no match found for pattern: procedurestored
+no match found for pattern: functionscalar
+no match found for pattern: triggerevent
+no match found for pattern: constraintenforce
+no match found for pattern: cascadedelete
+no match found for pattern: defercheck
+no match found for pattern: transactionlevel
+no match found for pattern: savepointcreate
+no match found for pattern: rollbackto
+no match found for pattern: vacuumanalyze
+no match found for pattern: explainplan
+no match found for pattern: optimizequery
+no match found for pattern: hintindex
+no match found for pattern: cacheresult
+no match found for pattern: poolconnection
+no match found for pattern: datasourceconfig
+no match found for pattern: jndilookup
+no match found for pattern: batchupdate
+no match found for pattern: statementprepare
+no match found for pattern: resultsetiterate
+no match found for pattern: cursorfetch
+no match found for pattern: blobstream
+no match found for pattern: clobreader
+no match found for pattern: xmlparse
+no match found for pattern: jsonstringify
+no match found for pattern: yamlload
+no match found for pattern: csvformat
+no match found for pattern: markdownrender
+no match found for pattern: htmlescape
+no match found for pattern: urlencode
+no match found for pattern: baseencode
+no match found for pattern: utfdecode
+no match found for pattern: asciiconvert
+no match found for pattern: unicodecodepoint
+no match found for pattern: emojirender
+no match found for pattern: i18nbundle
+no match found for pattern: l10nresource
+no match found for pattern: messageformat
+no match found for pattern: pluralrule
+no match found for pattern: currencyformat
+no match found for pattern: numbergroup
+no match found for pattern: datepattern
+no match found for pattern: timezone
+no match found for pattern: durationformat
+no match found for pattern: intervalparse
+no match found for pattern: periodcalculate
+no match found for pattern: schedulercron
+no match found for pattern: jobexecute
+no match found for pattern: tasksubmit
+no match found for pattern: threadpool
+no match found for pattern: executorservice
+no match found for pattern: futureget
+no match found for pattern: promisethen
+no match found for pattern: reactivestream
+no match found for pattern: fluxmap
+no match found for pattern: monofilter
+no match found for pattern: observablesubscribe
+no match found for pattern: eventloop
+no match found for pattern: callbackhell
+no match found for pattern: asyncpipe
+no match found for pattern: awaitresult
+no match found for pattern: suspendfunction
+no match found for pattern: resumecoroutine
+no match found for pattern: yieldnext
+no match found for pattern: generatorfunction
+no match found for pattern: iteratornext
+no match found for pattern: loopbreak
+no match found for pattern: continuenext
+no match found for pattern: gotolabel
+no match found for pattern: returnfrom
+no match found for pattern: throwexception
+no match found for pattern: trycatch
+no match found for pattern: finallyblock
+no match found for pattern: withresource
+no match found for pattern: usingstatement
+no match found for pattern: disposemethod
+no match found for pattern: closestream
+no match found for pattern: finalizeobject
+no match found for pattern: gccollect
+no match found for pattern: referenceweak
+no match found for pattern: phantomreference
+no match found for pattern: softhandle
+no match found for pattern: cleanerregister
+no match found for pattern: autocloseresource
+no match found for pattern: scopeexit
+no match found for pattern: guardclause
+no match found for pattern: assertthat
+no match found for pattern: requirenot
+no match found for pattern: preconditioncheck
+no match found for pattern: postconditionverify
+no match found for pattern: invariantmaintain
+no match found for pattern: testdriven
+no match found for pattern: behaviordevelopment
+no match found for pattern: mockobject
+no match found for pattern: stubmethod
+no match found for pattern: fakeservice
+no match found for pattern: spyon
+no match found for pattern: verifycall
+no match found for pattern: assertequals
+no match found for pattern: expectthat
+no match found for pattern: shouldbe
+no match found for pattern: givenwhen
+no match found for pattern: thenexpect
+no match found for pattern: scenariooutline
+no match found for pattern: featuredescription
+no match found for pattern: storypoint
+no match found for pattern: epictheme
+no match found for pattern: userstory
+no match found for pattern: taskitem
+match found for pattern: bugfix
+no match found for pattern: defectreport
+no match found for pattern: issuetrack
+no match found for pattern: ticketassign
+no match found for pattern: priorityset
+no match found for pattern: severitylevel
+no match found for pattern: impactassess
+no match found for pattern: rootcause
+no match found for pattern: fixcommit
+no match found for pattern: pushorigin
+no match found for pattern: pullrequest
+no match found for pattern: mergestrategy
+no match found for pattern: rebaseonto
+no match found for pattern: squashcommits
+no match found for pattern: cherrypick
+no match found for pattern: branchcreate
+no match found for pattern: tagrelease
+no match found for pattern: versionbump
+no match found for pattern: semvercomply
+no match found for pattern: releasenote
+no match found for pattern: changelogupdate
+no match found for pattern: licensecheck
+no match found for pattern: copyrightnotice
+no match found for pattern: authorcredit
+no match found for pattern: contributorlist
+no match found for pattern: dependencymanage
+no match found for pattern: packagelock
+no match found for pattern: According to all known laws of aviation, there is no way a bee should be able to fly
+no match found for pattern: installlocal
+no match found for pattern: globalmodule
+no match found for pattern: peerdepend
+no match found for pattern: devdependency
+no match found for pattern: runtimerequire
+no match found for pattern: pluginload
+no match found for pattern: extensionenable
+no match found for pattern: hookregister
+no match found for pattern: middlewareadd
+no match found for pattern: interceptorchain
+no match found for pattern: filterapply
+no match found for pattern: pipetransform
+no match found for pattern: decoratorwrap
+no match found for pattern: annotationprocess
+no match found for pattern: 9 to 
+no match found for pattern: reflectmetadata
+no match found for pattern: proxycreate
+no match found for pattern: Infecting the young minds faster than 
+no match found for pattern: facadepattern
+no match found for pattern: adapterconvert
+no match found for pattern: bridgeconnect
+no match found for pattern: compositebuild
+no match found for pattern: flyweightpool
+no match found for pattern: prototypeclone
+no match found for pattern: Pour myself a cup of 
+no match found for pattern: Justin Timberlake
+no match found for pattern: singletoninstance
+no match found for pattern: factorymethod
+no match found for pattern: builderfluent
+no match found for pattern: strategyselect
+no match found for pattern: statemachine
+no match found for pattern: visitorpattern
+no match found for pattern: observernotify
+no match found for pattern: mediatorcoordinate
+no match found for pattern: commandinvoke
+no match found for pattern: iteratortraverse
+no match found for pattern: mementosave
+no match found for pattern: mary had a  little lamb
+no match found for pattern: templatemethod
+no match found for pattern: apple
+match found for pattern: banana
+no match found for pattern: orange
+match found for pattern: lemon
+no match found for pattern: strawberry
+no match found for pattern: blueberry
+no match found for pattern: raspberry
+no match found for pattern: blackberry
+no match found for pattern: grape
+match found for pattern: watermelon
+no match found for pattern: cantaloupe
+match found for pattern: melon
+no match found for pattern: pineapple
+match found for pattern: mango
+no match found for pattern: papaya
+no match found for pattern: kiwi
+no match found for pattern: peach
+no match found for pattern: plum
+match found for pattern: pear
+no match found for pattern: cherry
+no match found for pattern: apricot
+match found for pattern: fig
+match found for pattern: date
+no match found for pattern: coconut
+no match found for pattern: almond
+no match found for pattern: peanut
+no match found for pattern: cashew
+no match found for pattern: walnut
+no match found for pattern: pistachio
+no match found for pattern: pecan
+no match found for pattern: hazelnut
+no match found for pattern: chestnut
+no match found for pattern: macadamia
+match found for pattern: sunflower
+no match found for pattern: pumpkinseed
+no match found for pattern: sesame
+no match found for pattern: flax
+no match found for pattern: chia
+no match found for pattern: rice
+match found for pattern: wheat
+no match found for pattern: corn
+no match found for pattern: barley
+match found for pattern: oats
+no match found for pattern: quinoa
+no match found for pattern: farro
+no match found for pattern: millet
+no match found for pattern: buckwheat
+no match found for pattern: potato
+no match found for pattern: sweetpotato
+no match found for pattern: carrot
+match found for pattern: onion
+no match found for pattern: garlic
+match found for pattern: ginger
+no match found for pattern: turmeric
+match found for pattern: celery
+no match found for pattern: broccoli
+no match found for pattern: cauliflower
+no match found for pattern: asparagus
+no match found for pattern: spinach
+match found for pattern: kale
+no match found for pattern: lettuce
+no match found for pattern: cabbage
+no match found for pattern: tomato
+no match found for pattern: pepper
+no match found for pattern: eggplant
+no match found for pattern: zucchini
+no match found for pattern: cucumber
+no match found for pattern: avocado
+no match found for pattern: olive
+match found for pattern: mushroom
+no match found for pattern: truffle
+no match found for pattern: beef
+no match found for pattern: pork
+no match found for pattern: chicken
+no match found for pattern: turkey
+no match found for pattern: duck
+no match found for pattern: lamb
+no match found for pattern: venison
+no match found for pattern: salmon
+match found for pattern: tuna
+match found for pattern: cod
+no match found for pattern: shrimp
+no match found for pattern: crab
+no match found for pattern: lobster
+no match found for pattern: oyster
+no match found for pattern: mussel
+no match found for pattern: clam
+no match found for pattern: scallop
+no match found for pattern: squid
+no match found for pattern: octopus
+match found for pattern: cheese
+match found for pattern: yogurt
+match found for pattern: milk
+match found for pattern: cream
+match found for pattern: butter
+no match found for pattern: chocolate
+no match found for pattern: vanilla
+match found for pattern: cinnamon
+no match found for pattern: nutmeg
+no match found for pattern: cumin
+no match found for pattern: oregano
+match found for pattern: basil
+match found for pattern: thyme
+no match found for pattern: rosemary
+match found for pattern: sage
+no match found for pattern: flour
+match found for pattern: sugar
+match found for pattern: butter
+no match found for pattern: vanilla
+no match found for pattern: bakingpowder
+match found for pattern: cinnamon
+no match found for pattern: nutmeg
+no match found for pattern: chocolatechip
+no match found for pattern: yeast
+no match found for pattern: dough
+no match found for pattern: pastry
+match found for pattern: cake
+match found for pattern: cookie
+no match found for pattern: brownie
+match found for pattern: muffin
+no match found for pattern: scone
+match found for pattern: bread
+no match found for pattern: baguette
+no match found for pattern: croissant
+no match found for pattern: danish
+match found for pattern: pie
+match found for pattern: tart
+no match found for pattern: custard
+no match found for pattern: meringue
+match found for pattern: frosting
+no match found for pattern: icing
+match found for pattern: sprinkle
+no match found for pattern: knead
+match found for pattern: rise
+match found for pattern: proof
+no match found for pattern: bake
+no match found for pattern: whisk
+no match found for pattern: sift
+match found for pattern: fold
+match found for pattern: cream
+match found for pattern: beat
+match found for pattern: mix
+match found for pattern: measure
+match found for pattern: weigh
+no match found for pattern: rollingpin
+no match found for pattern: spatula
+no match found for pattern: mixer
+no match found for pattern: whip
+no match found for pattern: parchment
+no match found for pattern: silicone
+no match found for pattern: oven
+no match found for pattern: temperature
+no match found for pattern: timer
+no match found for pattern: coolingrack
+no match found for pattern: mold
+match found for pattern: pan
+no match found for pattern: beach
+no match found for pattern: sunshine
+match found for pattern: swim
+no match found for pattern: ocean
+no match found for pattern: wave
+match found for pattern: sand
+no match found for pattern: sandal
+no match found for pattern: sunscreen
+match found for pattern: vacation
+no match found for pattern: holiday
+no match found for pattern: barbecue
+no match found for pattern: picnic
+match found for pattern: watermelon
+match found for pattern: icecream
+no match found for pattern: lemonade
+no match found for pattern: popsicle
+no match found for pattern: hammock
+no match found for pattern: hiking
+match found for pattern: camping
+no match found for pattern: bonfire
+match found for pattern: festival
+no match found for pattern: sunglasses
+match found for pattern: tan
+match found for pattern: shorts
+no match found for pattern: bikini
+match found for pattern: outdoor

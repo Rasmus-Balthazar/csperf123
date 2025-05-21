@@ -1,0 +1,14 @@
+# started on Tue May 20 19:34:56 2025
+
+
+ Performance counter stats for './a.out ../Homemade_datasets/dataset_10mb.txt ../Homemade_datasets/patterns.regex':
+
+ 5,854,867,490,707      cycles                                                                
+ 6,130,063,870,740      instructions                     #    1.05  insn per cycle            
+
+    2934.912433872 seconds time elapsed
+
+    2934.301950000 seconds user
+       0.039513000 seconds sys
+
+
