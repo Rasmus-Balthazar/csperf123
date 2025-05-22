@@ -10,11 +10,11 @@
 module load CUDA/12.1.1
 
 mkdir out
-if [ -f out/out_gpu ]; then
-    rm out/out_gpu
+if [ -f out/out_gpu.txt ]; then
+    rm out/out_gpu.txt
 fi
-if [ -f out/out_gpu_literal ]; then
-    rm out/out_gpu_literal
+if [ -f out/out_gpu_literal.txt ]; then
+    rm out/out_gpu_literal.txt
 fi
 
 make
