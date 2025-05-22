@@ -322,3 +322,759 @@ Kernel execution:      312.418 ms
 Post GPU processing:   0 ms
 Total runtime:         4578 ms
 --- End of Timing ---
+Match found on pattern 43
+Match found on pattern 32
+No match found on pattern 40
+No match found on pattern 0
+No match found on pattern 30
+No match found on pattern 17
+No match found on pattern 28
+No match found on pattern 45
+No match found on pattern 24
+No match found on pattern 48
+No match found on pattern 15
+No match found on pattern 46
+No match found on pattern 26
+No match found on pattern 11
+No match found on pattern 25
+No match found on pattern 36
+No match found on pattern 34
+No match found on pattern 42
+No match found on pattern 23
+No match found on pattern 33
+No match found on pattern 29
+No match found on pattern 21
+No match found on pattern 6
+No match found on pattern 38
+No match found on pattern 16
+No match found on pattern 2
+No match found on pattern 7
+No match found on pattern 22
+No match found on pattern 5
+No match found on pattern 8
+No match found on pattern 20
+No match found on pattern 9
+No match found on pattern 44
+No match found on pattern 12
+No match found on pattern 31
+No match found on pattern 27
+No match found on pattern 19
+No match found on pattern 13
+No match found on pattern 14
+No match found on pattern 3
+No match found on pattern 4
+No match found on pattern 35
+No match found on pattern 18
+No match found on pattern 37
+No match found on pattern 39
+No match found on pattern 41
+No match found on pattern 1
+No match found on pattern 47
+No match found on pattern 10
+no match found for pattern: "ß"
+no match found for pattern: "alarmset"
+no match found for pattern: "notificationshow"
+no match found for pattern: "alertdismiss"
+no match found for pattern: "toastmessage"
+no match found for pattern: "modaldialog"
+no match found for pattern: "popupwindow"
+no match found for pattern: "tooltipshow"
+no match found for pattern: "hintdisplay"
+no match found for pattern: "helptext"
+no match found for pattern: "errormessage"
+no match found for pattern: "warningicon"
+no match found for pattern: "successbadge"
+no match found for pattern: "infobubble"
+no match found for pattern: "statusindicator"
+no match found for pattern: "progressbar"
+no match found for pattern: "loadingspinner"
+no match found for pattern: "busyindicator"
+no match found for pattern: "statechange"
+no match found for pattern: "eventtrigger"
+no match found for pattern: "actionperform"
+no match found for pattern: "handlercall"
+no match found for pattern: "listenerbind"
+no match found for pattern: "choose carefully because you'll stay in the job you pick for the rest of your life"
+no match found for pattern: "delegatemethod"
+no match found for pattern: "callbackfunction"
+no match found for pattern: "promiseresolve"
+no match found for pattern: "asyncawait"
+no match found for pattern: "parallelexecute"
+no match found for pattern: "sequencerun"
+no match found for pattern: "batchprocess"
+no match found for pattern: "throttlecall"
+match found for pattern: "buzz" at position 20225
+no match found for pattern: "debounceinput"
+no match found for pattern: "lazyload"
+no match found for pattern: "eagerfetch"
+no match found for pattern: "preloadresource"
+no match found for pattern: "ondemandload"
+no match found for pattern: "cachestrategy"
+no match found for pattern: "expireafter"
+no match found for pattern: "Listen to me!"
+no match found for pattern: "refreshinterval"
+no match found for pattern: "pollfrequency"
+match found for pattern: "pushnotification" at position 13746
+no match found for pattern: "subscribetopic"
+no match found for pattern: "broadcastmessage"
+no match found for pattern: "multicastgroup"
+no match found for pattern: "streamprocessing"
+no match found for pattern: "bufferoverflow"
+
+--- Timing Summary ---
+Host preprocessing:    3974 ms
+Device memory alloc:   298 ms
+Data transfer to GPU:  10 ms
+Regex pattern matching: 17 ms
+Kernel execution:      320.951 ms
+Post GPU processing:   0 ms
+Total runtime:         4605 ms
+--- End of Timing ---
+Match found on pattern 32
+Match found on pattern 43
+No match found on pattern 40
+No match found on pattern 0
+No match found on pattern 30
+No match found on pattern 17
+No match found on pattern 15
+No match found on pattern 48
+No match found on pattern 45
+No match found on pattern 28
+No match found on pattern 24
+No match found on pattern 26
+No match found on pattern 46
+No match found on pattern 11
+No match found on pattern 25
+No match found on pattern 42
+No match found on pattern 36
+No match found on pattern 34
+No match found on pattern 23
+No match found on pattern 33
+No match found on pattern 21
+No match found on pattern 29
+No match found on pattern 6
+No match found on pattern 7
+No match found on pattern 2
+No match found on pattern 38
+No match found on pattern 5
+No match found on pattern 22
+No match found on pattern 20
+No match found on pattern 16
+No match found on pattern 8
+No match found on pattern 9
+No match found on pattern 12
+No match found on pattern 31
+No match found on pattern 27
+No match found on pattern 13
+No match found on pattern 19
+No match found on pattern 44
+No match found on pattern 3
+No match found on pattern 35
+No match found on pattern 14
+No match found on pattern 4
+No match found on pattern 18
+No match found on pattern 37
+No match found on pattern 39
+No match found on pattern 41
+No match found on pattern 1
+No match found on pattern 47
+No match found on pattern 10
+no match found for pattern: "ß"
+no match found for pattern: "alarmset"
+no match found for pattern: "notificationshow"
+no match found for pattern: "alertdismiss"
+no match found for pattern: "toastmessage"
+no match found for pattern: "modaldialog"
+no match found for pattern: "popupwindow"
+no match found for pattern: "tooltipshow"
+no match found for pattern: "hintdisplay"
+no match found for pattern: "helptext"
+no match found for pattern: "errormessage"
+no match found for pattern: "warningicon"
+no match found for pattern: "successbadge"
+no match found for pattern: "infobubble"
+no match found for pattern: "statusindicator"
+no match found for pattern: "progressbar"
+no match found for pattern: "loadingspinner"
+no match found for pattern: "busyindicator"
+no match found for pattern: "statechange"
+no match found for pattern: "eventtrigger"
+no match found for pattern: "actionperform"
+no match found for pattern: "handlercall"
+no match found for pattern: "listenerbind"
+no match found for pattern: "choose carefully because you'll stay in the job you pick for the rest of your life"
+no match found for pattern: "delegatemethod"
+no match found for pattern: "callbackfunction"
+no match found for pattern: "promiseresolve"
+no match found for pattern: "asyncawait"
+no match found for pattern: "parallelexecute"
+no match found for pattern: "sequencerun"
+no match found for pattern: "batchprocess"
+no match found for pattern: "throttlecall"
+match found for pattern: "buzz" at position 7254
+no match found for pattern: "debounceinput"
+no match found for pattern: "lazyload"
+no match found for pattern: "eagerfetch"
+no match found for pattern: "preloadresource"
+no match found for pattern: "ondemandload"
+no match found for pattern: "cachestrategy"
+no match found for pattern: "expireafter"
+no match found for pattern: "Listen to me!"
+no match found for pattern: "refreshinterval"
+no match found for pattern: "pollfrequency"
+match found for pattern: "pushnotification" at position 13746
+no match found for pattern: "subscribetopic"
+no match found for pattern: "broadcastmessage"
+no match found for pattern: "multicastgroup"
+no match found for pattern: "streamprocessing"
+no match found for pattern: "bufferoverflow"
+
+--- Timing Summary ---
+Host preprocessing:    3968 ms
+Device memory alloc:   302 ms
+Data transfer to GPU:  10 ms
+Regex pattern matching: 21 ms
+Kernel execution:      298.047 ms
+Post GPU processing:   0 ms
+Total runtime:         4579 ms
+--- End of Timing ---
+Match found on pattern 32
+Match found on pattern 43
+No match found on pattern 40
+No match found on pattern 17
+No match found on pattern 30
+No match found on pattern 0
+No match found on pattern 48
+No match found on pattern 45
+No match found on pattern 24
+No match found on pattern 28
+No match found on pattern 15
+No match found on pattern 46
+No match found on pattern 11
+No match found on pattern 26
+No match found on pattern 25
+No match found on pattern 42
+No match found on pattern 36
+No match found on pattern 34
+No match found on pattern 23
+No match found on pattern 33
+No match found on pattern 21
+No match found on pattern 29
+No match found on pattern 6
+No match found on pattern 38
+No match found on pattern 2
+No match found on pattern 7
+No match found on pattern 5
+No match found on pattern 16
+No match found on pattern 20
+No match found on pattern 22
+No match found on pattern 9
+No match found on pattern 8
+No match found on pattern 31
+No match found on pattern 27
+No match found on pattern 19
+No match found on pattern 13
+No match found on pattern 3
+No match found on pattern 12
+No match found on pattern 44
+No match found on pattern 14
+No match found on pattern 35
+No match found on pattern 4
+No match found on pattern 18
+No match found on pattern 37
+No match found on pattern 39
+No match found on pattern 1
+No match found on pattern 47
+No match found on pattern 41
+No match found on pattern 10
+no match found for pattern: "ß"
+no match found for pattern: "alarmset"
+no match found for pattern: "notificationshow"
+no match found for pattern: "alertdismiss"
+no match found for pattern: "toastmessage"
+no match found for pattern: "modaldialog"
+no match found for pattern: "popupwindow"
+no match found for pattern: "tooltipshow"
+no match found for pattern: "hintdisplay"
+no match found for pattern: "helptext"
+no match found for pattern: "errormessage"
+no match found for pattern: "warningicon"
+no match found for pattern: "successbadge"
+no match found for pattern: "infobubble"
+no match found for pattern: "statusindicator"
+no match found for pattern: "progressbar"
+no match found for pattern: "loadingspinner"
+no match found for pattern: "busyindicator"
+no match found for pattern: "statechange"
+no match found for pattern: "eventtrigger"
+no match found for pattern: "actionperform"
+no match found for pattern: "handlercall"
+no match found for pattern: "listenerbind"
+no match found for pattern: "choose carefully because you'll stay in the job you pick for the rest of your life"
+no match found for pattern: "delegatemethod"
+no match found for pattern: "callbackfunction"
+no match found for pattern: "promiseresolve"
+no match found for pattern: "asyncawait"
+no match found for pattern: "parallelexecute"
+no match found for pattern: "sequencerun"
+no match found for pattern: "batchprocess"
+no match found for pattern: "throttlecall"
+match found for pattern: "buzz" at position 7254
+no match found for pattern: "debounceinput"
+no match found for pattern: "lazyload"
+no match found for pattern: "eagerfetch"
+no match found for pattern: "preloadresource"
+no match found for pattern: "ondemandload"
+no match found for pattern: "cachestrategy"
+no match found for pattern: "expireafter"
+no match found for pattern: "Listen to me!"
+no match found for pattern: "refreshinterval"
+no match found for pattern: "pollfrequency"
+match found for pattern: "pushnotification" at position 13746
+no match found for pattern: "subscribetopic"
+no match found for pattern: "broadcastmessage"
+no match found for pattern: "multicastgroup"
+no match found for pattern: "streamprocessing"
+no match found for pattern: "bufferoverflow"
+
+--- Timing Summary ---
+Host preprocessing:    3968 ms
+Device memory alloc:   296 ms
+Data transfer to GPU:  10 ms
+Regex pattern matching: 2 ms
+Kernel execution:      310.647 ms
+Post GPU processing:   0 ms
+Total runtime:         4586 ms
+--- End of Timing ---
+Match found on pattern 32
+Match found on pattern 43
+No match found on pattern 40
+No match found on pattern 17
+No match found on pattern 30
+No match found on pattern 0
+No match found on pattern 28
+No match found on pattern 45
+No match found on pattern 24
+No match found on pattern 15
+No match found on pattern 48
+No match found on pattern 46
+No match found on pattern 26
+No match found on pattern 25
+No match found on pattern 11
+No match found on pattern 42
+No match found on pattern 36
+No match found on pattern 34
+No match found on pattern 23
+No match found on pattern 33
+No match found on pattern 21
+No match found on pattern 29
+No match found on pattern 6
+No match found on pattern 5
+No match found on pattern 2
+No match found on pattern 38
+No match found on pattern 7
+No match found on pattern 20
+No match found on pattern 22
+No match found on pattern 16
+No match found on pattern 8
+No match found on pattern 9
+No match found on pattern 13
+No match found on pattern 31
+No match found on pattern 19
+No match found on pattern 27
+No match found on pattern 3
+No match found on pattern 44
+No match found on pattern 12
+No match found on pattern 4
+No match found on pattern 14
+No match found on pattern 35
+No match found on pattern 18
+No match found on pattern 37
+No match found on pattern 1
+No match found on pattern 47
+No match found on pattern 41
+No match found on pattern 39
+No match found on pattern 10
+no match found for pattern: "ß"
+no match found for pattern: "alarmset"
+no match found for pattern: "notificationshow"
+no match found for pattern: "alertdismiss"
+no match found for pattern: "toastmessage"
+no match found for pattern: "modaldialog"
+no match found for pattern: "popupwindow"
+no match found for pattern: "tooltipshow"
+no match found for pattern: "hintdisplay"
+no match found for pattern: "helptext"
+no match found for pattern: "errormessage"
+no match found for pattern: "warningicon"
+no match found for pattern: "successbadge"
+no match found for pattern: "infobubble"
+no match found for pattern: "statusindicator"
+no match found for pattern: "progressbar"
+no match found for pattern: "loadingspinner"
+no match found for pattern: "busyindicator"
+no match found for pattern: "statechange"
+no match found for pattern: "eventtrigger"
+no match found for pattern: "actionperform"
+no match found for pattern: "handlercall"
+no match found for pattern: "listenerbind"
+no match found for pattern: "choose carefully because you'll stay in the job you pick for the rest of your life"
+no match found for pattern: "delegatemethod"
+no match found for pattern: "callbackfunction"
+no match found for pattern: "promiseresolve"
+no match found for pattern: "asyncawait"
+no match found for pattern: "parallelexecute"
+no match found for pattern: "sequencerun"
+no match found for pattern: "batchprocess"
+no match found for pattern: "throttlecall"
+match found for pattern: "buzz" at position 7254
+no match found for pattern: "debounceinput"
+no match found for pattern: "lazyload"
+no match found for pattern: "eagerfetch"
+no match found for pattern: "preloadresource"
+no match found for pattern: "ondemandload"
+no match found for pattern: "cachestrategy"
+no match found for pattern: "expireafter"
+no match found for pattern: "Listen to me!"
+no match found for pattern: "refreshinterval"
+no match found for pattern: "pollfrequency"
+match found for pattern: "pushnotification" at position 53891
+no match found for pattern: "subscribetopic"
+no match found for pattern: "broadcastmessage"
+no match found for pattern: "multicastgroup"
+no match found for pattern: "streamprocessing"
+no match found for pattern: "bufferoverflow"
+
+--- Timing Summary ---
+Host preprocessing:    3968 ms
+Device memory alloc:   289 ms
+Data transfer to GPU:  10 ms
+Regex pattern matching: 3 ms
+Kernel execution:      287.940 ms
+Post GPU processing:   0 ms
+Total runtime:         4557 ms
+--- End of Timing ---
+Match found on pattern 32
+Match found on pattern 43
+No match found on pattern 40
+No match found on pattern 17
+No match found on pattern 0
+No match found on pattern 30
+No match found on pattern 45
+No match found on pattern 48
+No match found on pattern 15
+No match found on pattern 28
+No match found on pattern 24
+No match found on pattern 46
+No match found on pattern 26
+No match found on pattern 11
+No match found on pattern 25
+No match found on pattern 42
+No match found on pattern 36
+No match found on pattern 34
+No match found on pattern 23
+No match found on pattern 33
+No match found on pattern 29
+No match found on pattern 21
+No match found on pattern 6
+No match found on pattern 38
+No match found on pattern 2
+No match found on pattern 7
+No match found on pattern 5
+No match found on pattern 16
+No match found on pattern 20
+No match found on pattern 22
+No match found on pattern 9
+No match found on pattern 8
+No match found on pattern 12
+No match found on pattern 31
+No match found on pattern 27
+No match found on pattern 19
+No match found on pattern 13
+No match found on pattern 3
+No match found on pattern 44
+No match found on pattern 14
+No match found on pattern 35
+No match found on pattern 4
+No match found on pattern 18
+No match found on pattern 37
+No match found on pattern 1
+No match found on pattern 41
+No match found on pattern 47
+No match found on pattern 39
+No match found on pattern 10
+no match found for pattern: "ß"
+no match found for pattern: "alarmset"
+no match found for pattern: "notificationshow"
+no match found for pattern: "alertdismiss"
+no match found for pattern: "toastmessage"
+no match found for pattern: "modaldialog"
+no match found for pattern: "popupwindow"
+no match found for pattern: "tooltipshow"
+no match found for pattern: "hintdisplay"
+no match found for pattern: "helptext"
+no match found for pattern: "errormessage"
+no match found for pattern: "warningicon"
+no match found for pattern: "successbadge"
+no match found for pattern: "infobubble"
+no match found for pattern: "statusindicator"
+no match found for pattern: "progressbar"
+no match found for pattern: "loadingspinner"
+no match found for pattern: "busyindicator"
+no match found for pattern: "statechange"
+no match found for pattern: "eventtrigger"
+no match found for pattern: "actionperform"
+no match found for pattern: "handlercall"
+no match found for pattern: "listenerbind"
+no match found for pattern: "choose carefully because you'll stay in the job you pick for the rest of your life"
+no match found for pattern: "delegatemethod"
+no match found for pattern: "callbackfunction"
+no match found for pattern: "promiseresolve"
+no match found for pattern: "asyncawait"
+no match found for pattern: "parallelexecute"
+no match found for pattern: "sequencerun"
+no match found for pattern: "batchprocess"
+no match found for pattern: "throttlecall"
+match found for pattern: "buzz" at position 20225
+no match found for pattern: "debounceinput"
+no match found for pattern: "lazyload"
+no match found for pattern: "eagerfetch"
+no match found for pattern: "preloadresource"
+no match found for pattern: "ondemandload"
+no match found for pattern: "cachestrategy"
+no match found for pattern: "expireafter"
+no match found for pattern: "Listen to me!"
+no match found for pattern: "refreshinterval"
+no match found for pattern: "pollfrequency"
+match found for pattern: "pushnotification" at position 53891
+no match found for pattern: "subscribetopic"
+no match found for pattern: "broadcastmessage"
+no match found for pattern: "multicastgroup"
+no match found for pattern: "streamprocessing"
+no match found for pattern: "bufferoverflow"
+
+--- Timing Summary ---
+Host preprocessing:    3966 ms
+Device memory alloc:   301 ms
+Data transfer to GPU:  10 ms
+Regex pattern matching: 22 ms
+Kernel execution:      322.124 ms
+Post GPU processing:   0 ms
+Total runtime:         4600 ms
+--- End of Timing ---
+Match found on pattern 43
+Match found on pattern 32
+No match found on pattern 40
+No match found on pattern 17
+No match found on pattern 30
+No match found on pattern 0
+No match found on pattern 24
+No match found on pattern 28
+No match found on pattern 45
+No match found on pattern 48
+No match found on pattern 15
+No match found on pattern 46
+No match found on pattern 26
+No match found on pattern 25
+No match found on pattern 11
+No match found on pattern 42
+No match found on pattern 36
+No match found on pattern 34
+No match found on pattern 23
+No match found on pattern 33
+No match found on pattern 21
+No match found on pattern 29
+No match found on pattern 6
+No match found on pattern 7
+No match found on pattern 38
+No match found on pattern 5
+No match found on pattern 2
+No match found on pattern 16
+No match found on pattern 20
+No match found on pattern 22
+No match found on pattern 8
+No match found on pattern 9
+No match found on pattern 12
+No match found on pattern 31
+No match found on pattern 27
+No match found on pattern 19
+No match found on pattern 13
+No match found on pattern 3
+No match found on pattern 44
+No match found on pattern 14
+No match found on pattern 35
+No match found on pattern 4
+No match found on pattern 18
+No match found on pattern 37
+No match found on pattern 1
+No match found on pattern 39
+No match found on pattern 47
+No match found on pattern 41
+No match found on pattern 10
+no match found for pattern: "ß"
+no match found for pattern: "alarmset"
+no match found for pattern: "notificationshow"
+no match found for pattern: "alertdismiss"
+no match found for pattern: "toastmessage"
+no match found for pattern: "modaldialog"
+no match found for pattern: "popupwindow"
+no match found for pattern: "tooltipshow"
+no match found for pattern: "hintdisplay"
+no match found for pattern: "helptext"
+no match found for pattern: "errormessage"
+no match found for pattern: "warningicon"
+no match found for pattern: "successbadge"
+no match found for pattern: "infobubble"
+no match found for pattern: "statusindicator"
+no match found for pattern: "progressbar"
+no match found for pattern: "loadingspinner"
+no match found for pattern: "busyindicator"
+no match found for pattern: "statechange"
+no match found for pattern: "eventtrigger"
+no match found for pattern: "actionperform"
+no match found for pattern: "handlercall"
+no match found for pattern: "listenerbind"
+no match found for pattern: "choose carefully because you'll stay in the job you pick for the rest of your life"
+no match found for pattern: "delegatemethod"
+no match found for pattern: "callbackfunction"
+no match found for pattern: "promiseresolve"
+no match found for pattern: "asyncawait"
+no match found for pattern: "parallelexecute"
+no match found for pattern: "sequencerun"
+no match found for pattern: "batchprocess"
+no match found for pattern: "throttlecall"
+match found for pattern: "buzz" at position 53104
+no match found for pattern: "debounceinput"
+no match found for pattern: "lazyload"
+no match found for pattern: "eagerfetch"
+no match found for pattern: "preloadresource"
+no match found for pattern: "ondemandload"
+no match found for pattern: "cachestrategy"
+no match found for pattern: "expireafter"
+no match found for pattern: "Listen to me!"
+no match found for pattern: "refreshinterval"
+no match found for pattern: "pollfrequency"
+match found for pattern: "pushnotification" at position 13746
+no match found for pattern: "subscribetopic"
+no match found for pattern: "broadcastmessage"
+no match found for pattern: "multicastgroup"
+no match found for pattern: "streamprocessing"
+no match found for pattern: "bufferoverflow"
+
+--- Timing Summary ---
+Host preprocessing:    3967 ms
+Device memory alloc:   303 ms
+Data transfer to GPU:  10 ms
+Regex pattern matching: 2 ms
+Kernel execution:      306.001 ms
+Post GPU processing:   0 ms
+Total runtime:         4587 ms
+--- End of Timing ---
+Match found on pattern 43
+Match found on pattern 32
+No match found on pattern 17
+No match found on pattern 40
+No match found on pattern 30
+No match found on pattern 0
+No match found on pattern 28
+No match found on pattern 15
+No match found on pattern 24
+No match found on pattern 45
+No match found on pattern 48
+No match found on pattern 26
+No match found on pattern 46
+No match found on pattern 11
+No match found on pattern 25
+No match found on pattern 42
+No match found on pattern 36
+No match found on pattern 34
+No match found on pattern 23
+No match found on pattern 33
+No match found on pattern 21
+No match found on pattern 29
+No match found on pattern 6
+No match found on pattern 5
+No match found on pattern 38
+No match found on pattern 2
+No match found on pattern 7
+No match found on pattern 16
+No match found on pattern 22
+No match found on pattern 9
+No match found on pattern 20
+No match found on pattern 8
+No match found on pattern 31
+No match found on pattern 19
+No match found on pattern 12
+No match found on pattern 13
+No match found on pattern 27
+No match found on pattern 3
+No match found on pattern 44
+No match found on pattern 14
+No match found on pattern 35
+No match found on pattern 4
+No match found on pattern 18
+No match found on pattern 37
+No match found on pattern 47
+No match found on pattern 1
+No match found on pattern 41
+No match found on pattern 39
+No match found on pattern 10
+no match found for pattern: "ß"
+no match found for pattern: "alarmset"
+no match found for pattern: "notificationshow"
+no match found for pattern: "alertdismiss"
+no match found for pattern: "toastmessage"
+no match found for pattern: "modaldialog"
+no match found for pattern: "popupwindow"
+no match found for pattern: "tooltipshow"
+no match found for pattern: "hintdisplay"
+no match found for pattern: "helptext"
+no match found for pattern: "errormessage"
+no match found for pattern: "warningicon"
+no match found for pattern: "successbadge"
+no match found for pattern: "infobubble"
+no match found for pattern: "statusindicator"
+no match found for pattern: "progressbar"
+no match found for pattern: "loadingspinner"
+no match found for pattern: "busyindicator"
+no match found for pattern: "statechange"
+no match found for pattern: "eventtrigger"
+no match found for pattern: "actionperform"
+no match found for pattern: "handlercall"
+no match found for pattern: "listenerbind"
+no match found for pattern: "choose carefully because you'll stay in the job you pick for the rest of your life"
+no match found for pattern: "delegatemethod"
+no match found for pattern: "callbackfunction"
+no match found for pattern: "promiseresolve"
+no match found for pattern: "asyncawait"
+no match found for pattern: "parallelexecute"
+no match found for pattern: "sequencerun"
+no match found for pattern: "batchprocess"
+no match found for pattern: "throttlecall"
+match found for pattern: "buzz" at position 20225
+no match found for pattern: "debounceinput"
+no match found for pattern: "lazyload"
+no match found for pattern: "eagerfetch"
+no match found for pattern: "preloadresource"
+no match found for pattern: "ondemandload"
+no match found for pattern: "cachestrategy"
+no match found for pattern: "expireafter"
+no match found for pattern: "Listen to me!"
+no match found for pattern: "refreshinterval"
+no match found for pattern: "pollfrequency"
+match found for pattern: "pushnotification" at position 13746
+no match found for pattern: "subscribetopic"
+no match found for pattern: "broadcastmessage"
+no match found for pattern: "multicastgroup"
+no match found for pattern: "streamprocessing"
+no match found for pattern: "bufferoverflow"
+
+--- Timing Summary ---
+Host preprocessing:    3967 ms
+Device memory alloc:   290 ms
+Data transfer to GPU:  10 ms
+Regex pattern matching: 2 ms
+Kernel execution:      309.022 ms
+Post GPU processing:   0 ms
+Total runtime:         4576 ms
+--- End of Timing ---
