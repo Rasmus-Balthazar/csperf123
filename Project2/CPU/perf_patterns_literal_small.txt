@@ -1,0 +1,57 @@
+# started on Thu May 22 18:55:10 2025
+
+
+ Performance counter stats for './a.out ../Homemade_datasets/dataset_10mb.txt ../Homemade_datasets/patterns_literal_small.regex':
+
+   676,140,276,366      cycles                                                                
+   722,136,889,592      instructions                     #    1.07  insn per cycle            
+
+     338.914575586 seconds time elapsed
+
+     338.843128000 seconds user
+       0.039996000 seconds sys
+
+
+tdisplay
+no match found for pattern: helptext
+no match found for pattern: errormessage
+no match found for pattern: warningicon
+no match found for pattern: successbadge
+no match found for pattern: infobubble
+no match found for pattern: statusindicator
+no match found for pattern: progressbar
+no match found for pattern: loadingspinner
+no match found for pattern: busyindicator
+no match found for pattern: statechange
+no match found for pattern: eventtrigger
+no match found for pattern: actionperform
+no match found for pattern: handlercall
+no match found for pattern: listenerbind
+no match found for pattern: choose carefully because you'll stay in the job you pick for the rest of your life
+no match found for pattern: delegatemethod
+no match found for pattern: callbackfunction
+no match found for pattern: promiseresolve
+no match found for pattern: asyncawait
+no match found for pattern: parallelexecute
+no match found for pattern: sequencerun
+no match found for pattern: batchprocess
+no match found for pattern: throttlecall
+match found for pattern: buzz
+no match found for pattern: debounceinput
+no match found for pattern: lazyload
+no match found for pattern: eagerfetch
+no match found for pattern: preloadresource
+no match found for pattern: ondemandload
+no match found for pattern: cachestrategy
+no match found for pattern: expireafter
+no match found for pattern: Listen to me!
+no match found for pattern: refreshinterval
+no match found for pattern: pollfrequency
+match found for pattern: pushnotification
+no match found for pattern: subscribetopic
+no match found for pattern: broadcastmessage
+no match found for pattern: multicastgroup
+no match found for pattern: streamprocessing
+no match found for pattern: bufferoverflow
+no match found for pattern: queuecapacity
+no match found for pattern: stackdepth

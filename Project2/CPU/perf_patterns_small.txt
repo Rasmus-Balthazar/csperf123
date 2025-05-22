@@ -1,0 +1,57 @@
+# started on Thu May 22 18:50:20 2025
+
+
+ Performance counter stats for './a.out ../Homemade_datasets/dataset_10mb.txt ../Homemade_datasets/patterns_small.regex':
+
+   577,347,728,231      cycles                                                                
+   616,994,910,154      instructions                     #    1.07  insn per cycle            
+
+     289.377979734 seconds time elapsed
+
+     289.322897000 seconds user
+       0.034997000 seconds sys
+
+
+ttern: hint.*display
+no match found for pattern: help.?text
+match found for pattern: error.*message
+no match found for pattern: warning.+icon
+no match found for pattern: success.*badge
+no match found for pattern: info.?bubble
+no match found for pattern: status.*indicator
+match found for pattern: progress.+bar
+no match found for pattern: loading.*spinner
+no match found for pattern: busy.?indicator
+match found for pattern: state.*change
+match found for pattern: event.+trigger
+match found for pattern: action.*perform
+no match found for pattern: handler.?call
+no match found for pattern: listener.*bind
+no match found for pattern: delegate.+method
+no match found for pattern: callback.*function
+no match found for pattern: promise.?resolve
+no match found for pattern: async.*await
+no match found for pattern: parallel.+execute
+match found for pattern: sequence.*run
+no match found for pattern: batch.?process
+no match found for pattern: throttle.*call
+match found for pattern: buzz
+no match found for pattern: debounce.+input
+no match found for pattern: lazy.*load
+no match found for pattern: eager.?fetch
+no match found for pattern: preload.*resource
+no match found for pattern: ondemand.+load
+match found for pattern: cache.*strategy
+no match found for pattern: expire.?after
+no match found for pattern: Listen to me!
+no match found for pattern: refresh.*interval
+no match found for pattern: poll.+frequency
+match found for pattern: push.*notification
+no match found for pattern: subscribe.?topic
+no match found for pattern: broadcast.*message
+no match found for pattern: multicast.+group
+no match found for pattern: stream.?processing
+no match found for pattern: buffer.*overflow
+no match found for pattern: queue.+capacity
+no match found for pattern: stack.*depth
+no match found for pattern: heap.?size
