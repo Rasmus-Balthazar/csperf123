@@ -1,17 +1,119 @@
 Match found on pattern 31
-Match found on pattern 4
 Match found on pattern 10
 Match found on pattern 20
-No match found on pattern 0
 No match found on pattern 39
+No match found on pattern 0
+No match found on pattern 25
 No match found on pattern 29
 No match found on pattern 17
+No match found on pattern 27
+No match found on pattern 35
+No match found on pattern 24
+No match found on pattern 44
+No match found on pattern 23
+No match found on pattern 47
+No match found on pattern 6
+No match found on pattern 32
+No match found on pattern 45
+Match found on pattern 2
+No match found on pattern 21
+No match found on pattern 34
+No match found on pattern 5
+No match found on pattern 33
+No match found on pattern 16
+No match found on pattern 26
+No match found on pattern 7
+No match found on pattern 9
+No match found on pattern 46
+No match found on pattern 43
+No match found on pattern 30
+No match found on pattern 1
+No match found on pattern 13
+No match found on pattern 38
+No match found on pattern 36
+No match found on pattern 3
+Match found on pattern 40
+Match found on pattern 37
+Match found on pattern 18
+Match found on pattern 4
+Match found on pattern 15
+Match found on pattern 42
+No match found on pattern 22
+Match found on pattern 28
+no match found for pattern: "÷"
+no match found for pattern: "alarm.*set"
+no match found for pattern: "notification.+show"
+no match found for pattern: "alert.?dismiss"
+no match found for pattern: "toast.*message"
+no match found for pattern: "modal.?dialog"
+no match found for pattern: "popup.*window"
+no match found for pattern: "tooltip.+show"
+no match found for pattern: "hint.*display"
+no match found for pattern: "help.?text"
+no match found for pattern: "error.*message"
+no match found for pattern: "warning.+icon"
+no match found for pattern: "success.*badge"
+no match found for pattern: "info.?bubble"
+no match found for pattern: "status.*indicator"
+no match found for pattern: "progress.+bar"
+no match found for pattern: "loading.*spinner"
+no match found for pattern: "busy.?indicator"
+no match found for pattern: "state.*change"
+no match found for pattern: "event.+trigger"
+no match found for pattern: "action.*perform"
+no match found for pattern: "handler.?call"
+no match found for pattern: "listener.*bind"
+no match found for pattern: "delegate.+method"
+no match found for pattern: "callback.*function"
+no match found for pattern: "promise.?resolve"
+no match found for pattern: "async.*await"
+no match found for pattern: "parallel.+execute"
+no match found for pattern: "sequence.*run"
+no match found for pattern: "batch.?process"
+no match found for pattern: "throttle.*call"
+no match found for pattern: "buzz"
+no match found for pattern: "debounce.+input"
+no match found for pattern: "lazy.*load"
+no match found for pattern: "eager.?fetch"
+no match found for pattern: "preload.*resource"
+no match found for pattern: "ondemand.+load"
+no match found for pattern: "cache.*strategy"
+no match found for pattern: "expire.?after"
+no match found for pattern: "Listen to me!"
+no match found for pattern: "refresh.*interval"
+no match found for pattern: "poll.+frequency"
+no match found for pattern: "push.*notification"
+no match found for pattern: "subscribe.?topic"
+no match found for pattern: "broadcast.*message"
+no match found for pattern: "multicast.+group"
+no match found for pattern: "stream.?processing"
+no match found for pattern: "buffer.*overflow"
+no match found for pattern: "queue.+capacity"
+
+--- Timing Summary ---
+Host preprocessing:    616 ms
+Device memory alloc:   346 ms
+Data transfer to GPU:  5 ms
+Regex pattern matching: 153 ms
+Kernel execution:      0.000 ms
+Post GPU processing:   0 ms
+Total runtime:         42962 ms
+--- End of Timing ---
+Match found on pattern 31
+Match found on pattern 4
+Match found on pattern 20
+Match found on pattern 15
+Match found on pattern 37
+No match found on pattern 0
+No match found on pattern 39
 No match found on pattern 25
+No match found on pattern 17
+No match found on pattern 29
 No match found on pattern 27
 No match found on pattern 35
 No match found on pattern 44
-No match found on pattern 24
 No match found on pattern 23
+No match found on pattern 24
 No match found on pattern 47
 No match found on pattern 6
 No match found on pattern 32
@@ -24,23 +126,130 @@ No match found on pattern 16
 No match found on pattern 26
 No match found on pattern 9
 No match found on pattern 7
-No match found on pattern 46
 No match found on pattern 43
 No match found on pattern 30
+Match found on pattern 2
+No match found on pattern 46
 No match found on pattern 1
-No match found on pattern 38
 No match found on pattern 13
+No match found on pattern 38
 No match found on pattern 36
 No match found on pattern 3
-Match found on pattern 37
-Match found on pattern 19
-Match found on pattern 42
 Match found on pattern 40
+Match found on pattern 19
 Match found on pattern 18
-Match found on pattern 15
+Match found on pattern 42
+Match found on pattern 10
 Match found on pattern 28
+No match found on pattern 22
+No match found on pattern 12
+No match found on pattern 8
+No match found on pattern 11
+No match found on pattern 14
+No match found on pattern 48
+No match found on pattern 41
+no match found for pattern: "÷"
+no match found for pattern: "alarm.*set"
+match found for pattern: "notification.+show" at position 50186
+no match found for pattern: "alert.?dismiss"
+match found for pattern: "toast.*message" at position 48687
+no match found for pattern: "modal.?dialog"
+no match found for pattern: "popup.*window"
+no match found for pattern: "tooltip.+show"
+no match found for pattern: "hint.*display"
+no match found for pattern: "help.?text"
+match found for pattern: "error.*message" at position 80356
+no match found for pattern: "warning.+icon"
+no match found for pattern: "success.*badge"
+no match found for pattern: "info.?bubble"
+no match found for pattern: "status.*indicator"
+match found for pattern: "progress.+bar" at position 75864
+no match found for pattern: "loading.*spinner"
+no match found for pattern: "busy.?indicator"
+match found for pattern: "state.*change" at position 448494
+match found for pattern: "event.+trigger" at position 36798
+match found for pattern: "action.*perform" at position 44642
+no match found for pattern: "handler.?call"
+no match found for pattern: "listener.*bind"
+no match found for pattern: "delegate.+method"
+no match found for pattern: "callback.*function"
+no match found for pattern: "promise.?resolve"
+no match found for pattern: "async.*await"
+no match found for pattern: "parallel.+execute"
+match found for pattern: "sequence.*run" at position 1823346
+no match found for pattern: "batch.?process"
+no match found for pattern: "throttle.*call"
+match found for pattern: "buzz" at position 42165
+no match found for pattern: "debounce.+input"
+no match found for pattern: "lazy.*load"
+no match found for pattern: "eager.?fetch"
+no match found for pattern: "preload.*resource"
+no match found for pattern: "ondemand.+load"
+match found for pattern: "cache.*strategy" at position 20778
+no match found for pattern: "expire.?after"
+no match found for pattern: "Listen to me!"
+match found for pattern: "refresh.*interval" at position 48935
+no match found for pattern: "poll.+frequency"
+match found for pattern: "push.*notification" at position 433701
+no match found for pattern: "subscribe.?topic"
+no match found for pattern: "broadcast.*message"
+no match found for pattern: "multicast.+group"
+no match found for pattern: "stream.?processing"
+no match found for pattern: "buffer.*overflow"
+no match found for pattern: "queue.+capacity"
+
+--- Timing Summary ---
+Host preprocessing:    521 ms
+Device memory alloc:   170 ms
+Data transfer to GPU:  1 ms
+Regex pattern matching: 19 ms
+Kernel execution:      373984.156 ms
+Post GPU processing:   0 ms
+Total runtime:         374676 ms
+--- End of Timing ---
+Match found on pattern 31
+Match found on pattern 15
+Match found on pattern 20
+No match found on pattern 0
+No match found on pattern 29
+No match found on pattern 25
+No match found on pattern 17
+No match found on pattern 39
+No match found on pattern 27
+No match found on pattern 35
+No match found on pattern 24
+No match found on pattern 23
+No match found on pattern 44
+No match found on pattern 47
+No match found on pattern 6
+No match found on pattern 32
+No match found on pattern 45
+No match found on pattern 21
+No match found on pattern 34
+No match found on pattern 5
+No match found on pattern 33
+No match found on pattern 16
+No match found on pattern 26
+No match found on pattern 9
+No match found on pattern 7
+No match found on pattern 43
+No match found on pattern 30
+No match found on pattern 38
+No match found on pattern 46
+No match found on pattern 13
+No match found on pattern 1
+No match found on pattern 36
+No match found on pattern 3
+Match found on pattern 19
+Match found on pattern 4
+Match found on pattern 10
+Match found on pattern 18
+Match found on pattern 37
+Match found on pattern 40
+Match found on pattern 42
 Match found on pattern 2
 No match found on pattern 22
+Match found on pattern 28
 No match found on pattern 12
 No match found on pattern 8
 No match found on pattern 14
@@ -49,9 +258,9 @@ No match found on pattern 48
 No match found on pattern 41
 no match found for pattern: "÷"
 no match found for pattern: "alarm.*set"
-match found for pattern: "notification.+show" at position 1200094
+match found for pattern: "notification.+show" at position 301756
 no match found for pattern: "alert.?dismiss"
-match found for pattern: "toast.*message" at position 20418
+match found for pattern: "toast.*message" at position 86326
 no match found for pattern: "modal.?dialog"
 no match found for pattern: "popup.*window"
 no match found for pattern: "tooltip.+show"
@@ -62,12 +271,12 @@ no match found for pattern: "warning.+icon"
 no match found for pattern: "success.*badge"
 no match found for pattern: "info.?bubble"
 no match found for pattern: "status.*indicator"
-match found for pattern: "progress.+bar" at position 462624
+match found for pattern: "progress.+bar" at position 6857
 no match found for pattern: "loading.*spinner"
 no match found for pattern: "busy.?indicator"
-match found for pattern: "state.*change" at position 308866
-match found for pattern: "event.+trigger" at position 26223
-match found for pattern: "action.*perform" at position 44642
+match found for pattern: "state.*change" at position 175681
+match found for pattern: "event.+trigger" at position 5525
+match found for pattern: "action.*perform" at position 91461
 no match found for pattern: "handler.?call"
 no match found for pattern: "listener.*bind"
 no match found for pattern: "delegate.+method"
@@ -75,232 +284,16 @@ no match found for pattern: "callback.*function"
 no match found for pattern: "promise.?resolve"
 no match found for pattern: "async.*await"
 no match found for pattern: "parallel.+execute"
-match found for pattern: "sequence.*run" at position 3502732
+match found for pattern: "sequence.*run" at position 3309789
 no match found for pattern: "batch.?process"
 no match found for pattern: "throttle.*call"
-match found for pattern: "buzz" at position 42165
+match found for pattern: "buzz" at position 29594
 no match found for pattern: "debounce.+input"
 no match found for pattern: "lazy.*load"
 no match found for pattern: "eager.?fetch"
 no match found for pattern: "preload.*resource"
 no match found for pattern: "ondemand.+load"
-match found for pattern: "cache.*strategy" at position 30303
-no match found for pattern: "expire.?after"
-no match found for pattern: "Listen to me!"
-match found for pattern: "refresh.*interval" at position 242808
-no match found for pattern: "poll.+frequency"
-match found for pattern: "push.*notification" at position 137760
-no match found for pattern: "subscribe.?topic"
-no match found for pattern: "broadcast.*message"
-no match found for pattern: "multicast.+group"
-no match found for pattern: "stream.?processing"
-no match found for pattern: "buffer.*overflow"
-no match found for pattern: "queue.+capacity"
-
---- Timing Summary ---
-Host preprocessing:    632 ms
-Device memory alloc:   323 ms
-Data transfer to GPU:  1 ms
-Regex pattern matching: 100 ms
-Kernel execution:      369480.031 ms
-Post GPU processing:   0 ms
-Total runtime:         370436 ms
---- End of Timing ---
-Match found on pattern 31
-Match found on pattern 4
-Match found on pattern 10
-Match found on pattern 20
-No match found on pattern 29
-No match found on pattern 17
-No match found on pattern 39
-No match found on pattern 0
-No match found on pattern 25
-No match found on pattern 27
-No match found on pattern 35
-No match found on pattern 24
-No match found on pattern 23
-No match found on pattern 44
-No match found on pattern 47
-No match found on pattern 6
-No match found on pattern 32
-No match found on pattern 45
-No match found on pattern 21
-No match found on pattern 34
-No match found on pattern 5
-No match found on pattern 33
-No match found on pattern 16
-No match found on pattern 26
-No match found on pattern 9
-No match found on pattern 7
-No match found on pattern 46
-No match found on pattern 43
-No match found on pattern 30
-No match found on pattern 38
-No match found on pattern 1
-No match found on pattern 13
-No match found on pattern 36
-No match found on pattern 3
-Match found on pattern 2
-Match found on pattern 18
-Match found on pattern 40
-Match found on pattern 37
-Match found on pattern 15
-Match found on pattern 42
-Match found on pattern 19
-No match found on pattern 22
-Match found on pattern 28
-No match found on pattern 8
-No match found on pattern 12
-No match found on pattern 11
-No match found on pattern 48
-No match found on pattern 14
-No match found on pattern 41
-no match found for pattern: "÷"
-no match found for pattern: "alarm.*set"
-match found for pattern: "notification.+show" at position 351727
-no match found for pattern: "alert.?dismiss"
-match found for pattern: "toast.*message" at position 20418
-no match found for pattern: "modal.?dialog"
-no match found for pattern: "popup.*window"
-no match found for pattern: "tooltip.+show"
-no match found for pattern: "hint.*display"
-no match found for pattern: "help.?text"
-match found for pattern: "error.*message" at position 376
-no match found for pattern: "warning.+icon"
-no match found for pattern: "success.*badge"
-no match found for pattern: "info.?bubble"
-no match found for pattern: "status.*indicator"
-match found for pattern: "progress.+bar" at position 402877
-no match found for pattern: "loading.*spinner"
-no match found for pattern: "busy.?indicator"
-match found for pattern: "state.*change" at position 308866
-match found for pattern: "event.+trigger" at position 204242
-match found for pattern: "action.*perform" at position 174358
-no match found for pattern: "handler.?call"
-no match found for pattern: "listener.*bind"
-no match found for pattern: "delegate.+method"
-no match found for pattern: "callback.*function"
-no match found for pattern: "promise.?resolve"
-no match found for pattern: "async.*await"
-no match found for pattern: "parallel.+execute"
-match found for pattern: "sequence.*run" at position 1161703
-no match found for pattern: "batch.?process"
-no match found for pattern: "throttle.*call"
-match found for pattern: "buzz" at position 42165
-no match found for pattern: "debounce.+input"
-no match found for pattern: "lazy.*load"
-no match found for pattern: "eager.?fetch"
-no match found for pattern: "preload.*resource"
-no match found for pattern: "ondemand.+load"
-match found for pattern: "cache.*strategy" at position 60703
-no match found for pattern: "expire.?after"
-no match found for pattern: "Listen to me!"
-match found for pattern: "refresh.*interval" at position 168380
-no match found for pattern: "poll.+frequency"
-match found for pattern: "push.*notification" at position 432172
-no match found for pattern: "subscribe.?topic"
-no match found for pattern: "broadcast.*message"
-no match found for pattern: "multicast.+group"
-no match found for pattern: "stream.?processing"
-no match found for pattern: "buffer.*overflow"
-no match found for pattern: "queue.+capacity"
-
---- Timing Summary ---
-Host preprocessing:    524 ms
-Device memory alloc:   156 ms
-Data transfer to GPU:  1 ms
-Regex pattern matching: 2 ms
-Kernel execution:      355748.250 ms
-Post GPU processing:   0 ms
-Total runtime:         356432 ms
---- End of Timing ---
-Match found on pattern 31
-Match found on pattern 4
-Match found on pattern 10
-Match found on pattern 15
-Match found on pattern 37
-No match found on pattern 0
-No match found on pattern 39
-No match found on pattern 25
-No match found on pattern 17
-No match found on pattern 29
-No match found on pattern 27
-No match found on pattern 35
-No match found on pattern 24
-No match found on pattern 23
-No match found on pattern 44
-No match found on pattern 47
-No match found on pattern 6
-No match found on pattern 32
-No match found on pattern 45
-No match found on pattern 21
-No match found on pattern 34
-No match found on pattern 5
-No match found on pattern 33
-No match found on pattern 16
-No match found on pattern 26
-No match found on pattern 9
-No match found on pattern 7
-No match found on pattern 46
-No match found on pattern 43
-No match found on pattern 30
-No match found on pattern 1
-No match found on pattern 13
-No match found on pattern 38
-No match found on pattern 36
-No match found on pattern 3
-Match found on pattern 18
-Match found on pattern 20
-Match found on pattern 19
-Match found on pattern 42
-Match found on pattern 40
-Match found on pattern 28
-Match found on pattern 2
-No match found on pattern 22
-No match found on pattern 12
-No match found on pattern 8
-No match found on pattern 11
-No match found on pattern 14
-No match found on pattern 48
-No match found on pattern 41
-no match found for pattern: "÷"
-no match found for pattern: "alarm.*set"
-match found for pattern: "notification.+show" at position 763434
-no match found for pattern: "alert.?dismiss"
-match found for pattern: "toast.*message" at position 48687
-no match found for pattern: "modal.?dialog"
-no match found for pattern: "popup.*window"
-no match found for pattern: "tooltip.+show"
-no match found for pattern: "hint.*display"
-no match found for pattern: "help.?text"
-match found for pattern: "error.*message" at position 376
-no match found for pattern: "warning.+icon"
-no match found for pattern: "success.*badge"
-no match found for pattern: "info.?bubble"
-no match found for pattern: "status.*indicator"
-match found for pattern: "progress.+bar" at position 75864
-no match found for pattern: "loading.*spinner"
-no match found for pattern: "busy.?indicator"
-match found for pattern: "state.*change" at position 119555
-match found for pattern: "event.+trigger" at position 26223
-match found for pattern: "action.*perform" at position 1235536
-no match found for pattern: "handler.?call"
-no match found for pattern: "listener.*bind"
-no match found for pattern: "delegate.+method"
-no match found for pattern: "callback.*function"
-no match found for pattern: "promise.?resolve"
-no match found for pattern: "async.*await"
-no match found for pattern: "parallel.+execute"
-match found for pattern: "sequence.*run" at position 1886020
-no match found for pattern: "batch.?process"
-no match found for pattern: "throttle.*call"
-match found for pattern: "buzz" at position 42165
-no match found for pattern: "debounce.+input"
-no match found for pattern: "lazy.*load"
-no match found for pattern: "eager.?fetch"
-no match found for pattern: "preload.*resource"
-no match found for pattern: "ondemand.+load"
-match found for pattern: "cache.*strategy" at position 26607
+match found for pattern: "cache.*strategy" at position 178674
 no match found for pattern: "expire.?after"
 no match found for pattern: "Listen to me!"
 match found for pattern: "refresh.*interval" at position 494117
@@ -314,27 +307,124 @@ no match found for pattern: "buffer.*overflow"
 no match found for pattern: "queue.+capacity"
 
 --- Timing Summary ---
-Host preprocessing:    528 ms
-Device memory alloc:   159 ms
+Host preprocessing:    520 ms
+Device memory alloc:   171 ms
 Data transfer to GPU:  1 ms
-Regex pattern matching: 14 ms
-Kernel execution:      365989.156 ms
+Regex pattern matching: 2 ms
+Kernel execution:      378976.938 ms
 Post GPU processing:   0 ms
-Total runtime:         366679 ms
+Total runtime:         379671 ms
 --- End of Timing ---
 Match found on pattern 31
-Match found on pattern 20
-Match found on pattern 10
-No match found on pattern 29
-No match found on pattern 0
 No match found on pattern 39
-No match found on pattern 17
+No match found on pattern 0
 No match found on pattern 25
+No match found on pattern 17
+No match found on pattern 29
+No match found on pattern 27
+No match found on pattern 35
+No match found on pattern 44
+No match found on pattern 23
+No match found on pattern 24
+No match found on pattern 47
+No match found on pattern 6
+No match found on pattern 32
+No match found on pattern 45
+No match found on pattern 21
+No match found on pattern 5
+No match found on pattern 34
+No match found on pattern 33
+No match found on pattern 16
+No match found on pattern 26
+No match found on pattern 9
+No match found on pattern 7
+No match found on pattern 43
+No match found on pattern 30
+No match found on pattern 38
+No match found on pattern 46
+No match found on pattern 13
+No match found on pattern 1
+No match found on pattern 36
+No match found on pattern 3
+Match found on pattern 19
+Match found on pattern 20
+Match found on pattern 37
+Match found on pattern 2
+Match found on pattern 40
+Match found on pattern 15
+Match found on pattern 4
+no match found for pattern: "÷"
+no match found for pattern: "alarm.*set"
+no match found for pattern: "notification.+show"
+no match found for pattern: "alert.?dismiss"
+no match found for pattern: "toast.*message"
+no match found for pattern: "modal.?dialog"
+no match found for pattern: "popup.*window"
+no match found for pattern: "tooltip.+show"
+no match found for pattern: "hint.*display"
+no match found for pattern: "help.?text"
+no match found for pattern: "error.*message"
+no match found for pattern: "warning.+icon"
+no match found for pattern: "success.*badge"
+no match found for pattern: "info.?bubble"
+no match found for pattern: "status.*indicator"
+no match found for pattern: "progress.+bar"
+no match found for pattern: "loading.*spinner"
+no match found for pattern: "busy.?indicator"
+no match found for pattern: "state.*change"
+no match found for pattern: "event.+trigger"
+no match found for pattern: "action.*perform"
+no match found for pattern: "handler.?call"
+no match found for pattern: "listener.*bind"
+no match found for pattern: "delegate.+method"
+no match found for pattern: "callback.*function"
+no match found for pattern: "promise.?resolve"
+no match found for pattern: "async.*await"
+no match found for pattern: "parallel.+execute"
+no match found for pattern: "sequence.*run"
+no match found for pattern: "batch.?process"
+no match found for pattern: "throttle.*call"
+no match found for pattern: "buzz"
+no match found for pattern: "debounce.+input"
+no match found for pattern: "lazy.*load"
+no match found for pattern: "eager.?fetch"
+no match found for pattern: "preload.*resource"
+no match found for pattern: "ondemand.+load"
+no match found for pattern: "cache.*strategy"
+no match found for pattern: "expire.?after"
+no match found for pattern: "Listen to me!"
+no match found for pattern: "refresh.*interval"
+no match found for pattern: "poll.+frequency"
+no match found for pattern: "push.*notification"
+no match found for pattern: "subscribe.?topic"
+no match found for pattern: "broadcast.*message"
+no match found for pattern: "multicast.+group"
+no match found for pattern: "stream.?processing"
+no match found for pattern: "buffer.*overflow"
+no match found for pattern: "queue.+capacity"
+
+--- Timing Summary ---
+Host preprocessing:    522 ms
+Device memory alloc:   313 ms
+Data transfer to GPU:  1 ms
+Regex pattern matching: 3 ms
+Kernel execution:      0.000 ms
+Post GPU processing:   0 ms
+Total runtime:         13619 ms
+--- End of Timing ---
+Match found on pattern 31
+Match found on pattern 10
+Match found on pattern 20
+No match found on pattern 29
+No match found on pattern 17
+No match found on pattern 0
+No match found on pattern 25
+No match found on pattern 39
 No match found on pattern 27
 No match found on pattern 35
 No match found on pattern 24
-No match found on pattern 23
 No match found on pattern 44
+No match found on pattern 23
 No match found on pattern 47
 No match found on pattern 6
 No match found on pattern 32
@@ -345,8 +435,8 @@ No match found on pattern 5
 No match found on pattern 33
 No match found on pattern 16
 No match found on pattern 26
-No match found on pattern 9
 No match found on pattern 7
+No match found on pattern 9
 No match found on pattern 46
 No match found on pattern 43
 No match found on pattern 30
@@ -355,14 +445,15 @@ No match found on pattern 13
 No match found on pattern 1
 No match found on pattern 36
 No match found on pattern 3
-Match found on pattern 15
-Match found on pattern 19
+Match found on pattern 4
 Match found on pattern 18
+Match found on pattern 37
+Match found on pattern 19
 Match found on pattern 28
 Match found on pattern 40
 Match found on pattern 42
-Match found on pattern 4
-Match found on pattern 37
+Match found on pattern 2
+Match found on pattern 15
 No match found on pattern 22
 no match found for pattern: "÷"
 no match found for pattern: "alarm.*set"
@@ -415,23 +506,122 @@ no match found for pattern: "buffer.*overflow"
 no match found for pattern: "queue.+capacity"
 
 --- Timing Summary ---
-Host preprocessing:    525 ms
-Device memory alloc:   161 ms
+Host preprocessing:    520 ms
+Device memory alloc:   163 ms
 Data transfer to GPU:  1 ms
-Regex pattern matching: 24 ms
+Regex pattern matching: 25 ms
 Kernel execution:      0.000 ms
 Post GPU processing:   0 ms
-Total runtime:         25279 ms
+Total runtime:         54365 ms
+--- End of Timing ---
+Match found on pattern 31
+Match found on pattern 4
+Match found on pattern 10
+Match found on pattern 20
+No match found on pattern 0
+No match found on pattern 39
+No match found on pattern 17
+No match found on pattern 29
+No match found on pattern 25
+No match found on pattern 27
+No match found on pattern 35
+No match found on pattern 24
+No match found on pattern 23
+No match found on pattern 44
+No match found on pattern 47
+No match found on pattern 6
+No match found on pattern 32
+No match found on pattern 45
+Match found on pattern 2
+No match found on pattern 21
+No match found on pattern 34
+No match found on pattern 5
+No match found on pattern 33
+No match found on pattern 16
+No match found on pattern 26
+No match found on pattern 9
+No match found on pattern 7
+No match found on pattern 46
+No match found on pattern 43
+No match found on pattern 30
+No match found on pattern 38
+No match found on pattern 13
+No match found on pattern 1
+No match found on pattern 36
+No match found on pattern 3
+Match found on pattern 15
+Match found on pattern 19
+Match found on pattern 18
+Match found on pattern 42
+Match found on pattern 40
+Match found on pattern 37
+no match found for pattern: "÷"
+no match found for pattern: "alarm.*set"
+no match found for pattern: "notification.+show"
+no match found for pattern: "alert.?dismiss"
+no match found for pattern: "toast.*message"
+no match found for pattern: "modal.?dialog"
+no match found for pattern: "popup.*window"
+no match found for pattern: "tooltip.+show"
+no match found for pattern: "hint.*display"
+no match found for pattern: "help.?text"
+no match found for pattern: "error.*message"
+no match found for pattern: "warning.+icon"
+no match found for pattern: "success.*badge"
+no match found for pattern: "info.?bubble"
+no match found for pattern: "status.*indicator"
+no match found for pattern: "progress.+bar"
+no match found for pattern: "loading.*spinner"
+no match found for pattern: "busy.?indicator"
+no match found for pattern: "state.*change"
+no match found for pattern: "event.+trigger"
+no match found for pattern: "action.*perform"
+no match found for pattern: "handler.?call"
+no match found for pattern: "listener.*bind"
+no match found for pattern: "delegate.+method"
+no match found for pattern: "callback.*function"
+no match found for pattern: "promise.?resolve"
+no match found for pattern: "async.*await"
+no match found for pattern: "parallel.+execute"
+no match found for pattern: "sequence.*run"
+no match found for pattern: "batch.?process"
+no match found for pattern: "throttle.*call"
+no match found for pattern: "buzz"
+no match found for pattern: "debounce.+input"
+no match found for pattern: "lazy.*load"
+no match found for pattern: "eager.?fetch"
+no match found for pattern: "preload.*resource"
+no match found for pattern: "ondemand.+load"
+no match found for pattern: "cache.*strategy"
+no match found for pattern: "expire.?after"
+no match found for pattern: "Listen to me!"
+no match found for pattern: "refresh.*interval"
+no match found for pattern: "poll.+frequency"
+no match found for pattern: "push.*notification"
+no match found for pattern: "subscribe.?topic"
+no match found for pattern: "broadcast.*message"
+no match found for pattern: "multicast.+group"
+no match found for pattern: "stream.?processing"
+no match found for pattern: "buffer.*overflow"
+no match found for pattern: "queue.+capacity"
+
+--- Timing Summary ---
+Host preprocessing:    523 ms
+Device memory alloc:   301 ms
+Data transfer to GPU:  1 ms
+Regex pattern matching: 4 ms
+Kernel execution:      0.000 ms
+Post GPU processing:   0 ms
+Total runtime:         21687 ms
 --- End of Timing ---
 Match found on pattern 31
 Match found on pattern 10
 Match found on pattern 20
-Match found on pattern 18
-Match found on pattern 4
+Match found on pattern 37
+No match found on pattern 17
 No match found on pattern 0
 No match found on pattern 39
 No match found on pattern 29
-No match found on pattern 17
 No match found on pattern 25
 No match found on pattern 27
 No match found on pattern 35
@@ -453,81 +643,8 @@ No match found on pattern 7
 No match found on pattern 46
 No match found on pattern 43
 No match found on pattern 30
-No match found on pattern 13
 No match found on pattern 38
 No match found on pattern 1
+No match found on pattern 13
 No match found on pattern 36
 No match found on pattern 3
-Match found on pattern 15
-Match found on pattern 28
-Match found on pattern 40
-Match found on pattern 42
-Match found on pattern 2
-Match found on pattern 37
-Match found on pattern 19
-No match found on pattern 22
-No match found on pattern 12
-No match found on pattern 8
-No match found on pattern 11
-No match found on pattern 14
-No match found on pattern 48
-No match found on pattern 41
-no match found for pattern: "÷"
-no match found for pattern: "alarm.*set"
-match found for pattern: "notification.+show" at position 446724
-no match found for pattern: "alert.?dismiss"
-match found for pattern: "toast.*message" at position 20418
-no match found for pattern: "modal.?dialog"
-no match found for pattern: "popup.*window"
-no match found for pattern: "tooltip.+show"
-no match found for pattern: "hint.*display"
-no match found for pattern: "help.?text"
-match found for pattern: "error.*message" at position 376
-no match found for pattern: "warning.+icon"
-no match found for pattern: "success.*badge"
-no match found for pattern: "info.?bubble"
-no match found for pattern: "status.*indicator"
-match found for pattern: "progress.+bar" at position 230807
-no match found for pattern: "loading.*spinner"
-no match found for pattern: "busy.?indicator"
-match found for pattern: "state.*change" at position 119555
-match found for pattern: "event.+trigger" at position 168187
-match found for pattern: "action.*perform" at position 44642
-no match found for pattern: "handler.?call"
-no match found for pattern: "listener.*bind"
-no match found for pattern: "delegate.+method"
-no match found for pattern: "callback.*function"
-no match found for pattern: "promise.?resolve"
-no match found for pattern: "async.*await"
-no match found for pattern: "parallel.+execute"
-match found for pattern: "sequence.*run" at position 1913605
-no match found for pattern: "batch.?process"
-no match found for pattern: "throttle.*call"
-match found for pattern: "buzz" at position 29594
-no match found for pattern: "debounce.+input"
-no match found for pattern: "lazy.*load"
-no match found for pattern: "eager.?fetch"
-no match found for pattern: "preload.*resource"
-no match found for pattern: "ondemand.+load"
-match found for pattern: "cache.*strategy" at position 57928
-no match found for pattern: "expire.?after"
-no match found for pattern: "Listen to me!"
-match found for pattern: "refresh.*interval" at position 168380
-no match found for pattern: "poll.+frequency"
-match found for pattern: "push.*notification" at position 222775
-no match found for pattern: "subscribe.?topic"
-no match found for pattern: "broadcast.*message"
-no match found for pattern: "multicast.+group"
-no match found for pattern: "stream.?processing"
-no match found for pattern: "buffer.*overflow"
-no match found for pattern: "queue.+capacity"
-
---- Timing Summary ---
-Host preprocessing:    525 ms
-Device memory alloc:   162 ms
-Data transfer to GPU:  1 ms
-Regex pattern matching: 14 ms
-Kernel execution:      379344.625 ms
-Post GPU processing:   0 ms
-Total runtime:         380037 ms
---- End of Timing ---
