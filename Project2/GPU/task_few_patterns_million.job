@@ -21,8 +21,8 @@ NVIDIA_SMI_PID=$!
 
 for i in {1..5}; do
     echo ">> Run $i"
-    ./main.exe ../Homemade_datasets/dataset_million.txt ../Homemade_datasets/patterns_small.regex >> out/out_gpu_mixed_million_small.txt
-    ./main.exe ../Homemade_datasets/dataset_million.txt ../Homemade_datasets/patterns_literal_small.regex >> out/out_gpu_literal_million_small.txt
+    ./main.exe ../Homemade_datasets/dataset_million_lines.txt ../Homemade_datasets/patterns_small.regex >> out/out_gpu_mixed_million_small.txt
+    ./main.exe ../Homemade_datasets/dataset_million_lines.txt ../Homemade_datasets/patterns_literal_small.regex >> out/out_gpu_literal_million_small.txt
 done
 
 kill $NVIDIA_SMI_PID
