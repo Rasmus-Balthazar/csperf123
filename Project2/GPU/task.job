@@ -13,7 +13,6 @@ mkdir out
 if [ -f out/out_gpu ]; then
     rm out/out_gpu
 fi
-
 if [ -f out/out_gpu_literal ]; then
     rm out/out_gpu_literal
 fi
