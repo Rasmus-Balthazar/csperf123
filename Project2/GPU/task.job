@@ -14,6 +14,10 @@ if [ -f out/out_gpu ]; then
     rm out/out_gpu
 fi
 
+if [ -f out/out_gpu_literal ]; then
+    rm out/out_gpu_literal
+fi
+
 make
 nvidia-smi --query-gpu=gpu_name,pstate,timestamp,utilization.gpu,utilization.memory,memory.total,memory.used --format=csv -l 1 -f out/nvidia-smi.log &
 
@@ -21,8 +25,8 @@ NVIDIA_SMI_PID=$!
 
 for i in {1..5}; do
     echo ">> Run $i"
-    ./main.exe ../Homemade_datasets/dataset_million_lines.txt ../Homemade_datasets/patterns.regex >> out/out_gpu.txt
-    ./main.exe ../Homemade_datasets/dataset_million_lines.txt ../Homemade_datasets/patterns_literal.regex >> out/out_gpu_literal.txt
+    ./main.exe ../Homemade_datasets/dataset_10mb.txt ../Homemade_datasets/patterns.regex >> out/out_gpu.txt
+    ./main.exe ../Homemade_datasets/dataset_10mb.txt ../Homemade_datasets/patterns_literal.regex >> out/out_gpu_literal.txt
 done
 
 kill $NVIDIA_SMI_PID
