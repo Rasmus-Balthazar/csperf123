@@ -11,7 +11,7 @@ for input in "${inputs[@]}"; do
         output_file="perf_${input_name}_million_small.txt"
         output_perf_file="perf_${input_name}_million_small.txt"
 
-        perf stat -o "$output_perf_file" -e cycles,instructions ./a.out "../Homemade_datasets/dataset_million.txt" "$input" > "$output_file"
+        perf stat -o "$output_perf_file" -e cycles,instructions ./a.out "../Homemade_datasets/dataset_million_lines.txt" "$input" > "$output_file"
  
     done
 done
